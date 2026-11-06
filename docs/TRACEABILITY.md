@@ -2,7 +2,7 @@
 
 6 November 2026
 
-All items are imported. BTF items remain Backlog; Bug Off cases remain Draft / Not run. One case covers each acceptance criterion. Each case contains preconditions, three ordered steps and per-step expected results, its acceptance criterion and its BTF story backlink. BTF stories contain direct coverage links in comments.
+All items are imported. GENIE-2 / PLAT-101 is In Progress; remaining BTF stories remain Backlog. Bug Off cases remain Draft / Not run. Local implementation evidence is recorded in [the GENIE-2 development packet](development/GENIE-2-SUITE-SIGN-IN.md). One case covers each acceptance criterion. Each case contains preconditions, three ordered steps and per-step expected results, its acceptance criterion and its BTF story backlink. BTF stories contain direct coverage links in comments.
 
 ## Coverage totals
 

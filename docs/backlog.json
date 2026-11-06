@@ -2,7 +2,7 @@
   "product": "Aplyd Genie",
   "version": "1.2",
   "date": "2026-11-06",
-  "note": "All 21 epics and 90 stories are imported into BTF. Every story has three linked Draft / Not run Bug Off cases. Specification IDs remain stable; actual tracker keys and URLs are recorded. No implementation or product test execution is claimed.",
+  "note": "All 21 epics and 90 stories are imported into BTF. GENIE-2 / PLAT-101 is In Progress with local implementation tests; all 270 Bug Off cases remain Draft / Not run pending live acceptance.",
   "epics": [
     {
       "id": "PLAT-01",
@@ -20,7 +20,7 @@
             "Disabled membership is rejected at the service boundary.",
             "Signing out removes access to protected Genie views."
           ],
-          "status": "Backlog",
+          "status": "In Progress",
           "tracker_issue": "GENIE-2",
           "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2",
           "test_cases": [
