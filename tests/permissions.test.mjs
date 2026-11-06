@@ -4,6 +4,9 @@ import {readFile} from 'node:fs/promises';
 import {MemberExports,runMemberExport} from '../src/exports.mjs';
 import {Permissions} from '../src/permissions.mjs';
 import {HttpError} from '../src/security.mjs';
+import {IdentityStore} from '../src/store.mjs';
+import {createSessionAuthenticator} from '../src/authentication.mjs';
+import {seal} from '../src/security.mjs';
 import {digest} from '../src/security.mjs';
 const id=n=>`00000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 const admin=id(1),reader=id(2),steward=id(3),plain=id(4),foreign=id(5),tenant=id(10),other=id(11),invitee=id(6);
@@ -266,4 +269,25 @@ test('actual PostgreSQL role edits reject simultaneous stale versions rather tha
 test('actual PostgreSQL workers claim a queued export only once under concurrent load',{skip:!realPostgres},async()=>{
  await exportReader();await exportsService().enqueue(session(reader));
  const claimed=await Promise.all([exportsService().claim(),exportsService().claim()]);assert.equal(claimed.filter(Boolean).length,1);
+});
+
+test('actual PostgreSQL reviewed worker grants support fresh authentication without app or policy write authority',{skip:!realPostgres},async()=>{
+ await exportReader();const key=Buffer.alloc(32,17),config={issuer:'https://accounts.example.test',key};
+ await db.query('UPDATE genie_sessions SET sealed_upstream=$1 WHERE token_hash=$2',[seal(key,`session:${reader}:${tenant}`,{uid:'synthetic-worker-upstream'}),session(reader)]);
+ await exportsService().enqueue(session(reader));
+ await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_policy_app_qualification') THEN CREATE ROLE genie_policy_app_qualification NOLOGIN; END IF; END $$;");
+ const name=(await db.query('SELECT current_database() name')).rows[0].name;
+ const grants=(await readFile(new URL('../ops/staging/genie-4/grants.sql',import.meta.url),'utf8'))
+  .replaceAll('genie_runtime','genie_policy_app_qualification').replaceAll('genie_staging',name).replaceAll('genie_export_worker','genie_policy_worker_qualification');
+ await db.exec(grants);
+ const client=await db.connect();let proofCalls=0;
+ try{
+  await client.query('SET ROLE genie_policy_worker_qualification');
+  for(const sql of ['SELECT * FROM genie_member_exports','DELETE FROM genie_permission_audit WHERE false',"UPDATE genie_memberships SET role='admin' WHERE false",'INSERT INTO genie_sessions SELECT * FROM genie_sessions WHERE false','SELECT genie_enqueue_member_export(NULL)'])await assert.rejects(client.query(sql),{code:'42501'});
+  const authenticateSession=createSessionAuthenticator({config,store:new IdentityStore(client),accounts:{requireSession:async(subject,uid,user)=>{
+   proofCalls++;assert.equal(subject,'subject-'+reader);assert.equal(uid,'synthetic-worker-upstream');assert.equal(user,reader);
+  }}});
+  const result=await runMemberExport({exports:new MemberExports(client),permissions:new Permissions(client),authenticateSession});
+  assert.equal(result.status,'completed');assert.equal(proofCalls,1);
+ }finally{await client.query('RESET ROLE');client.release();}
 });
