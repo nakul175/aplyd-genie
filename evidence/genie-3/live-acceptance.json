@@ -50,12 +50,15 @@
       "revoke": 401
     },
     "temporary_route_installed_by_this_work": false,
-    "final_qa_genie_sessions_last_sql_observation": "Zero at prior checkpoint; current batch confirmed deactivation and all reads/mutations401. Fresh SQL cleanup readback awaits browser connectivity."
+    "final_qa_genie_sessions": 0,
+    "final_live_sql_cleanup_readback": "verified after browser access restored",
+    "repository_case_lifecycle": "Active for 2557\u20132559",
+    "container_runtime_files_match_release": true,
+    "staging_receipt": "updated to accepted GENIE-3 runtime, completed run46 and cleanup; merge/closure pending"
   },
   "pending": [
-    "final operator cleanup readback and staging receipt update after browser connectivity restored",
-    "repository case lifecycle promotion from Draft to Active",
-    "final CI and explicit PR2 merge authorization"
+    "explicit PR2 merge authorization",
+    "merge and BTF GENIE-3 closure"
   ],
   "cases": {
     "2557": "Passed; all three steps Passed in completed Bug Off run46",
