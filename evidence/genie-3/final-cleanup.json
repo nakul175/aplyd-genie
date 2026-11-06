@@ -1,0 +1,33 @@
+{
+  "story": "GENIE-3",
+  "verified_date_ist": "2026-11-07",
+  "runtime": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
+  "current_release": "/opt/aplyd-genie-staging/releases/7d87fe7",
+  "container_mount": "/opt/aplyd-genie-staging/current -> /app",
+  "container_files_sha256_match_host_release": [
+    "src",
+    "migrations",
+    "scripts",
+    "package.json",
+    "package-lock.json"
+  ],
+  "qa_membership": {
+    "status": "disabled",
+    "role": "member",
+    "genie_sessions": 0
+  },
+  "temporary_acceptance_route_installed": false,
+  "staging_receipt_updated": true,
+  "prior_receipt_backed_up_privately": true,
+  "runtime_restarted": false,
+  "cases": {
+    "2557": "Active / Passed",
+    "2558": "Active / Passed",
+    "2559": "Active / Passed"
+  },
+  "run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46",
+  "run_state": "Completed / Done",
+  "btf_acceptance_comment_verified": true,
+  "operator_console_closed": true,
+  "initial_receipt_guard": "Stopped before writes on resolved-path versus bind-mount-name mismatch; exact current symlink and all runtime-file hashes then verified before metadata update."
+}

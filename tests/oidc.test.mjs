@@ -58,6 +58,17 @@ test('real OIDC adapter verifies signed tokens and sends PKCE with a confidentia
   assert.ok(f.calls.includes(`${config.issuer}/jwks`));
 });
 
+test('invitations require fresh provider login while ordinary suite sign-in retains SSO', async () => {
+  const f = await fixture();
+  const ordinary = new URL(await f.oidc.authorization(f.tx));
+  assert.equal(ordinary.searchParams.has('prompt'), false);
+  const invitation = new URL(await f.oidc.authorization({ ...f.tx, inviteHash: 'f'.repeat(64) }));
+  assert.equal(invitation.searchParams.get('prompt'), 'login');
+  assert.equal(invitation.searchParams.get('code_challenge_method'), 'S256');
+  assert.equal(invitation.searchParams.get('state'), f.tx.state);
+  assert.ok(!invitation.href.includes('f'.repeat(64)), 'invitation hashes stay inside encrypted state');
+});
+
 for (const [name, claims, options] of [
   ['wrong issuer', { iss: 'https://attacker.example' }],
   ['wrong audience', { aud: 'other-client' }],

@@ -41,7 +41,8 @@ export class IdentityStore {
 
   async getSession(tokenHash) {
     const result = await this.database.query(`
-      SELECT u.id AS user_id,u.issuer,u.subject,s.tenant_id,s.sealed_upstream
+      SELECT u.id AS user_id,u.issuer,u.subject,s.tenant_id,s.sealed_upstream,
+        coalesce(to_jsonb(m)->>'role','member') AS role
       FROM genie_sessions s JOIN genie_users u ON u.id=s.user_id
       JOIN genie_tenants t ON t.id=s.tenant_id
       JOIN genie_memberships m ON m.user_id=u.id AND m.tenant_id=t.id

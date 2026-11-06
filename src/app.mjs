@@ -2,12 +2,13 @@ import express from 'express';
 import { rateLimit } from 'express-rate-limit';
 import { digest, randomToken, seal, open, readCookie, setCookie,
   sessionCookie, loginCookie, secureHeaders, HttpError } from './security.mjs';
+import { escapeHtml, memberView, invitationCreated } from './member-views.mjs';
 
 const unauthorized = () => new HttpError(401, 'authentication_required');
 const document = body => `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Aplyd Genie</title><main>${body}</main></html>`;
 
 /** Dependencies are injected for contract tests; production supplies the real adapters. */
-export function createApp({ config, store, oidc, accounts, rateStore }) {
+export function createApp({ config, store, oidc, accounts, rateStore, memberships }) {
   const app = express();
   app.disable('x-powered-by');
   app.disable('etag');
@@ -43,22 +44,48 @@ export function createApp({ config, store, oidc, accounts, rateStore }) {
       await store.deleteSession(hash);
       throw unauthorized();
     }
-    return { userId: after.user_id, tenantId: after.tenant_id };
+    return { userId: after.user_id, tenantId: after.tenant_id, role: after.role,
+      sessionHash: hash, issuer: after.issuer, subject: after.subject };
   }
 
   app.get('/health/live', (_request, response) => response.json({ status: 'live' }));
   app.get('/', (_request, response) => response.type('html').send(document(
     '<h1>Aplyd Genie</h1><p>Your AI concierge across Aplyd.</p><a href="/auth/sign-in">Sign in with Aplyd</a>')));
 
-  app.get('/auth/sign-in', async (request, response) => {
+  async function startLogin(request, response, inviteHash) {
     if (request.originalUrl.length > 2048) throw new HttpError(400, 'invalid_request');
     const transaction = { state: randomToken(), nonce: randomToken(), verifier: randomToken(), next: '/workspace' };
+    if (inviteHash) transaction.inviteHash = inviteHash;
     const browser = randomToken();
     const destination = await oidc.authorization(transaction);
     await store.putLogin({ stateHash: digest(transaction.state), browserHash: digest(browser),
       sealed: seal(config.key, 'login', transaction), expires: new Date(Date.now() + config.loginSeconds * 1000) });
     setCookie(response, loginCookie, browser, config.loginSeconds);
+    if (inviteHash) {
+      // A form-action 'self' policy can block cross-origin POST redirect chains.
+      // Commit a normal page first; its explicit GET link keeps that policy intact.
+      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/form-action
+      return response.type('html').send(document('<h1>Continue with Aplyd Accounts</h1>' +
+        '<p>Verify the account this invitation was created for.</p>' +
+        `<a href="${escapeHtml(destination)}">Continue to Aplyd Accounts</a>`));
+    }
     response.redirect(303, destination);
+  }
+  app.get('/auth/sign-in', (request,response) => startLogin(request,response));
+  const parseForm = express.urlencoded({ extended: false, limit: '8kb', parameterLimit: 10 });
+  function sameOrigin(request) {
+    if (request.get('origin') !== config.origin) throw new HttpError(403, 'origin_denied');
+  }
+  app.get('/invitations/:token', (request,response) => {
+    if (!/^[A-Za-z0-9_-]{43}$/.test(request.params.token)) throw new HttpError(404,'invitation_unavailable');
+    response.set('Referrer-Policy','same-origin').type('html').send(document('<h1>Accept a workspace invitation</h1>' +
+      '<p>Sign in with the account this invitation was created for.</p><form method="post" action="/auth/invitation-sign-in">' +
+      `<input type="hidden" name="token" value="${escapeHtml(request.params.token)}"><button>Accept invitation with Aplyd</button></form>`));
+  });
+  app.post('/auth/invitation-sign-in', parseForm, (request,response) => {
+    sameOrigin(request);
+    if (!memberships || typeof request.body?.token!=='string'||! /^[A-Za-z0-9_-]{43}$/.test(request.body.token)) throw new HttpError(400,'invalid_invitation');
+    return startLogin(request,response,digest(request.body.token));
   });
 
   app.get('/auth/callback', async (request, response) => {
@@ -83,10 +110,19 @@ export function createApp({ config, store, oidc, accounts, rateStore }) {
       if (transaction.state !== state) throw Error();
       identity = await oidc.exchange(callback, transaction);
     } catch { throw new HttpError(400, 'invalid_callback'); }
-    const memberships = await store.findMembership(config.issuer, identity.subject);
-    if (memberships.length === 0) throw new HttpError(403, 'membership_required');
-    if (memberships.length !== 1) throw new HttpError(409, 'workspace_selection_required');
-    const member = memberships[0];
+    let accepted;
+    if (transaction.inviteHash) {
+      if (!memberships) throw new HttpError(503,'service_unavailable');
+      const recipient = await memberships.recipient(transaction.inviteHash,config.issuer,identity.subject);
+      if (!recipient) throw new HttpError(404,'invitation_unavailable');
+      await accounts.requireSession(identity.subject,identity.uid,recipient.user_id);
+      accepted = await memberships.accept(transaction.inviteHash,config.issuer,identity.subject);
+    }
+    const choices = await store.findMembership(config.issuer, identity.subject);
+    if (choices.length === 0) throw new HttpError(403, 'membership_required');
+    if (!accepted && choices.length !== 1) throw new HttpError(409, 'workspace_selection_required');
+    // The invitation is an explicit workspace choice, stored in browser-bound encrypted state.
+    const member = accepted ? { user_id: accepted.userId, tenant_id: accepted.tenantId } : choices[0];
     const previous = readCookie(request, sessionCookie);
     await accounts.requireSession(identity.subject, identity.uid, member.user_id);
     const token = randomToken();
@@ -102,17 +138,52 @@ export function createApp({ config, store, oidc, accounts, rateStore }) {
   });
 
   app.get('/api/auth/session', async (request, response) => {
-    response.json({ authenticated: true, ...await authenticate(request) });
+    const { userId,tenantId } = await authenticate(request);
+    response.json({ authenticated: true, userId,tenantId });
   });
 
   app.get('/workspace', async (request, response) => {
-    await authenticate(request);
+    const actor = await authenticate(request);
     // no-referrer makes native form POSTs send Origin:null in browsers. Keep
     // same-origin form provenance while withholding cross-origin referrers.
     response.set('Referrer-Policy', 'same-origin');
     response.type('html').send(document('<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +
+      (memberships && actor.role==='admin' ? '<p><a href="/workspace/members">Manage workspace members</a></p>' : '') +
       '<form method="post" action="/auth/sign-out"><button type="submit">Sign out of Genie</button></form>'));
   });
+
+  async function memberPage(request) {
+    if (!memberships) throw new HttpError(503,'service_unavailable');
+    const actor = await authenticate(request);
+    const kind = request.query.view ?? 'members';
+    const page = await memberships.page(actor.sessionHash,kind,request.query.after,request.query.search ?? '');
+    return { kind,page };
+  }
+  app.get('/api/workspace/members', async (request,response) => response.json(await memberPage(request)));
+  app.get('/workspace/members', async (request,response) => {
+    const { kind,page } = await memberPage(request);
+    response.set('Referrer-Policy','same-origin').type('html').send(document(memberView(kind,page,{search:request.query.search??''})));
+  });
+  async function membershipAction(request,action) {
+    sameOrigin(request);
+    if (!memberships) throw new HttpError(503,'service_unavailable');
+    const actor = await authenticate(request);
+    const body=request.body??{};
+    if (action==='change') return memberships.change(actor.sessionHash,body.target,body.status,body.role,body.version);
+    if (action==='invite') return memberships.invite(actor.sessionHash,body.target,body.role);
+    return memberships.revoke(actor.sessionHash,body.invitationId);
+  }
+  for (const action of ['change','invite','revoke']) {
+    app.post(`/api/workspace/members/${action}`,express.json({strict:true,limit:'8kb'}),async(request,response) => {
+      const result=await membershipAction(request,action);
+      response.status(action==='invite'?201:200).json(action==='invite'?{...result,url:config.origin+'/invitations/'+result.token}:result);
+    });
+    app.post(`/workspace/members/${action}`,parseForm,async(request,response) => {
+      const result=await membershipAction(request,action);
+      if(action==='invite')return response.type('html').send(document(invitationCreated(config.origin,result)));
+      response.redirect(303,action==='revoke'?'/workspace/members?view=invitations':'/workspace/members');
+    });
+  }
 
   app.post('/auth/sign-out', async (request, response) => {
     if (request.get('origin') !== config.origin) throw new HttpError(403, 'origin_denied');
@@ -125,9 +196,15 @@ export function createApp({ config, store, oidc, accounts, rateStore }) {
   app.get('/auth/sign-out', (_request, response) => response.status(405).set('Allow', 'POST').json({ error: 'method_not_allowed' }));
 
   app.use((_request, response) => response.status(404).json({ error: 'not_found' }));
-  app.use((error, _request, response, _next) => {
-    const safe = error instanceof HttpError ? error : new HttpError(503, 'service_unavailable');
+  app.use((error, request, response, _next) => {
+    const safe = error instanceof HttpError ? error :
+      error.type==='entity.parse.failed'?new HttpError(400,'invalid_request'):
+      error.type==='entity.too.large'?new HttpError(413,'request_too_large'):new HttpError(503, 'service_unavailable');
     if (safe.status === 401) setCookie(response, sessionCookie, '', 0);
+    if(request.path.startsWith('/workspace/members')) {
+      const message={administrator_required:'Only workspace administrators can manage members.',last_administrator_required:'Keep at least one active administrator.',membership_conflict:'This person is already a member or has a pending invitation.',membership_changed_refresh_required:'This membership changed. Refresh the page before trying again.',reviewed_membership_or_invitation_unavailable:'The reviewed person or invitation is unavailable.',authentication_required:'Please sign in again.',origin_denied:'This request could not be verified. Return to your workspace and try again.'}[safe.code]??'The request could not be completed. Please return to your workspace and try again.';
+      return response.status(safe.status).type('html').send(document(`<h1>Membership request</h1><p>${message}</p><a href="/workspace/members">Back to members</a> · <a href="/auth/sign-in">Sign in</a>`));
+    }
     response.status(safe.status).json({ error: safe.code });
   });
   return app;

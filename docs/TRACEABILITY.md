@@ -1,8 +1,8 @@
 # Aplyd Genie Live Traceability
 
-6 November 2026
+7 November 2026
 
-All items are imported. GENIE-2 / PLAT-101 is implemented and accepted on staging; its three Active cases Passed in [run 45](https://bugoff.aplyd.org/en-US/projects/runs/7/45). The remaining 89 stories are Backlog and their 267 cases remain Draft / Not run. The earlier browser logout failure is retained in result history. See [deployment and acceptance evidence](../evidence/genie-2/staging/ACCEPTANCE.md). Each case retains its acceptance criterion and BTF backlink; each story retains its direct coverage links.
+All items are imported. GENIE-2 / PLAT-101 is Done with three Active cases Passed in [run 45](https://bugoff.aplyd.org/en-US/projects/runs/7/45). GENIE-3 / PLAT-102 remains In Progress pending release gates; its three cases Passed in completed [run 46](https://bugoff.aplyd.org/en-US/projects/runs/7/46). All three GENIE-3 repository cases are Active with actual Passed results. The remaining 88 stories are Backlog and their 264 cases remain Draft / Not run. Earlier failures are retained. See [GENIE-3 evidence](../evidence/genie-3/live-acceptance.json) and [actual API checks](../evidence/genie-3/real-api-acceptance.json). Each case retains its acceptance criterion and BTF backlink; each story retains direct coverage links.
 
 ## Coverage totals
 

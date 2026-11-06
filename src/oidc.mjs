@@ -24,6 +24,9 @@ export function createOidc(config, { fetch } = {}) {
         response_type: 'code', redirect_uri: config.callback, scope: 'openid profile aplyd',
         state: transaction.state, nonce: transaction.nonce,
         code_challenge: await oidc.calculatePKCECodeChallenge(transaction.verifier), code_challenge_method: 'S256',
+        // Invitation acceptance must verify the account selected in the current
+        // upstream login, rather than silently reuse a different central account.
+        ...(transaction.inviteHash ? { prompt: 'login' } : {}),
       }).href;
     },
     async exchange(callback, transaction) {

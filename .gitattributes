@@ -1,0 +1,3 @@
+# Preserve raw node:test failure formatter whitespace in these evidence files.
+evidence/genie-3/audit-pagination-initial-failure.log whitespace=-blank-at-eol
+evidence/genie-3/audit-pagination-initial-failure.junit.xml whitespace=-blank-at-eol

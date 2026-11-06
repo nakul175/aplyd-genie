@@ -1,0 +1,72 @@
+{
+  "story": "GENIE-3",
+  "method": "real HTTPS password login and server-handled Accounts OIDC; in-memory standard cookie jar",
+  "checks": [
+    {
+      "name": "normal_password_login_exact_synthetic_upstream_identity",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "real_accounts_oidc_reaches_protected_workspace",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "authenticated_genie_identity_and_tenant_match_reviewed_fixture",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "ordinary_member_administrator_read_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "ordinary_member_change_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "ordinary_member_invite_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "ordinary_member_revoke_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "deactivated_member_read_denied_/api/auth/session",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "deactivated_member_read_denied_/workspace",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "deactivated_member_read_denied_/api/workspace/members",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "deactivated_member_change_denied",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "deactivated_member_invite_denied",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "deactivated_member_revoke_denied",
+      "passed": true,
+      "http_status": 401
+    }
+  ],
+  "status": "passed"
+}
