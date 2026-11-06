@@ -2,7 +2,7 @@
   "product": "Aplyd Genie",
   "date": "2026-11-06",
   "repository": "https://github.com/nakul175/aplyd-genie",
-  "repository_visibility": "private",
+  "repository_visibility": "public",
   "btf_project": "https://backlogtothefuture.aplyd.org/aplyd/GENIE",
   "btf_document": "https://backlogtothefuture.aplyd.org/aplyd/GENIE/docs/225",
   "bugoff_project": "https://bugoff.aplyd.org/en-US/projects/overview/7",
@@ -30,8 +30,17 @@
     "acceptance_criteria": 270,
     "workflows": 6
   },
-  "individual_tracker_items_created": false,
+  "individual_tracker_items_created": true,
   "application_deployed": false,
   "schedules_changed": false,
-  "hostname_correction_verified": true
+  "hostname_correction_verified": true,
+  "imported_backlog": {
+    "epics": 21,
+    "stories": 90,
+    "cases": 270,
+    "steps": 810,
+    "status": "Backlog / Draft / Not run"
+  },
+  "temporary_api_key_created": false,
+  "extra_coverage_notes_pending_consolidation": 5
 }

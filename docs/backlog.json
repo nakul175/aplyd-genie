@@ -2,7 +2,7 @@
   "product": "Aplyd Genie",
   "version": "1.2",
   "date": "2026-11-06",
-  "note": "Specification IDs are stable local references, not claimed live BTF issue keys. All stories Proposed; tracker_issue null until created.",
+  "note": "All 21 epics and 90 stories are imported into BTF. Every story has three linked Draft / Not run Bug Off cases. Specification IDs remain stable; actual tracker keys and URLs are recorded. No implementation or product test execution is claimed.",
   "epics": [
     {
       "id": "PLAT-01",
@@ -20,8 +20,32 @@
             "Disabled membership is rejected at the service boundary.",
             "Signing out removes access to protected Genie views."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-2",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-101-AC1",
+              "bugoff_id": 2554,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2554",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-101-AC2",
+              "bugoff_id": 2555,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2555",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-101-AC3",
+              "bugoff_id": 2556,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2556",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-102",
@@ -32,8 +56,32 @@
             "Deactivation blocks new reads and mutations.",
             "Membership changes are auditable."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-3",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-3",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-102-AC1",
+              "bugoff_id": 2557,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2557",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-102-AC2",
+              "bugoff_id": 2558,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2558",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-102-AC3",
+              "bugoff_id": 2559,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2559",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-103",
@@ -44,8 +92,32 @@
             "Role changes apply to UI, tools and background execution.",
             "A user cannot grant a permission they are unauthorized to manage."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-4",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-4",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-103-AC1",
+              "bugoff_id": 2560,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2560",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-103-AC2",
+              "bugoff_id": 2561,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2561",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-103-AC3",
+              "bugoff_id": 2562,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2562",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-104",
@@ -56,8 +128,32 @@
             "Conversations and resource search remain tenant-scoped.",
             "Pending jobs retain their original tenant context."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-5",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-5",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-104-AC1",
+              "bugoff_id": 2563,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2563",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-104-AC2",
+              "bugoff_id": 2564,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2564",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-104-AC3",
+              "bugoff_id": 2565,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2565",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-105",
@@ -68,10 +164,37 @@
             "Revoked actions stop without exposing inaccessible content.",
             "Denied actions are recorded without sensitive payload leakage."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-6",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-6",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-105-AC1",
+              "bugoff_id": 2566,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2566",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-105-AC2",
+              "bugoff_id": 2567,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2567",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-105-AC3",
+              "bugoff_id": 2568,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2568",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-1",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-1",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=178"
     },
     {
       "id": "PLAT-02",
@@ -91,8 +214,32 @@
             "Following the link checks current access.",
             "Inaccessible source titles are not exposed through backlinks."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-8",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-8",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-201-AC1",
+              "bugoff_id": 2569,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2569",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-201-AC2",
+              "bugoff_id": 2570,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2570",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-201-AC3",
+              "bugoff_id": 2571,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2571",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-202",
@@ -103,8 +250,32 @@
             "Each automated mutation references its workflow.",
             "Activity does not imply an unexecuted proposal changed data."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-9",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-9",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-202-AC1",
+              "bugoff_id": 2572,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2572",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-202-AC2",
+              "bugoff_id": 2573,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2573",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-202-AC3",
+              "bugoff_id": 2574,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2574",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-203",
@@ -115,8 +286,32 @@
             "Deleted targets have a clear unavailable state.",
             "Links use stable resource identifiers."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-10",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-10",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-203-AC1",
+              "bugoff_id": 2575,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2575",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-203-AC2",
+              "bugoff_id": 2576,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2576",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-203-AC3",
+              "bugoff_id": 2577,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2577",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PLAT-204",
@@ -127,10 +322,37 @@
             "Retry does not duplicate the same completion alert.",
             "Notification preferences are respected."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-11",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-11",
+          "test_cases": [
+            {
+              "id": "TC-PLAT-204-AC1",
+              "bugoff_id": 2578,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2578",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-204-AC2",
+              "bugoff_id": 2579,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2579",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PLAT-204-AC3",
+              "bugoff_id": 2580,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2580",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-7",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-7",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=179"
     },
     {
       "id": "PROJ-01",
@@ -150,8 +372,32 @@
             "Creation respects workspace permissions.",
             "Project appears in authorized lists after creation."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-13",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-13",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-101-AC1",
+              "bugoff_id": 2581,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2581",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-101-AC2",
+              "bugoff_id": 2582,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2582",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-101-AC3",
+              "bugoff_id": 2583,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2583",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-102",
@@ -162,8 +408,32 @@
             "Date-only deadlines remain distinct from event timestamps.",
             "UI and tool requests enforce identical field rules."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-14",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-14",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-102-AC1",
+              "bugoff_id": 2584,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2584",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-102-AC2",
+              "bugoff_id": 2585,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2585",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-102-AC3",
+              "bugoff_id": 2586,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2586",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-103",
@@ -174,8 +444,32 @@
             "Owner, status and due-date filters compose correctly.",
             "Empty and failed states are distinguishable."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-15",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-15",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-103-AC1",
+              "bugoff_id": 2587,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2587",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-103-AC2",
+              "bugoff_id": 2588,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2588",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-103-AC3",
+              "bugoff_id": 2589,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2589",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-104",
@@ -186,8 +480,32 @@
             "Concurrent updates do not silently overwrite newer state.",
             "Changes retain actor and time."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-16",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-16",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-104-AC1",
+              "bugoff_id": 2590,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2590",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-104-AC2",
+              "bugoff_id": 2591,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2591",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-104-AC3",
+              "bugoff_id": 2592,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2592",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-105",
@@ -198,8 +516,32 @@
             "Activity identifies the actor.",
             "Comment failures preserve recoverable user input."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-17",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-17",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-105-AC1",
+              "bugoff_id": 2593,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2593",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-105-AC2",
+              "bugoff_id": 2594,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2594",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-105-AC3",
+              "bugoff_id": 2595,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2595",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-106",
@@ -210,10 +552,37 @@
             "Self-dependency and forbidden cycles are rejected.",
             "Blocked status is distinguishable from completion status."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-18",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-18",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-106-AC1",
+              "bugoff_id": 2596,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2596",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-106-AC2",
+              "bugoff_id": 2597,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2597",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-106-AC3",
+              "bugoff_id": 2598,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2598",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-12",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-12",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=180"
     },
     {
       "id": "PROJ-02",
@@ -235,8 +604,32 @@
             "Only authorized tasks are returned.",
             "Results link to supporting task records."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-20",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-20",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-201-AC1",
+              "bugoff_id": 2599,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2599",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-201-AC2",
+              "bugoff_id": 2600,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2600",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-201-AC3",
+              "bugoff_id": 2601,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2601",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-202",
@@ -247,8 +640,32 @@
             "Unresolved owners or projects require clarification.",
             "Created tasks use stable operation keys."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-21",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-21",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-202-AC1",
+              "bugoff_id": 2602,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2602",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-202-AC2",
+              "bugoff_id": 2603,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2603",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-202-AC3",
+              "bugoff_id": 2604,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2604",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-203",
@@ -259,8 +676,32 @@
             "Preview shows affected fields.",
             "Execution rechecks current task version and permission."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-22",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-22",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-203-AC1",
+              "bugoff_id": 2605,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2605",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-203-AC2",
+              "bugoff_id": 2606,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2606",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-203-AC3",
+              "bugoff_id": 2607,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2607",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-204",
@@ -271,8 +712,32 @@
             "Recorded facts are separated from inferred risks.",
             "Summary states its reporting period."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-23",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-204-AC1",
+              "bugoff_id": 2608,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2608",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-204-AC2",
+              "bugoff_id": 2609,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2609",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-204-AC3",
+              "bugoff_id": 2610,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2610",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "PROJ-205",
@@ -283,10 +748,37 @@
             "Each affected task is included in approval.",
             "Partial failures identify individual outcomes."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-24",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24",
+          "test_cases": [
+            {
+              "id": "TC-PROJ-205-AC1",
+              "bugoff_id": 2611,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2611",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-205-AC2",
+              "bugoff_id": 2612,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2612",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-PROJ-205-AC3",
+              "bugoff_id": 2613,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2613",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-19",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-19",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=181"
     },
     {
       "id": "DOC-01",
@@ -306,8 +798,32 @@
             "Failures do not silently discard input.",
             "Document has a stable identifier and version reference."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-26",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-26",
+          "test_cases": [
+            {
+              "id": "TC-DOC-101-AC1",
+              "bugoff_id": 2614,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2614",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-101-AC2",
+              "bugoff_id": 2615,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2615",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-101-AC3",
+              "bugoff_id": 2616,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2616",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-102",
@@ -318,8 +834,32 @@
             "Read and edit permissions differ.",
             "Revocation is enforced by content APIs."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-27",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-27",
+          "test_cases": [
+            {
+              "id": "TC-DOC-102-AC1",
+              "bugoff_id": 2617,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2617",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-102-AC2",
+              "bugoff_id": 2618,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2618",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-102-AC3",
+              "bugoff_id": 2619,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2619",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-103",
@@ -330,8 +870,32 @@
             "Empty selection is explicit.",
             "Submitted selection does not change after navigation."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-28",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28",
+          "test_cases": [
+            {
+              "id": "TC-DOC-103-AC1",
+              "bugoff_id": 2620,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2620",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-103-AC2",
+              "bugoff_id": 2621,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2621",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-103-AC3",
+              "bugoff_id": 2622,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2622",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-104",
@@ -342,8 +906,32 @@
             "Restore creates an auditable revision.",
             "User can preview the restore target."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-29",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-29",
+          "test_cases": [
+            {
+              "id": "TC-DOC-104-AC1",
+              "bugoff_id": 2623,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2623",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-104-AC2",
+              "bugoff_id": 2624,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2624",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-104-AC3",
+              "bugoff_id": 2625,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2625",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-105",
@@ -354,8 +942,32 @@
             "Deleted anchors have a visible fallback.",
             "Comment access follows document permissions."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-30",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30",
+          "test_cases": [
+            {
+              "id": "TC-DOC-105-AC1",
+              "bugoff_id": 2626,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2626",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-105-AC2",
+              "bugoff_id": 2627,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2627",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-105-AC3",
+              "bugoff_id": 2628,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2628",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-106",
@@ -366,10 +978,37 @@
             "Disconnect and reconnect preserve reconciled edits.",
             "Collaboration load is tested separately from ordinary API load."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-31",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-31",
+          "test_cases": [
+            {
+              "id": "TC-DOC-106-AC1",
+              "bugoff_id": 2629,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2629",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-106-AC2",
+              "bugoff_id": 2630,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2630",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-106-AC3",
+              "bugoff_id": 2631,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2631",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-25",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-25",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=182"
     },
     {
       "id": "DOC-02",
@@ -390,8 +1029,32 @@
             "Summary identifies source scope.",
             "Oversized input is bounded or asks for narrower scope."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-33",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33",
+          "test_cases": [
+            {
+              "id": "TC-DOC-201-AC1",
+              "bugoff_id": 2632,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2632",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-201-AC2",
+              "bugoff_id": 2633,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2633",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-201-AC3",
+              "bugoff_id": 2634,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2634",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-202",
@@ -402,8 +1065,32 @@
             "Missing owners and dates remain unresolved.",
             "Source content cannot authorize tools."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-34",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-34",
+          "test_cases": [
+            {
+              "id": "TC-DOC-202-AC1",
+              "bugoff_id": 2635,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2635",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-202-AC2",
+              "bugoff_id": 2636,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2636",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-202-AC3",
+              "bugoff_id": 2637,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2637",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-203",
@@ -414,8 +1101,32 @@
             "No silent overwrite is allowed.",
             "Changed source version triggers revalidation."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-35",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-35",
+          "test_cases": [
+            {
+              "id": "TC-DOC-203-AC1",
+              "bugoff_id": 2638,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2638",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-203-AC2",
+              "bugoff_id": 2639,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2639",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-203-AC3",
+              "bugoff_id": 2640,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2640",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-204",
@@ -426,8 +1137,32 @@
             "Unsupported claims are acknowledged.",
             "Current source permissions are checked before retrieval."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-36",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-36",
+          "test_cases": [
+            {
+              "id": "TC-DOC-204-AC1",
+              "bugoff_id": 2641,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2641",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-204-AC2",
+              "bugoff_id": 2642,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2642",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-204-AC3",
+              "bugoff_id": 2643,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2643",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DOC-205",
@@ -438,10 +1173,37 @@
             "Generated draft is editable.",
             "Creation links relevant sources without leaking inaccessible metadata."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-37",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-37",
+          "test_cases": [
+            {
+              "id": "TC-DOC-205-AC1",
+              "bugoff_id": 2644,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2644",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-205-AC2",
+              "bugoff_id": 2645,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2645",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DOC-205-AC3",
+              "bugoff_id": 2646,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2646",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-32",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-32",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=183"
     },
     {
       "id": "CAL-01",
@@ -461,8 +1223,32 @@
             "Timezone changes preserve event instants.",
             "All-day events remain date-based."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-39",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-39",
+          "test_cases": [
+            {
+              "id": "TC-CAL-101-AC1",
+              "bugoff_id": 2647,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2647",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-101-AC2",
+              "bugoff_id": 2648,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2648",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-101-AC3",
+              "bugoff_id": 2649,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2649",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-102",
@@ -473,8 +1259,32 @@
             "Cancellation state is visible.",
             "Provider failures are not shown as success."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-40",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-40",
+          "test_cases": [
+            {
+              "id": "TC-CAL-102-AC1",
+              "bugoff_id": 2650,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2650",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-102-AC2",
+              "bugoff_id": 2651,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2651",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-102-AC3",
+              "bugoff_id": 2652,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2652",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-103",
@@ -485,8 +1295,32 @@
             "Invalid ranges are rejected.",
             "Preferences do not imply permission to schedule automatically."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-41",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-41",
+          "test_cases": [
+            {
+              "id": "TC-CAL-103-AC1",
+              "bugoff_id": 2653,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2653",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-103-AC2",
+              "bugoff_id": 2654,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2654",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-103-AC3",
+              "bugoff_id": 2655,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2655",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-104",
@@ -497,8 +1331,32 @@
             "Responses map to the correct event.",
             "Private blocks are distinguished from invitations."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-42",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-42",
+          "test_cases": [
+            {
+              "id": "TC-CAL-104-AC1",
+              "bugoff_id": 2656,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2656",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-104-AC2",
+              "bugoff_id": 2657,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2657",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-104-AC3",
+              "bugoff_id": 2658,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2658",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-105",
@@ -509,10 +1367,37 @@
             "Exceptions retain correct dates.",
             "Series changes require an explicit scope choice."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-43",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-43",
+          "test_cases": [
+            {
+              "id": "TC-CAL-105-AC1",
+              "bugoff_id": 2659,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2659",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-105-AC2",
+              "bugoff_id": 2660,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2660",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-105-AC3",
+              "bugoff_id": 2661,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2661",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-38",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-38",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=184"
     },
     {
       "id": "CAL-02",
@@ -533,8 +1418,32 @@
             "Missing duration triggers clarification.",
             "Unknown participant availability is explicit."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-45",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-45",
+          "test_cases": [
+            {
+              "id": "TC-CAL-201-AC1",
+              "bugoff_id": 2662,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2662",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-201-AC2",
+              "bugoff_id": 2663,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2663",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-201-AC3",
+              "bugoff_id": 2664,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2664",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-202",
@@ -545,8 +1454,32 @@
             "Availability is rechecked before creation.",
             "Task deadlines do not automatically authorize blocks."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-46",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-46",
+          "test_cases": [
+            {
+              "id": "TC-CAL-202-AC1",
+              "bugoff_id": 2665,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2665",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-202-AC2",
+              "bugoff_id": 2666,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2666",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-202-AC3",
+              "bugoff_id": 2667,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2667",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-203",
@@ -557,8 +1490,32 @@
             "Material attendee edits invalidate approval.",
             "Unauthorized calendars cannot be selected."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-47",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-47",
+          "test_cases": [
+            {
+              "id": "TC-CAL-203-AC1",
+              "bugoff_id": 2668,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2668",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-203-AC2",
+              "bugoff_id": 2669,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2669",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-203-AC3",
+              "bugoff_id": 2670,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2670",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CAL-204",
@@ -569,10 +1526,37 @@
             "Conflicts are shown before mutation.",
             "Only the approved occurrence or series is changed."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-48",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-48",
+          "test_cases": [
+            {
+              "id": "TC-CAL-204-AC1",
+              "bugoff_id": 2671,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2671",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-204-AC2",
+              "bugoff_id": 2672,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2672",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CAL-204-AC3",
+              "bugoff_id": 2673,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2673",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-44",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-44",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=185"
     },
     {
       "id": "MAIL-01",
@@ -592,8 +1576,32 @@
             "Tokens remain server-side.",
             "Disconnect prevents new access and applies retention policy."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-50",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-50",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-101-AC1",
+              "bugoff_id": 2674,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2674",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-101-AC2",
+              "bugoff_id": 2675,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2675",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-101-AC3",
+              "bugoff_id": 2676,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2676",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-102",
@@ -604,8 +1612,32 @@
             "Sync freshness is visible.",
             "Provider errors have recoverable states."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-51",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-51",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-102-AC1",
+              "bugoff_id": 2677,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2677",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-102-AC2",
+              "bugoff_id": 2678,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2678",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-102-AC3",
+              "bugoff_id": 2679,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2679",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-103",
@@ -616,8 +1648,32 @@
             "Save failures preserve recoverable input.",
             "Retries do not create duplicate drafts."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-52",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-52",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-103-AC1",
+              "bugoff_id": 2680,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2680",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-103-AC2",
+              "bugoff_id": 2681,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2681",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-103-AC3",
+              "bugoff_id": 2682,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2682",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-104",
@@ -628,8 +1684,32 @@
             "Sending differs from saving a draft.",
             "Uncertain provider outcomes are reconciled before retry."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-53",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-53",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-104-AC1",
+              "bugoff_id": 2683,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2683",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-104-AC2",
+              "bugoff_id": 2684,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2684",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-104-AC3",
+              "bugoff_id": 2685,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2685",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-105",
@@ -640,10 +1720,37 @@
             "Revoked provider permission is reported accurately.",
             "Recovery does not request unnecessary broader scopes."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-54",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-54",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-105-AC1",
+              "bugoff_id": 2686,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2686",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-105-AC2",
+              "bugoff_id": 2687,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2687",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-105-AC3",
+              "bugoff_id": 2688,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2688",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-49",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-49",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=186"
     },
     {
       "id": "MAIL-02",
@@ -664,8 +1771,32 @@
             "Commitments and suggestions are distinguished.",
             "Summary references its source."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-56",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-56",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-201-AC1",
+              "bugoff_id": 2689,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2689",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-201-AC2",
+              "bugoff_id": 2690,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2690",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-201-AC3",
+              "bugoff_id": 2691,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2691",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-202",
@@ -676,8 +1807,32 @@
             "Draft remains editable.",
             "No agent send tool is available initially."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-57",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-57",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-202-AC1",
+              "bugoff_id": 2692,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2692",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-202-AC2",
+              "bugoff_id": 2693,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2693",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-202-AC3",
+              "bugoff_id": 2694,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2694",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-203",
@@ -688,8 +1843,32 @@
             "Preview retains source reference.",
             "Creation requires approval and duplicate protection."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-58",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-58",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-203-AC1",
+              "bugoff_id": 2695,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2695",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-203-AC2",
+              "bugoff_id": 2696,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2696",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-203-AC3",
+              "bugoff_id": 2697,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2697",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "MAIL-204",
@@ -700,10 +1879,37 @@
             "Workspace claims are grounded in accessible records.",
             "Draft creation never implies sending."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-59",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-59",
+          "test_cases": [
+            {
+              "id": "TC-MAIL-204-AC1",
+              "bugoff_id": 2698,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2698",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-204-AC2",
+              "bugoff_id": 2699,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2699",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-MAIL-204-AC3",
+              "bugoff_id": 2700,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2700",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-55",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-55",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=187"
     },
     {
       "id": "AGENT-01",
@@ -723,8 +1929,32 @@
             "Keyboard navigation is supported.",
             "Inference failure does not hide manual app controls."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-61",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-61",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-101-AC1",
+              "bugoff_id": 2701,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2701",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-101-AC2",
+              "bugoff_id": 2702,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2702",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-101-AC3",
+              "bugoff_id": 2703,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2703",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-102",
@@ -735,8 +1965,32 @@
             "User can correct context before submitting.",
             "Inaccessible metadata is omitted."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-62",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-62",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-102-AC1",
+              "bugoff_id": 2704,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2704",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-102-AC2",
+              "bugoff_id": 2705,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2705",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-102-AC3",
+              "bugoff_id": 2706,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2706",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-103",
@@ -747,8 +2001,32 @@
             "Submitted jobs keep captured context.",
             "New requests clearly show their new context."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-63",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-63",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-103-AC1",
+              "bugoff_id": 2707,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2707",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-103-AC2",
+              "bugoff_id": 2708,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2708",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-103-AC3",
+              "bugoff_id": 2709,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2709",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-104",
@@ -759,10 +2037,37 @@
             "Changes affect subsequent requests.",
             "Deletion propagates to applicable derived memory."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-64",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-64",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-104-AC1",
+              "bugoff_id": 2710,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2710",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-104-AC2",
+              "bugoff_id": 2711,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2711",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-104-AC3",
+              "bugoff_id": 2712,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2712",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-60",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-60",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=188"
     },
     {
       "id": "AGENT-02",
@@ -782,8 +2087,32 @@
             "Equivalent phrases map to the same contract.",
             "Unsupported actions do not fabricate tools."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-66",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-66",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-201-AC1",
+              "bugoff_id": 2713,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2713",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-201-AC2",
+              "bugoff_id": 2714,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2714",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-201-AC3",
+              "bugoff_id": 2715,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2715",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-202",
@@ -794,8 +2123,32 @@
             "Ambiguous people and projects are not guessed.",
             "Answers update the pending plan without mutations."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-67",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-67",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-202-AC1",
+              "bugoff_id": 2716,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2716",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-202-AC2",
+              "bugoff_id": 2717,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2717",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-202-AC3",
+              "bugoff_id": 2718,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2718",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-203",
@@ -806,8 +2159,32 @@
             "Input and output pass schema validation.",
             "Context, model calls, action count and runtime have bounds."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-68",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-68",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-203-AC1",
+              "bugoff_id": 2719,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2719",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-203-AC2",
+              "bugoff_id": 2720,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2720",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-203-AC3",
+              "bugoff_id": 2721,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2721",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-204",
@@ -818,10 +2195,37 @@
             "Response explains the supported alternative where available.",
             "Unsupported requests do not enter unbounded planning loops."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-69",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-69",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-204-AC1",
+              "bugoff_id": 2722,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2722",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-204-AC2",
+              "bugoff_id": 2723,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2723",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-204-AC3",
+              "bugoff_id": 2724,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2724",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-65",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-65",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=189"
     },
     {
       "id": "AGENT-03",
@@ -842,8 +2246,32 @@
             "External consequences are explicit.",
             "Approval binds to a plan version."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-71",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-71",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-301-AC1",
+              "bugoff_id": 2725,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2725",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-301-AC2",
+              "bugoff_id": 2726,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2726",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-301-AC3",
+              "bugoff_id": 2727,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2727",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-302",
@@ -854,8 +2282,32 @@
             "Material edits invalidate previous approval.",
             "A new preview reflects accepted edits."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-72",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-72",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-302-AC1",
+              "bugoff_id": 2728,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2728",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-302-AC2",
+              "bugoff_id": 2729,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2729",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-302-AC3",
+              "bugoff_id": 2730,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2730",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-303",
@@ -866,8 +2318,32 @@
             "Partial completion identifies successful and failed steps.",
             "Results link only to accessible resources."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-73",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-73",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-303-AC1",
+              "bugoff_id": 2731,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2731",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-303-AC2",
+              "bugoff_id": 2732,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2732",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-303-AC3",
+              "bugoff_id": 2733,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2733",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-304",
@@ -878,8 +2354,32 @@
             "Unknown outcomes are reconciled first.",
             "Retry respects current permission and expiry."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-74",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-74",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-304-AC1",
+              "bugoff_id": 2734,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2734",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-304-AC2",
+              "bugoff_id": 2735,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2735",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-304-AC3",
+              "bugoff_id": 2736,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2736",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "AGENT-305",
@@ -890,10 +2390,37 @@
             "Completed changes remain visible.",
             "Cancellation does not promise unsupported rollback."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-75",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-75",
+          "test_cases": [
+            {
+              "id": "TC-AGENT-305-AC1",
+              "bugoff_id": 2737,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2737",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-305-AC2",
+              "bugoff_id": 2738,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2738",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-AGENT-305-AC3",
+              "bugoff_id": 2739,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2739",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-70",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-70",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=190"
     },
     {
       "id": "CTX-01",
@@ -913,8 +2440,32 @@
             "Selection scope is preserved.",
             "Source version accompanies the content."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-77",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-77",
+          "test_cases": [
+            {
+              "id": "TC-CTX-101-AC1",
+              "bugoff_id": 2740,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2740",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-101-AC2",
+              "bugoff_id": 2741,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2741",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-101-AC3",
+              "bugoff_id": 2742,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2742",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-102",
@@ -925,8 +2476,32 @@
             "Model output cannot replace access checks.",
             "Queries request necessary fields only."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-78",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-78",
+          "test_cases": [
+            {
+              "id": "TC-CTX-102-AC1",
+              "bugoff_id": 2743,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2743",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-102-AC2",
+              "bugoff_id": 2744,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2744",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-102-AC3",
+              "bugoff_id": 2745,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2745",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-103",
@@ -937,8 +2512,32 @@
             "Omission does not silently claim full-source analysis.",
             "Large inputs trigger supported narrowing or explicit processing policy."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-79",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-79",
+          "test_cases": [
+            {
+              "id": "TC-CTX-103-AC1",
+              "bugoff_id": 2746,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2746",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-103-AC2",
+              "bugoff_id": 2747,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2747",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-103-AC3",
+              "bugoff_id": 2748,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2748",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-104",
@@ -949,10 +2548,37 @@
             "Conflicts produce refresh or clarification.",
             "A refresh requiring material changes renews approval."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-80",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-80",
+          "test_cases": [
+            {
+              "id": "TC-CTX-104-AC1",
+              "bugoff_id": 2749,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2749",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-104-AC2",
+              "bugoff_id": 2750,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2750",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-104-AC3",
+              "bugoff_id": 2751,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2751",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-76",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-76",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=191"
     },
     {
       "id": "CTX-02",
@@ -972,8 +2598,32 @@
             "Exact references remain usable.",
             "Empty results differ from service failure."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-82",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-82",
+          "test_cases": [
+            {
+              "id": "TC-CTX-201-AC1",
+              "bugoff_id": 2752,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2752",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-201-AC2",
+              "bugoff_id": 2753,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2753",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-201-AC3",
+              "bugoff_id": 2754,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2754",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-202",
@@ -984,8 +2634,32 @@
             "Returned context is bounded.",
             "Permissions are enforced before content reaches the model."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-83",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-83",
+          "test_cases": [
+            {
+              "id": "TC-CTX-202-AC1",
+              "bugoff_id": 2755,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2755",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-202-AC2",
+              "bugoff_id": 2756,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2756",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-202-AC3",
+              "bugoff_id": 2757,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2757",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-203",
@@ -996,8 +2670,32 @@
             "Unavailable evidence is not invented.",
             "Source links check current access."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-84",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-84",
+          "test_cases": [
+            {
+              "id": "TC-CTX-203-AC1",
+              "bugoff_id": 2758,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2758",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-203-AC2",
+              "bugoff_id": 2759,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2759",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-203-AC3",
+              "bugoff_id": 2760,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2760",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "CTX-204",
@@ -1008,10 +2706,37 @@
             "Permission revocation prevents access despite index lag.",
             "Index freshness and purge failures are observable."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-85",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-85",
+          "test_cases": [
+            {
+              "id": "TC-CTX-204-AC1",
+              "bugoff_id": 2761,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2761",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-204-AC2",
+              "bugoff_id": 2762,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2762",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-CTX-204-AC3",
+              "bugoff_id": 2763,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2763",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-81",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-81",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=192"
     },
     {
       "id": "OPS-01",
@@ -1031,8 +2756,32 @@
             "Job status can be reopened.",
             "Repeated submission identity does not duplicate mutations."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-87",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-87",
+          "test_cases": [
+            {
+              "id": "TC-OPS-101-AC1",
+              "bugoff_id": 2764,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2764",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-101-AC2",
+              "bugoff_id": 2765,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2765",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-101-AC3",
+              "bugoff_id": 2766,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2766",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-102",
@@ -1043,8 +2792,32 @@
             "In-flight actions are reconciled before retry.",
             "No inference wait holds a database transaction open."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-88",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-88",
+          "test_cases": [
+            {
+              "id": "TC-OPS-102-AC1",
+              "bugoff_id": 2767,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2767",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-102-AC2",
+              "bugoff_id": 2768,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2768",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-102-AC3",
+              "bugoff_id": 2769,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2769",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-103",
@@ -1055,8 +2828,32 @@
             "Partial results survive refresh.",
             "UI never equates generated text with completed action."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-89",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-89",
+          "test_cases": [
+            {
+              "id": "TC-OPS-103-AC1",
+              "bugoff_id": 2770,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2770",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-103-AC2",
+              "bugoff_id": 2771,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2771",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-103-AC3",
+              "bugoff_id": 2772,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2772",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-104",
@@ -1067,10 +2864,37 @@
             "Attempt limits and deadlines are enforced.",
             "Expired actions cannot execute unnoticed."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-90",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-90",
+          "test_cases": [
+            {
+              "id": "TC-OPS-104-AC1",
+              "bugoff_id": 2773,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2773",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-104-AC2",
+              "bugoff_id": 2774,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2774",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-104-AC3",
+              "bugoff_id": 2775,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2775",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-86",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-86",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=193"
     },
     {
       "id": "OPS-02",
@@ -1090,8 +2914,32 @@
             "One tenant cannot consume the entire queue.",
             "Quota errors explain when retry is useful."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-92",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-92",
+          "test_cases": [
+            {
+              "id": "TC-OPS-201-AC1",
+              "bugoff_id": 2776,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2776",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-201-AC2",
+              "bugoff_id": 2777,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2777",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-201-AC3",
+              "bugoff_id": 2778,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2778",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-202",
@@ -1102,8 +2950,32 @@
             "Usage reconciliation adjusts reservations.",
             "Safety headroom accounts for estimation error."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-93",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-93",
+          "test_cases": [
+            {
+              "id": "TC-OPS-202-AC1",
+              "bugoff_id": 2779,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2779",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-202-AC2",
+              "bugoff_id": 2780,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2780",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-202-AC3",
+              "bugoff_id": 2781,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2781",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-203",
@@ -1114,8 +2986,32 @@
             "Failed and retried usage is included.",
             "Access to tenant reports is restricted."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-94",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-94",
+          "test_cases": [
+            {
+              "id": "TC-OPS-203-AC1",
+              "bugoff_id": 2782,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2782",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-203-AC2",
+              "bugoff_id": 2783,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2783",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-203-AC3",
+              "bugoff_id": 2784,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2784",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-204",
@@ -1126,8 +3022,32 @@
             "Overload does not create unlimited jobs.",
             "Provider unavailability is not presented as a user error."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-95",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-95",
+          "test_cases": [
+            {
+              "id": "TC-OPS-204-AC1",
+              "bugoff_id": 2785,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2785",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-204-AC2",
+              "bugoff_id": 2786,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2786",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-204-AC3",
+              "bugoff_id": 2787,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2787",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-205",
@@ -1138,10 +3058,37 @@
             "Inference kill switch prevents new paid work.",
             "Pending workflow status remains readable."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-96",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-96",
+          "test_cases": [
+            {
+              "id": "TC-OPS-205-AC1",
+              "bugoff_id": 2788,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2788",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-205-AC2",
+              "bugoff_id": 2789,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2789",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-205-AC3",
+              "bugoff_id": 2790,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2790",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-91",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-91",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=194"
     },
     {
       "id": "OPS-03",
@@ -1162,8 +3109,32 @@
             "Correctness and latency results are recorded.",
             "A model or prompt change reruns affected evaluations."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-98",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-98",
+          "test_cases": [
+            {
+              "id": "TC-OPS-301-AC1",
+              "bugoff_id": 2791,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2791",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-301-AC2",
+              "bugoff_id": 2792,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2792",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-301-AC3",
+              "bugoff_id": 2793,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2793",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-302",
@@ -1174,8 +3145,32 @@
             "Cross-tenant negative tests prevent disclosure.",
             "External communication approval cannot be bypassed."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-99",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-99",
+          "test_cases": [
+            {
+              "id": "TC-OPS-302-AC1",
+              "bugoff_id": 2794,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2794",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-302-AC2",
+              "bugoff_id": 2795,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2795",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-302-AC3",
+              "bugoff_id": 2796,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2796",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-303",
@@ -1186,8 +3181,32 @@
             "Traces connect workflow and tool attempts.",
             "Audit access and retention are explicit."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-100",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-100",
+          "test_cases": [
+            {
+              "id": "TC-OPS-303-AC1",
+              "bugoff_id": 2797,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2797",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-303-AC2",
+              "bugoff_id": 2798,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2798",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-303-AC3",
+              "bugoff_id": 2799,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2799",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "OPS-304",
@@ -1198,10 +3217,37 @@
             "Use the same workload for comparisons.",
             "GPU allocation and startup costs are included."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-101",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-101",
+          "test_cases": [
+            {
+              "id": "TC-OPS-304-AC1",
+              "bugoff_id": 2800,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2800",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-304-AC2",
+              "bugoff_id": 2801,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2801",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-OPS-304-AC3",
+              "bugoff_id": 2802,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2802",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-97",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-97",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=195"
     },
     {
       "id": "SEC-01",
@@ -1221,8 +3267,32 @@
             "Unexecuted proposals remain distinguishable.",
             "Sensitive trace access is restricted."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-103",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-103",
+          "test_cases": [
+            {
+              "id": "TC-SEC-101-AC1",
+              "bugoff_id": 2803,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2803",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-101-AC2",
+              "bugoff_id": 2804,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2804",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-101-AC3",
+              "bugoff_id": 2805,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2805",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "SEC-102",
@@ -1233,8 +3303,32 @@
             "Logs omit authorization values.",
             "Invalid credentials are rejected before expensive inference."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-104",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-104",
+          "test_cases": [
+            {
+              "id": "TC-SEC-102-AC1",
+              "bugoff_id": 2806,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2806",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-102-AC2",
+              "bugoff_id": 2807,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2807",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-102-AC3",
+              "bugoff_id": 2808,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2808",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "SEC-103",
@@ -1245,10 +3339,37 @@
             "Deletion state is observable.",
             "Backups follow documented retention boundaries."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-105",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-105",
+          "test_cases": [
+            {
+              "id": "TC-SEC-103-AC1",
+              "bugoff_id": 2809,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2809",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-103-AC2",
+              "bugoff_id": 2810,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2810",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-SEC-103-AC3",
+              "bugoff_id": 2811,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2811",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-102",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-102",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=196"
     },
     {
       "id": "DELEG-01",
@@ -1269,8 +3390,32 @@
             "Policy cannot exceed actor permissions.",
             "External sends and destructive actions remain separately governed."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-107",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-107",
+          "test_cases": [
+            {
+              "id": "TC-DELEG-101-AC1",
+              "bugoff_id": 2812,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2812",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DELEG-101-AC2",
+              "bugoff_id": 2813,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2813",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DELEG-101-AC3",
+              "bugoff_id": 2814,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2814",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "DELEG-102",
@@ -1281,10 +3426,37 @@
             "Revocation affects pending execution.",
             "Changes are audited."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-108",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-108",
+          "test_cases": [
+            {
+              "id": "TC-DELEG-102-AC1",
+              "bugoff_id": 2815,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2815",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DELEG-102-AC2",
+              "bugoff_id": 2816,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2816",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-DELEG-102-AC3",
+              "bugoff_id": 2817,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2817",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-106",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-106",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=197"
     },
     {
       "id": "EXT-01",
@@ -1302,8 +3474,32 @@
             "Manual prerequisites and agent capabilities are separate.",
             "No capabilities are invented for unspecified apps."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-110",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-110",
+          "test_cases": [
+            {
+              "id": "TC-EXT-101-AC1",
+              "bugoff_id": 2818,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2818",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-EXT-101-AC2",
+              "bugoff_id": 2819,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2819",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-EXT-101-AC3",
+              "bugoff_id": 2820,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2820",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         },
         {
           "id": "EXT-102",
@@ -1314,10 +3510,37 @@
             "Context identifies resource and version.",
             "Connector passes isolation and duplicate tests."
           ],
-          "status": "Proposed",
-          "tracker_issue": null
+          "status": "Backlog",
+          "tracker_issue": "GENIE-111",
+          "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-111",
+          "test_cases": [
+            {
+              "id": "TC-EXT-102-AC1",
+              "bugoff_id": 2821,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2821",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-EXT-102-AC2",
+              "bugoff_id": 2822,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2822",
+              "state": "Draft",
+              "result": "Not run"
+            },
+            {
+              "id": "TC-EXT-102-AC3",
+              "bugoff_id": 2823,
+              "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2823",
+              "state": "Draft",
+              "result": "Not run"
+            }
+          ]
         }
-      ]
+      ],
+      "tracker_issue": "GENIE-109",
+      "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-109",
+      "bugoff_folder_url": "https://bugoff.aplyd.org/en-US/projects/repository/7?node=198"
     }
   ]
 }

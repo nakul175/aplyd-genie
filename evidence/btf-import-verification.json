@@ -1,0 +1,12 @@
+{
+  "source": "BTF native project export",
+  "exportedAt": "2026-11-06T11:40:09.932Z",
+  "issues": 111,
+  "epics": 21,
+  "stories": 90,
+  "parent_links_verified": 90,
+  "acceptance_criteria_verified": 270,
+  "all_state": "Backlog",
+  "duplicates": 0,
+  "result": "PASS: import consistency only; no product tests executed"
+}

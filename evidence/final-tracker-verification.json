@@ -1,0 +1,22 @@
+{
+  "source": "Final BTF native export and verified Bug Off native export",
+  "exportedAt": "2026-11-06T11:47:39.868Z",
+  "issues": 111,
+  "epics": 21,
+  "stories": 90,
+  "acceptance_criteria": 270,
+  "parent_links": 90,
+  "epic_folder_links": 21,
+  "story_case_links": 270,
+  "case_story_backlinks": 270,
+  "canonical_coverage_records": 111,
+  "total_comments": 116,
+  "extra_duplicate_coverage_notes": 5,
+  "note_consolidation": "Pending explicit approval after automatic review rejection",
+  "duplicate_issues_or_cases": 0,
+  "all_btf_state": "Backlog",
+  "all_case_state": "Draft",
+  "product_test_execution": "Not run",
+  "btf_export_sha256": "24291e8558b268e75d0e3c01045fb9205f5d97c8abdb34b662bd20548b3793dc",
+  "verification": "PASS: required import counts, hierarchy, content and reciprocal links; five extra coverage notes explicitly audited and disclosed"
+}

@@ -1,0 +1,13 @@
+{
+  "source": "Bug Off native CSV export",
+  "cases": 270,
+  "unique_case_ids": 270,
+  "acceptance_criteria": 270,
+  "ordered_steps": 810,
+  "per_step_expected_results": 810,
+  "story_backlinks_verified": 270,
+  "case_state": "Draft",
+  "test_execution": "Not run",
+  "export_sha256": "f0d85b392ff46fc2cbd1490553a5b9ddb4a3c788835c48004dae297921dfd033",
+  "result": "PASS: persisted import content verification; no product test execution"
+}

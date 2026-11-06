@@ -12,6 +12,7 @@ Aplyd Genie helps users complete bounded, authorized workflows across Aplyd Suit
 - [Workflow catalogue](docs/WORKFLOWS.md)
 - [Context and retrieval](docs/CONTEXT-AND-RETRIEVAL.md)
 - [System and operating specification](docs/SYSTEM-SPECIFICATION.md)
+- [Live tracker traceability](docs/TRACEABILITY.md)
 - [Structured backlog](docs/backlog.json)
 - [Product registration and DNS receipts](ops/SETUP-STATUS.md)
 
@@ -30,6 +31,6 @@ Production and staging use the confirmed Genie spelling. DNS registration does n
 
 ## Status
 
-Product definition baseline. Runtime implementation is not included. Existing application functionality is an integration prerequisite, not a claim that Genie implements or replaces those applications. Four additional suite applications still require an explicit scope mapping.
+Product definition and tracker import complete: 21 BTF epics, 90 BTF stories and 270 Draft / Not run Bug Off cases, with reciprocal links. Runtime implementation is not included. Existing application functionality is an integration prerequisite, not a claim that Genie implements or replaces those applications. Four additional suite applications still require an explicit scope mapping.
 
 Existing schedules and heartbeat automations remain paused. No recurring work is authorized by this repository setup.

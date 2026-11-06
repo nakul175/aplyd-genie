@@ -2,38 +2,32 @@
 
 6 November 2026
 
-## Registered identity
+## Product registration
 
 - Product: Aplyd Genie.
-- BTF: https://backlogtothefuture.aplyd.org/aplyd/GENIE . Created and verified in the Aplyd team, Software issue types.
-- Bug Off: https://bugoff.aplyd.org/en-US/projects/overview/7 . Created and verified; implementation acceptance remains unexecuted. QuickScript disabled; no AI provider selected during setup.
-- Repository target: https://github.com/nakul175/aplyd-genie . Created private under the authenticated nakul175 account; initial product specifications are committed to main.
+- Public Git repository: https://github.com/nakul175/aplyd-genie . Public contents and history were explicitly approved by the user.
+- BTF project: https://backlogtothefuture.aplyd.org/aplyd/GENIE . Dedicated Epic and User Story types are configured.
+- BTF product baseline: https://backlogtothefuture.aplyd.org/aplyd/GENIE/docs/225 .
+- Bug Off project: https://bugoff.aplyd.org/en-US/projects/overview/7 .
+- Bug Off documentation: https://bugoff.aplyd.org/en-US/projects/documentation/7 .
+
+## Live backlog and acceptance coverage
+
+All 21 epics and 90 stories are imported into BTF in Backlog. Every story is a native child of its epic and contains its three original acceptance criteria. All 270 corresponding cases are imported into 21 Bug Off folders in Draft, with 810 ordered manual steps and per-step expected results. Each case contains its exact acceptance criterion and BTF story backlink. BTF stories have their three direct case links; epics link to their Bug Off folders.
+
+See [live traceability](../docs/TRACEABILITY.md), [structured mappings](../evidence/tracker-import-map.json), and persisted-export verification reports under evidence. No product tests were executed and no implementation is claimed.
+
+Five extra coverage notes were found during export verification. Consolidation is awaiting explicit user approval after automatic review rejected editing the existing notes. These notes do not duplicate issues or test cases or remove any required link.
 
 ## DNS
-
-GoDaddy accepted two new A records in the aplyd.org zone, increasing the visible record count from 30 to 32:
 
 | Host | Target | TTL |
 |---|---|---|
 | genie.aplyd.org | 168.144.144.69 | 600 seconds |
 | staging.genie.aplyd.org | 168.144.144.69 | 600 seconds |
 
-Target matches the existing Aplyd application records observed for Holy Sheet, BTF, Bug Off and Mai Samay Hoon. Production and staging both use the confirmed `genie` spelling. Both names resolved to 168.144.144.69 through a fresh DNS lookup after creation. Authoritative nameserver ns51.domaincontrol.com returned both exact A records with 600-second TTLs. No application route, TLS certificate, running Genie service or production release is claimed.
+The corrected staging record was verified at both authoritative nameservers. The former misspelling returned NXDOMAIN. DNS does not establish a running Genie application, configured route, TLS readiness or release acceptance.
 
-## Tracker documentation
+## Credentials and schedules
 
-- BTF product baseline: https://backlogtothefuture.aplyd.org/aplyd/GENIE/docs/225 .
-- Bug Off documentation: https://bugoff.aplyd.org/en-US/projects/documentation/7 .
-- Both contain the renamed product summary and links to the complete repository specifications. Individual work items and executable test cases are not claimed imported.
-
-## Backlog status
-
-21 epics, 90 detailed proposed stories, 270 acceptance criteria and six bounded workflows are recorded in the repository specifications. Specification IDs are not claimed live BTF issue keys. Existing application prerequisites stay assigned to their functional domains rather than implying Genie rebuilds the suite. No story has been marked implemented or passed.
-
-## Standing constraints
-
-All schedules and heartbeat automations remain paused. No recurring work, GPU deployment, shared server modification or application deployment was performed as part of registration.
-
-## Hostname correction
-
-The user confirmed `genie` for both environments. The staging A record was renamed in place to `staging.genie.aplyd.org`, retaining 168.144.144.69 and TTL 600. Both authoritative nameservers returned the corrected record; ns51 returned NXDOMAIN for the former misspelling. BTF and Bug Off documentation and project descriptions were corrected. The repository remains private; the earlier public-visibility change is still awaiting explicit disclosure approval after automatic review rejection.
+A temporary BTF API key was approved as an optional import method, but none was created: the import used the existing authenticated UI. No new credentials need revocation. Existing schedules and heartbeat automations remain paused. No recurring work, GPU allocation or application deployment was performed.
