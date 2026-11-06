@@ -7,12 +7,14 @@ const unauthorized = () => new HttpError(401, 'authentication_required');
 const document = body => `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Aplyd Genie</title><main>${body}</main></html>`;
 
 /** Dependencies are injected for contract tests; production supplies the real adapters. */
-export function createApp({ config, store, oidc, accounts }) {
+export function createApp({ config, store, oidc, accounts, rateStore }) {
   const app = express();
   app.disable('x-powered-by');
   app.disable('etag');
+  if (config.trustProxy) app.set('trust proxy', 'loopback');
   app.use(secureHeaders);
   app.use('/auth', rateLimit({ windowMs: 60_000, limit: 30,
+    ...(rateStore ? { store: rateStore } : {}),
     standardHeaders: 'draft-8', legacyHeaders: false,
     message: { error: 'too_many_authentication_requests' } }));
 

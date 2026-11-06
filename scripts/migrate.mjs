@@ -10,7 +10,7 @@ try {
   await connection.query('BEGIN');
   await connection.query("SELECT pg_advisory_xact_lock(hashtext('aplyd-genie-migrations'))");
   await connection.query('CREATE TABLE IF NOT EXISTS genie_migrations (name text PRIMARY KEY, checksum char(64) NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())');
-  const name = '001_identity_sessions.sql';
+  for (const name of ['001_identity_sessions.sql', '002_shared_rate_limits.sql']) {
   const sql = await readFile(new URL(`../migrations/${name}`, import.meta.url), 'utf8');
   const checksum = createHash('sha256').update(sql).digest('hex');
   const existing = await connection.query('SELECT checksum FROM genie_migrations WHERE name=$1', [name]);
@@ -18,6 +18,7 @@ try {
   if (!existing.rows.length) {
     await connection.query(sql);
     await connection.query('INSERT INTO genie_migrations(name,checksum) VALUES ($1,$2)', [name, checksum]);
+  }
   }
   await connection.query('COMMIT');
   console.log('genie_migrations_complete');

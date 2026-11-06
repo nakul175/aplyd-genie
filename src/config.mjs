@@ -12,11 +12,12 @@ export function readConfig(env) {
   const clientId = env.GENIE_OIDC_CLIENT_ID;
   const clientSecret = env.GENIE_OIDC_CLIENT_SECRET;
   const key = Buffer.from(env.GENIE_SESSION_KEY ?? '', 'base64');
+  if (env.GENIE_TRUST_PROXY && env.GENIE_TRUST_PROXY !== 'loopback') throw Error('Invalid trusted ingress');
   if (!['aplyd-genie', 'aplyd-genie-staging'].includes(clientId) ||
       typeof clientSecret !== 'string' || clientSecret.length < 32 || clientSecret.length > 1024 ||
       key.length !== 32 || key.toString('base64') !== env.GENIE_SESSION_KEY) {
     throw new Error('Invalid Genie authentication configuration');
   }
-  return Object.freeze({ origin, issuer, clientId, clientSecret, key,
+  return Object.freeze({ origin, issuer, clientId, clientSecret, key, trustProxy: env.GENIE_TRUST_PROXY === 'loopback',
     callback: `${origin}/auth/callback`, sessionSeconds: 3600, loginSeconds: 300 });
 }
