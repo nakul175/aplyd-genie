@@ -1,15 +1,25 @@
 import { test, before, beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { PGlite } from '@electric-sql/pglite';
 import { digest, randomToken } from '../src/security.mjs';
 
 const id = n => `00000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 const admin=id(1),member=id(2),recipient=id(3),foreign=id(4),tenant=id(10),other=id(11);
 const adminSession=digest('synthetic-admin-session'),memberSession=digest('synthetic-member-session'),foreignSession=digest('synthetic-foreign-session');
 let db;
+const realPostgres=Boolean(process.env.GENIE_TEST_DATABASE_URL);
 before(async()=>{
-  db=new PGlite();
+  if(realPostgres) {
+    const url=new URL(process.env.GENIE_TEST_DATABASE_URL);
+    assert.ok(url.protocol==='postgresql:' && url.hostname==='127.0.0.1' && /^\/genie_qual_[a-z0-9_]+$/.test(url.pathname),'Refusing destructive tests outside an explicitly named loopback qualification database');
+    const {default:pg}=await import('pg');
+    const pool=new pg.Pool({connectionString:url.href,max:4,connectionTimeoutMillis:3000,statement_timeout:5000});
+    db={query:pool.query.bind(pool),exec:pool.query.bind(pool),close:pool.end.bind(pool),connect:pool.connect.bind(pool)};
+    assert.equal((await db.query("SELECT count(*)::int AS n FROM information_schema.tables WHERE table_schema='public'")).rows[0].n,0,'Qualification database must start empty');
+  } else {
+    const {PGlite}=await import('@electric-sql/pglite');
+    db=new PGlite();
+  }
   for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql'])
     await db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
 });
@@ -26,7 +36,10 @@ beforeEach(async()=>{
 });
 const value=async(sql,args=[]) => (await db.query(sql,args)).rows[0]?.value;
 const audit=async()=> (await db.query('SELECT * FROM genie_membership_audit ORDER BY id')).rows;
-const change=(session,target,status='disabled',role='member')=>value('SELECT genie_change_member($1,$2,$3,$4) AS value',[session,target,status,role]);
+async function change(session,target,status='disabled',role='member',expected) {
+  const version=expected??(await db.query('SELECT version FROM genie_memberships WHERE user_id=$1',[target])).rows[0]?.version??'1';
+  return value('SELECT genie_change_member($1,$2,$3,$4,$5) AS value',[session,target,status,role,version]);
+}
 async function invite(session=adminSession,target=recipient,role='member'){
   const token=randomToken(),hash=digest(token);
   const result=await value('SELECT genie_create_invite($1,$2,$3,$4) AS value',[session,target,role,hash]);
@@ -128,4 +141,54 @@ test('revoking the inviting administrator invalidates pending invitation authori
 test('membership entry points have no implicit PUBLIC execute grants',async()=>{
   const rows=await db.query("SELECT p.proname FROM pg_proc p CROSS JOIN LATERAL aclexplode(p.proacl) a WHERE p.proname IN ('genie_admin_actor','genie_change_member','genie_create_invite','genie_revoke_invite','genie_invite_recipient','genie_accept_invite') AND a.grantee=0 AND a.privilege_type='EXECUTE'");
   assert.equal(rows.rows.length,0);
+});
+
+test('stale membership forms cannot overwrite a newer administrator change',async()=>{
+  await change(adminSession,member,'active','admin');
+  await assert.rejects(change(adminSession,member,'disabled','member','1'),{code:'40001'});
+  assert.equal((await db.query('SELECT role FROM genie_memberships WHERE user_id=$1',[member])).rows[0].role,'admin');
+});
+test('administrator pages stay tenant-scoped and never expose invitation hashes',async()=>{
+  const i=await invite();
+  const page=await value('SELECT genie_membership_page($1,$2) AS value',[adminSession,'invitations']);
+  assert.equal(page.items.length,1);assert.equal(page.items[0].id,i.id);
+  assert.ok(!JSON.stringify(page).includes(i.hash));assert.ok(!JSON.stringify(page).includes(i.token));
+  assert.equal((await value('SELECT genie_membership_page($1,$2) AS value',[foreignSession,'invitations'])).items.length,0);
+  await assert.rejects(value('SELECT genie_membership_page($1,$2) AS value',[memberSession,'audit']),{code:'42501'});
+});
+
+test('reviewed people use bounded keyset pages without duplicate or foreign records',async()=>{
+  for(let n=100;n<153;n++){
+    const u=id(n);
+    await db.query('INSERT INTO genie_users VALUES ($1,$2,$3,true)',[u,'https://accounts.example.test','pagination-'+n]);
+    await db.query("INSERT INTO genie_workspace_people VALUES ($1,$2,$3,'synthetic-review')",[tenant,u,'Page fixture '+n]);
+  }
+  const first=await value('SELECT genie_membership_page($1,$2,NULL,$3) AS value',[adminSession,'people','Page fixture']);
+  assert.equal(first.items.length,50);assert.ok(first.nextCursor);
+  const second=await value('SELECT genie_membership_page($1,$2,$3,$4) AS value',[adminSession,'people',first.nextCursor,'Page fixture']);
+  assert.equal(second.items.length,3);assert.equal(second.nextCursor,null);
+  assert.equal(new Set([...first.items,...second.items].map(x=>x.userId)).size,53);
+});
+test('actual PostgreSQL concurrent administrator removals preserve one active administrator',{skip:!realPostgres},async()=>{
+  await db.query("UPDATE genie_memberships SET role='admin' WHERE user_id=$1",[member]);
+  const results=await Promise.allSettled([
+    change(adminSession,admin,'disabled','admin','1'),
+    change(memberSession,member,'disabled','admin','1')
+  ]);
+  assert.equal(results.filter(x=>x.status==='fulfilled').length,1);
+  const error=results.find(x=>x.status==='rejected').reason;assert.equal(error.code,'23514');
+  assert.equal((await db.query("SELECT count(*)::int AS n FROM genie_memberships WHERE tenant_id=$1 AND role='admin' AND status='active'",[tenant])).rows[0].n,1);
+});
+test('actual PostgreSQL runtime entry points work without identity, audit or DDL write privileges',{skip:!realPostgres},async()=>{
+  await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_qualification_reader') THEN CREATE ROLE genie_qualification_reader NOLOGIN; END IF; END $$; GRANT EXECUTE ON FUNCTION genie_membership_page(text,text,text,text),genie_change_member(text,uuid,text,text,bigint) TO genie_qualification_reader;");
+  const client=await db.connect();
+  try {
+    await client.query('SET ROLE genie_qualification_reader');
+    for(const sql of ['CREATE TABLE genie_forbidden_probe(id int)',"UPDATE genie_memberships SET role='admin' WHERE false",'DELETE FROM genie_membership_audit WHERE false'])
+      await assert.rejects(client.query(sql),{code:'42501'});
+    const page=(await client.query("SELECT genie_membership_page($1,'members') AS value",[adminSession])).rows[0].value;
+    assert.equal(page.items.length,2);
+    await client.query("SELECT genie_change_member($1,$2,'disabled','member',1)",[adminSession,member]);
+  } finally {await client.query('RESET ROLE');client.release()}
+  assert.equal((await audit()).length,1);
 });

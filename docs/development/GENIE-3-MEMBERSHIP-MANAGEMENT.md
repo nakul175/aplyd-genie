@@ -26,4 +26,6 @@ Current deployed foundation: runtime 82c0f3e; merged main 7f64770. Staging serve
 
 ## Current checkpoint
 
-Branch: codex/genie-3-membership-management. Migration 003 and 14 membership-boundary tests are implemented. Combined suite: 61 passed, zero failed/skipped. API/UI and invite-aware OIDC callback are not yet wired. No live migration or security grant has occurred. BTF GENIE-3 is In Progress; cases 2557–2559 remain Not run. Full reports are in evidence/genie-3.
+Branch: codex/genie-3-membership-management. Migration 003, member/admin UI and APIs, tenant-scoped people pages, versioned writes and invite-aware OIDC callback are implemented. Local suite: 72 passed, zero failed, two actual-PostgreSQL-only tests skipped locally. The dedicated PostgreSQL CI job runs the membership tests against the real engine, including concurrency and restricted-role checks; its result remains a release gate. The existing sign-in tests run against the combined schema and still pass.
+
+No live migration or administrator/recipient grant has occurred. BTF GENIE-3 is In Progress; cases 2557–2559 remain Not run. Full reports are in evidence/genie-3. Unknown reviewed recipients remain unavailable; invitations never bind by email. Invitation acceptance begins only through an explicit same-origin POST and binds its token hash into encrypted, single-use OIDC state.
