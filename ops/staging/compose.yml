@@ -1,7 +1,7 @@
 name: aplyd-genie-staging
 services:
   database:
-    image: postgres:17-alpine
+    image: postgres:17-alpine@sha256:1bcc18d81671b02906296aad470ec9778a6b71016ce953092024b680bad007b0
     env_file: /opt/aplyd-genie-staging/private/database.env
     restart: unless-stopped
     ports: ['127.0.0.1:5547:5432']
@@ -18,7 +18,7 @@ services:
       driver: json-file
       options: { max-size: '5m', max-file: '2' }
   app:
-    image: node:24-bookworm-slim
+    image: node:24-bookworm-slim@sha256:01d566e8d94d8c619591d78652babfccd3c6992a3dffa9ed5ab39e11cf6c70e9
     user: '1000:1000'
     network_mode: host
     working_dir: /app

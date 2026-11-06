@@ -1,8 +1,8 @@
 {
   "product": "Aplyd Genie",
-  "version": "1.2",
+  "version": "1.3",
   "date": "2026-11-06",
-  "note": "All 21 epics and 90 stories are imported into BTF. GENIE-2 / PLAT-101 is In Progress with local implementation tests; all 270 Bug Off cases remain Draft / Not run pending live acceptance.",
+  "note": "All 21 epics and 90 stories are imported into BTF. GENIE-2 / PLAT-101 is implemented and accepted on staging: three Active Bug Off cases Passed in run 45, 47 local regression tests Passed. Remaining 89 stories are Backlog and their 267 cases are Draft / Not run.",
   "epics": [
     {
       "id": "PLAT-01",
@@ -20,7 +20,7 @@
             "Disabled membership is rejected at the service boundary.",
             "Signing out removes access to protected Genie views."
           ],
-          "status": "In Progress",
+          "status": "Done",
           "tracker_issue": "GENIE-2",
           "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2",
           "test_cases": [
@@ -28,24 +28,29 @@
               "id": "TC-PLAT-101-AC1",
               "bugoff_id": 2554,
               "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2554",
-              "state": "Draft",
-              "result": "Not run"
+              "state": "Active",
+              "result": "Passed",
+              "run_url": "https://bugoff.aplyd.org/en-US/projects/runs/7/45"
             },
             {
               "id": "TC-PLAT-101-AC2",
               "bugoff_id": 2555,
               "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2555",
-              "state": "Draft",
-              "result": "Not run"
+              "state": "Active",
+              "result": "Passed",
+              "run_url": "https://bugoff.aplyd.org/en-US/projects/runs/7/45"
             },
             {
               "id": "TC-PLAT-101-AC3",
               "bugoff_id": 2556,
               "url": "https://bugoff.aplyd.org/en-US/projects/repository/7/2556",
-              "state": "Draft",
-              "result": "Not run"
+              "state": "Active",
+              "result": "Passed",
+              "run_url": "https://bugoff.aplyd.org/en-US/projects/runs/7/45"
             }
-          ]
+          ],
+          "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/1",
+          "acceptance_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/45"
         },
         {
           "id": "PLAT-102",

@@ -31,7 +31,7 @@ Production and staging use the confirmed Genie spelling. DNS registration does n
 
 ## Status
 
-Product definition and tracker import complete: 21 BTF epics, 90 BTF stories and 270 Draft / Not run Bug Off cases, with reciprocal links. GENIE-2 / PLAT-101 now has a Node.js sign-in foundation on its development branch. Local tests cover its identity and session boundaries; live Accounts registration, staging deployment and manual acceptance remain pending. See [development and acceptance packet](docs/development/GENIE-2-SUITE-SIGN-IN.md). Existing application functionality is an integration prerequisite, not a claim that Genie implements or replaces those applications. Four additional suite applications still require an explicit scope mapping.
+Product definition and tracker import complete: 21 epics, 90 stories and 270 linked acceptance cases. **GENIE-2 / PLAT-101 is implemented and accepted on [staging](https://staging.genie.aplyd.org)**: 47 local tests and all three live acceptance cases passed. See [acceptance evidence](evidence/genie-2/staging/ACCEPTANCE.md) and [development packet](docs/development/GENIE-2-SUITE-SIGN-IN.md). The remaining stories have not started. The current workspace is a sign-in foundation; concierge conversations, model inference and cross-app execution are later work. Four additional suite applications still require an explicit scope mapping.
 
 Existing schedules and heartbeat automations remain paused. No recurring work is authorized by this repository setup.
 

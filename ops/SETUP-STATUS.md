@@ -13,9 +13,9 @@
 
 ## Live backlog and acceptance coverage
 
-All 21 epics and 90 stories are imported into BTF in Backlog. Every story is a native child of its epic and contains its three original acceptance criteria. All 270 corresponding cases are imported into 21 Bug Off folders in Draft, with 810 ordered manual steps and per-step expected results. Each case contains its exact acceptance criterion and BTF story backlink. BTF stories have their three direct case links; epics link to their Bug Off folders.
+Import baseline: all 21 epics and 90 stories were imported into BTF in Backlog. Every story is a native child of its epic and contains its three original acceptance criteria. All 270 corresponding cases are imported into 21 Bug Off folders in Draft, with 810 ordered manual steps and per-step expected results. Each case contains its exact acceptance criterion and BTF story backlink. BTF stories have their three direct case links; epics link to their Bug Off folders.
 
-See [live traceability](../docs/TRACEABILITY.md), [structured mappings](../evidence/tracker-import-map.json), and persisted-export verification reports under evidence. No product tests were executed and no implementation is claimed.
+See [live traceability](../docs/TRACEABILITY.md), [structured mappings](../evidence/tracker-import-map.json), and persisted-export verification reports under evidence. These import receipts are historical. Current development: GENIE-2 is implemented and accepted on staging; its three cases are Active / Passed in run 45. The other 89 stories and 267 cases remain unstarted.
 
 Five extra coverage notes found during export verification were consolidated with explicit user approval. Each affected story retains one canonical coverage comment and one import-verification record. Fresh export checks confirm zero duplicate coverage notes, with all required links and history preserved.
 
@@ -30,4 +30,4 @@ The corrected staging record was verified at both authoritative nameservers. The
 
 ## Credentials and schedules
 
-A temporary BTF API key was approved as an optional import method, but none was created: the import used the existing authenticated UI. No new credentials need revocation. Existing schedules and heartbeat automations remain paused. No recurring work, GPU allocation or application deployment was performed.
+A temporary BTF API key was approved as an optional import method, but none was created: the import used the existing authenticated UI. No new credentials need revocation. Existing schedules and heartbeat automations remain paused. No recurring work or GPU allocation was performed. Genie staging is now deployed and its dedicated Accounts client is registered under the owner's explicit approval. No production Genie client or production Genie deployment was created. See ../evidence/genie-2/staging/ACCEPTANCE.md.

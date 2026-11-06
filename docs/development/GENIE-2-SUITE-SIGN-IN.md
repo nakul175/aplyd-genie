@@ -1,50 +1,45 @@
 # GENIE-2 / PLAT-101 — suite sign-in foundation
 
-Status: implementation candidate; live acceptance pending. Only this story is active.
+Staging accepted on 6 November 2026. Only this story has been implemented.
 
-[BTF story](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2)
+- [BTF story](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2)
+- [Staging](https://staging.genie.aplyd.org)
+- [Implementation PR](https://github.com/nakul175/aplyd-genie/pull/1)
+- [Bug Off acceptance run 45](https://bugoff.aplyd.org/en-US/projects/runs/7/45)
+- [Detailed deployment and acceptance evidence](../../evidence/genie-2/staging/ACCEPTANCE.md)
 
 ## Implemented boundary
 
-Express uses confidential OIDC authorization code exchange, PKCE, nonce and state, with RS256 signature verification. Only opaque random cookies reach the browser. PostgreSQL stores hashed session handles and encrypted upstream session references. Login transactions expire after five minutes and are consumed once. Sessions expire within one hour and within the identity token lifetime.
+Express performs confidential OIDC authorization code exchange with PKCE, nonce, state and RS256 verification. PostgreSQL stores hashed opaque browser session handles and encrypted upstream session references. Login transactions expire after five minutes and are single-use. Sessions expire within one hour and within the identity-token lifetime.
 
-Identity uses exact issuer and subject, with a reviewed native user mapping. Email matching and automatic account provisioning are absent. Disabled users, tenants and memberships cannot create or use sessions. Multiple memberships return `workspace_selection_required`; workspace selection belongs to PLAT-104. Each protected request checks current membership, requests fresh central session proof, and checks membership again. Authority failures deny access without exposing credentials.
+Identity uses exact issuer and subject with a reviewed native UUID mapping; no email matching or automatic provisioning occurs. Disabled users, tenants and memberships cannot create or use sessions. Multiple active memberships return `workspace_selection_required`; selection is a later story. Each protected request checks membership, requests fresh Accounts session proof, and checks membership again. Authority outages deny access.
 
-Local sign-out requires a same-origin POST and invalidates the stored session. It does not sign out other suite applications. The protected workspace is a minimal acceptance surface; concierge execution is a later story.
+Local sign-out requires a same-origin POST and deletes the stored session. The protected workspace uses a same-origin referrer policy so native browser forms retain Origin provenance; other responses keep no-referrer. Null and cross-origin sign-out remain blocked. This signs out Genie, not other suite applications.
 
-## Acceptance mapping
+The deployed workspace is a minimal acceptance surface. Conversation UI, contextual workflows and model inference belong to later stories.
 
-| Criterion | Bug Off | Local evidence | Live acceptance |
-|---|---|---|---|
-| Server establishes user and tenant | [2554](https://bugoff.aplyd.org/en-US/projects/repository/7/2554) | Reviewed mapping; spoofed browser identity ignored; signed OIDC exchange | Pending real Accounts login |
-| Disabled membership rejected | [2555](https://bugoff.aplyd.org/en-US/projects/repository/7/2555) | Disabled user/tenant/membership, race and upstream revocation tests | Pending staging revocation |
-| Sign-out removes protected access | [2556](https://bugoff.aplyd.org/en-US/projects/repository/7/2556) | Cookie replay denied after deletion; origin checks | Pending browser acceptance |
+## Accepted cases
 
-All three cases remain Draft / Not run. Automated tests use synthetic identities, signed synthetic tokens and embedded PostgreSQL (PGlite). They do not prove deployed identity interoperability, production PostgreSQL driver connectivity, reverse proxy behavior or live acceptance.
-
-## Accounts registration packet
-
-| Environment | Dedicated proposed client | Exact callback |
+| Criterion | Bug Off case | Result |
 |---|---|---|
-| Staging | `aplyd-genie-staging` | `https://staging.genie.aplyd.org/auth/callback` |
-| Production | `aplyd-genie` | `https://genie.aplyd.org/auth/callback` |
+| Server establishes user and tenant; browser cannot override either | [2554](https://bugoff.aplyd.org/en-US/projects/repository/7/2554) | Passed |
+| Disabled membership rejected immediately | [2555](https://bugoff.aplyd.org/en-US/projects/repository/7/2555) | Passed |
+| Sign-out removes protected access | [2556](https://bugoff.aplyd.org/en-US/projects/repository/7/2556) | Passed after browser fix; earlier failure retained |
 
-Register confidential code clients with client-secret basic authentication, PKCE S256, RS256 ID tokens and `openid profile aplyd` scopes. Confirm the `aplyd_session_uid` claim and `/internal/session/status` contract before deployment. The proof request supplies client ID, client secret, subject and UID; a positive response must match both subject and reviewed native `local_id`.
+All three definitions are Active. The acceptance report distinguishes real browser execution from the 47 local regression tests and hosted CI. Actual PostgreSQL migration rollback, replay and checksum guards were qualified in a separate synthetic database. Session persistence, database least privilege, public TLS, secure cookie attributes and ingress header isolation were checked on staging.
 
-The inspected local Accounts source supports the generic session-status contract. Its tenant/application endpoints restrict callers to Holy Sheet; Genie does not reuse those endpoints or another application's credentials. This is source inspection, not proof of current deployed configuration. Shared Accounts configuration has not been changed.
+## Registered identity and runtime
 
-Provision a reviewed issuer/subject-to-native-UUID user link, a tenant UUID and active membership with an auditable review reference. Schema defaults deny access. Keep changes disabled until the account owner verifies them. Use dedicated database credentials with only required Genie table permissions; migration privileges belong to the release operator.
+Only `aplyd-genie-staging` is registered, with exact callback `https://staging.genie.aplyd.org/auth/callback`, confidential client-secret basic authentication, authorization code/PKCE and RS256. The real generic `/internal/session/status` contract was verified; Genie does not use Holy Sheet's restricted tenant/application endpoints or another app's credentials.
 
-## Deployment gates
+The owner approved linking the existing reviewed suite identity to a dedicated Genie staging membership. No other identity, client credential or application membership was changed. Secrets and private rollback backups remain on the server outside this public repository. A production client remains unregistered.
 
-1. Review this implementation and register the staging client and native identity mapping in Accounts.
-2. Supply dedicated database URL, client secret and a persistent random 32-byte base64 encryption key through deployment secrets. Never reuse another app's client or commit credentials. Changing the encryption key invalidates existing encrypted transactions and sessions.
-3. Run the checksum-protected migration against dedicated staging PostgreSQL; verify retry, rollback and actual driver connectivity. Back up before production migration.
-4. Configure HTTPS ingress to the loopback listener. Production auth rate limiting uses shared PostgreSQL windows with hashed client keys. Set `GENIE_TRUST_PROXY=loopback` only when the local proxy overwrites forwarding headers, as in the staging Caddy fragment. Do not blindly trust browser-supplied forwarding headers.
-5. Verify TLS, cookie attributes, callback URL, tenant isolation, central revocation, sign-out/replay, authority failure and restart through the real staging browser. Record evidence in cases 2554–2556 before marking them Passed or the story Done.
+The dedicated containers and HTTPS route are described in `ops/staging/`. The application binds to host loopback on port 3910. Caddy overwrites forwarding headers, and Genie trusts loopback only. Login limits use atomic shared PostgreSQL windows with hashed client keys. The runtime role has identity reads and session/transaction/rate table CRUD, with no identity writes or DDL.
 
-Expired session, transaction and rate-limit rows deny access or reset as appropriate but are not automatically deleted by this story. Define retention and release-time cleanup before sustained traffic. No recurring jobs or heartbeat schedules have been created. No production deployment or GPU/model invocation is included.
+## Run and operate
 
-## Local verification
+Use Node.js 24 and `npm ci --ignore-scripts`. Run `npm test` for local verification. Supply reviewed values through an untracked `.env` or deployment secrets; `npm run migrate` applies checksum-protected migrations. Production server roles must be provisioned separately from migration credentials.
 
-`npm test` runs 47 tests covering OIDC, Accounts proof handling, SQL-backed sessions and encryption. Reports are in `evidence/genie-2/`. The first sandbox attempt had loopback-listener permission errors; its full report is preserved. The authorized rerun passed, and the final candidate was rerun after review changes. Dependency audit results are recorded alongside test reports. CI runs the same tests and a production dependency audit on pull requests; it does not deploy.
+Staging uses `/opt/aplyd-genie-staging`, resource limits and bounded container logs. Full operator logs and private config/SQLite backups are retained there. A previous candidate is retained for rollback. Never rerun registration or secret-generation scripts against an existing registration without inspection: they intentionally refuse overwrite/rotation.
+
+Expired rows are not automatically purged. Retention and cleanup remain manual release operations until explicitly approved. No recurring work was enabled. Production deployment, capacity qualification and AI/GPU costs are outside this story.
