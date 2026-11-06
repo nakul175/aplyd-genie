@@ -119,7 +119,7 @@ out=ROOT/'imports';out.mkdir(exist_ok=True)
 (out/'bugoff-cases.json').write_text(json.dumps(cases,indent=2)+'\n')
 if all(c['btf_url'] for c in cases):
  with (out/'bugoff-cases.csv').open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=['Name','Folder','Description','Steps','Expected','Tags'])
+  w=csv.DictWriter(f,fieldnames=['Name','Folder','Description','Steps','Expected','Tags'],lineterminator='\n')
   w.writeheader()
   for c in cases:w.writerow({'Name':c['name'],'Folder':c['folder'],'Description':c['description'],'Steps':json.dumps(c['steps']),'Expected':c['expected'],'Tags':f"Aplyd Genie,{c['story_id']},{c['spec_case_id']},{c['priority']}"})
  print('READY: 270 cases with actual BTF URLs')

@@ -26,7 +26,7 @@ for e in b['epics']:
   if head+'\n\n**BTF:**' not in text:text=text.replace(head,head+f"\n\n**BTF:** [{s['tracker_issue']}]({s['tracker_url']}) · **Draft tests:** "+' · '.join(f"[AC{i+1}]({c['url']})" for i,c in enumerate(s['test_cases'])))
 p.write_text(text)
 with (ROOT/'docs/backlog.csv').open('w',newline='') as f:
- w=csv.writer(f);w.writerow(['Product','Epic','Epic title','Story ID','Priority','Story','Acceptance criteria','Scope','Status','BTF epic','BTF story','AC1 case','AC2 case','AC3 case'])
+ w=csv.writer(f,lineterminator="\n");w.writerow(['Product','Epic','Epic title','Story ID','Priority','Story','Acceptance criteria','Scope','Status','BTF epic','BTF story','AC1 case','AC2 case','AC3 case'])
  for e in b['epics']:
   for s in e['stories']:w.writerow(['Aplyd Genie',e['id'],e['title'],s['id'],s['priority'],s['story'],'\n'.join(s['acceptance_criteria']),e['scope'],'Backlog',e['tracker_url'],s['tracker_url'],*[c['url'] for c in s['test_cases']]])
 (ROOT/'docs/ACCEPTANCE-COVERAGE.md').write_text('# Aplyd Genie Acceptance Coverage\n\nAll 270 acceptance criteria have corresponding Bug Off cases, organized into 21 epic folders. Each of the 90 BTF stories links to its three cases; each case links back to the story.\n\nSee [live traceability](TRACEABILITY.md) for every actual tracker link and [detailed specifications](EPICS-AND-USER-STORIES.md) for the criteria.\n\nAll cases are Draft / Not run. Import verification checks persisted content and mappings; it does not execute product tests or establish release acceptance.\n\nCoverage includes authorization and tenant isolation, stale sources, retries and duplicate protection, partial completion, timezone handling, prompt injection, quota exhaustion, provider failures, retention, and recovery.\n')
