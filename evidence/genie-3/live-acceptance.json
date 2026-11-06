@@ -2,9 +2,9 @@
   "story": "GENIE-3",
   "specification": "PLAT-102",
   "runtime": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46",
-  "overall": "incomplete",
+  "overall": "passed",
   "observed": {
     "dedicated_synthetic_identity_created": true,
     "private_credential_mode": "0600 root",
@@ -32,18 +32,38 @@
       "after_role"
     ],
     "final_qa_membership": "disabled member",
-    "final_qa_genie_sessions": 0,
-    "temporary_form_route_installed": false
+    "temporary_form_route_installed": false,
+    "real_api_checks_passed": 13,
+    "ordinary_member_mutations": {
+      "change": 403,
+      "invite": 403,
+      "revoke": 403
+    },
+    "deactivated_member_reads": {
+      "/api/auth/session": 401,
+      "/workspace": 401,
+      "/api/workspace/members": 401
+    },
+    "deactivated_member_mutations": {
+      "change": 401,
+      "invite": 401,
+      "revoke": 401
+    },
+    "temporary_route_installed_by_this_work": false,
+    "final_qa_genie_sessions_last_sql_observation": "Zero at prior checkpoint; current batch confirmed deactivation and all reads/mutations401. Fresh SQL cleanup readback awaits browser connectivity."
   },
   "pending": [
-    "ordinary-member POST mutation denial",
-    "deactivated-member POST mutation denial",
-    "temporary form-route approval or authorized equivalent"
+    "final operator cleanup readback and staging receipt update after browser connectivity restored",
+    "repository case lifecycle promotion from Draft to Active",
+    "final CI and explicit PR2 merge authorization"
   ],
   "cases": {
-    "2557": "pending",
-    "2558": "pending",
-    "2559": "Passed in Bug Off run 46; three executed steps Passed; non-sensitive report attached"
+    "2557": "Passed; all three steps Passed in completed Bug Off run46",
+    "2558": "Passed; all three steps Passed in completed Bug Off run46",
+    "2559": "Passed; all three steps Passed in completed Bug Off run46"
   },
-  "sensitive_evidence": "Live screenshots retained locally; credential values, session material and membership identities omitted from this report."
+  "sensitive_evidence": "Live screenshots retained locally; credential values, session material and membership identities omitted from this report.",
+  "run_state": "Completed / Done",
+  "method_note": "Invitation, administrator management and audit were exercised through real browser UI. The remaining mutation denials were exercised against existing HTTPS APIs with actual password/OIDC authentication and the same in-memory session across owner UI deactivation; no Caddy route change was needed.",
+  "api_report": "real-api-acceptance.json"
 }
