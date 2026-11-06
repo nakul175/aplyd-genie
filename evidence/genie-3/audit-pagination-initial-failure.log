@@ -1,0 +1,103 @@
+✔ Accounts rejects malformed or mismatched proof {"active":true} (7.557208ms)
+✔ Accounts rejects malformed or mismatched proof {"active":"true"} (0.129166ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"other","local_id":"native"} (0.116ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"subject","local_id":"other"} (0.097959ms)
+✔ Accounts rejects malformed or mismatched proof {} (0.129083ms)
+✔ Accounts bounds response size and rejects redirects or HTTP failures (0.286333ms)
+✔ unsafe issuer and app origins or missing secrets fail configuration (0.096791ms)
+✔ GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims (659.603125ms)
+✔ anonymous requests and unrecognized opaque cookies cannot open protected views (9.555667ms)
+✔ GENIE-2 AC2: disabling membership denies reads and destroys the presented session (11.156916ms)
+✔ disabling genie_users blocks the existing session (7.60925ms)
+✔ disabling genie_tenants blocks the existing session (7.586375ms)
+✔ membership revocation during central verification is caught by the second database read (9.788791ms)
+✔ central revocation is checked on every request without positive caching (13.401042ms)
+✔ authority outage fails closed and does not disclose secrets (7.687375ms)
+✔ mismatched central local-user mapping cannot issue a session (5.915917ms)
+✔ unknown identities never provision accounts from claims (6.148042ms)
+✔ multiple active tenants require explicit future workspace selection, not arbitrary choice (6.256375ms)
+✔ GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie (9.460167ms)
+✔ cross-origin and GET sign-out do not mutate a valid session (7.73725ms)
+✔ single-use login transactions reject browser mismatches and concurrent callback replay (6.596041ms)
+✔ expired login transactions and duplicate callback parameters cannot issue sessions (5.434875ms)
+✔ expired sessions and duplicate session cookies fail closed (7.751041ms)
+✔ restarting the application preserves a valid PostgreSQL-backed session (7.495708ms)
+✔ callback errors never reflect provider details and transient browser state is cleared (4.785625ms)
+✔ disablement during callback verification prevents session insertion (5.14675ms)
+✔ identity relinking during verification invalidates the old session (6.3085ms)
+✔ tampered encrypted upstream state cannot authenticate or reach Accounts (8.886083ms)
+✔ bearer headers cannot substitute for the opaque browser session (6.188083ms)
+✔ authentication admission is rate-limited before unbounded login rows accumulate (17.392208ms)
+✔ GENIE-3 HTTP: ordinary members cannot read admin data or mutate using forged actor and tenant values (25.861792ms)
+✔ GENIE-3 UI: reviewed labels are escaped and administrator forms retain same-origin provenance (9.405166ms)
+✔ GENIE-3 HTTP: deactivation blocks subsequent protected reads and membership mutations (14.780917ms)
+✔ GENIE-3 HTTP: cross-origin writes and malformed payloads cannot mutate memberships (14.617583ms)
+✔ GENIE-3 OIDC: an explicit same-origin invitation acceptance binds the exact reviewed recipient (18.3535ms)
+✔ GENIE-3 OIDC: wrong identity and forged GET invitation context cannot activate membership (15.232291ms)
+✔ GENIE-3 OIDC: authority outage cannot consume an invitation or activate membership (15.893916ms)
+✔ GENIE-3 OIDC: inviter revocation during fresh Accounts proof prevents acceptance (12.91125ms)
+✔ GENIE-3 AC1: ordinary members cannot invite or change membership (544.98725ms)
+✔ administrators cannot mutate another tenant or invite a foreign identity (8.625875ms)
+✔ current session, membership, identity and administrator role are required at mutation time (7.981292ms)
+✔ last active administrator cannot be removed or demoted (7.764625ms)
+✔ an administrator may step down when another enabled administrator remains (7.236541ms)
+✔ GENIE-3 AC2: deactivation removes target sessions and reactivation does not revive them (7.200375ms)
+✔ no-op membership retries produce no duplicate audit event (6.625083ms)
+✔ GENIE-3 AC3: audit records bind actor, target, tenant and before/after atomically (7.081459ms)
+✔ an audit failure rolls back the membership change and session deletion (6.22325ms)
+✔ invitation hashes never appear in audit data and duplicate pending invitations conflict (7.583083ms)
+✔ only the exact reviewed issuer and subject can accept a single-use invitation (9.009625ms)
+✔ revoked and expired invitations cannot activate membership (9.012708ms)
+✔ revoking the inviting administrator invalidates pending invitation authority (6.458083ms)
+✔ membership entry points have no implicit PUBLIC execute grants (7.324333ms)
+✔ stale membership forms cannot overwrite a newer administrator change (5.356458ms)
+✔ administrator pages stay tenant-scoped and never expose invitation hashes (6.59775ms)
+✔ reviewed people use bounded keyset pages without duplicate or foreign records (12.453542ms)
+﹣ actual PostgreSQL concurrent administrator removals preserve one active administrator (0.034292ms) # SKIP
+﹣ actual PostgreSQL runtime entry points work without identity, audit or DDL write privileges (0.015958ms) # SKIP
+✖ authorized audit pages retain event ordering, before/after state and bounded cursors (21.493875ms)
+✔ real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange (11.5085ms)
+✔ invitations require fresh provider login while ordinary suite sign-in retains SSO (1.404375ms)
+✔ real OIDC adapter rejects wrong issuer (1.072625ms)
+✔ real OIDC adapter rejects wrong audience (0.782292ms)
+✔ real OIDC adapter rejects wrong nonce (0.829709ms)
+✔ real OIDC adapter rejects expired token (0.6395ms)
+✔ real OIDC adapter rejects future issue time (0.788333ms)
+✔ real OIDC adapter rejects excessive lifetime (0.857416ms)
+✔ real OIDC adapter rejects missing session binding (0.832042ms)
+✔ real OIDC adapter rejects wrong authorized party (0.965625ms)
+✔ real OIDC adapter rejects multiple audiences without authorized party (0.593209ms)
+✔ real OIDC adapter rejects future not-before time (0.936958ms)
+✔ real OIDC adapter rejects invalid signature (0.61225ms)
+✔ OIDC state mismatch is rejected before the token endpoint is called (0.544292ms)
+✔ discovery cannot redirect credentials or signing-key lookups to another origin (1.284958ms)
+✔ independent service instances share atomic windows without storing raw client addresses (523.806042ms)
+✔ encrypted session material is bound to its user and tenant (0.859958ms)
+✔ ciphertext modification and a different session key fail authentication (0.136334ms)
+ℹ tests 76
+ℹ suites 0
+ℹ pass 73
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 2594.829875
+
+✖ failing tests:
+
+test at tests/memberships.test.mjs:196:1
+✖ authorized audit pages retain event ordering, before/after state and bounded cursors (21.493875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/athena/Documents/ChatGPT/Holy%20Sheet/work/aplyd-genie/tests/memberships.test.mjs:205:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

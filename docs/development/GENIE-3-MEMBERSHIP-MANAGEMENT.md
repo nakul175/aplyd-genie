@@ -37,3 +37,9 @@ See [fixture and activation plan](../../ops/staging/genie-3/FIXTURE-PLAN.md). Th
 ## Browser acceptance finding
 
 On eaf4964, the invitation POST reached the server (aggregate pending-login count advanced) but its cross-origin SSO redirect did not navigate under the strict form policy. The corrected invitation POST commits a same-origin continuation document with an explicit Accounts GET link; it preserves the original form policy, origin checks, no-referrer header and encrypted browser-bound OIDC state. The initial stalled browser screenshot is retained privately. See the MDN form-action reference linked in the source comment. QA acceptance remains pending; no case is marked Passed.
+
+## Current release qualification
+
+The navigation fix is deployed as 08be21e and its normal continuation link was verified in the real isolated browser. That browser had an existing Nakul Accounts session; the invitation correctly rejected the mismatched identity. The normal HS QA Viewer sign-in page is now handed to the user. Automatic review rejected the private credential-source lookup; no alternate credential search is permitted.
+
+A fresh-provider-login prompt is now required only for invitation transactions; ordinary suite SSO stays unchanged. The authorized audit-page pagination test also caught a numeric cursor being ordered as text. Migration 004 repairs the existing function without changing migration 003 or adding privileges. Its initial failure report is retained. The combined local candidate has 74 passes, zero failures and the same two PostgreSQL-only checks skipped locally; the updated actual-engine CI gate remains required. Staging acceptance is still pending, with no new Passed claim.

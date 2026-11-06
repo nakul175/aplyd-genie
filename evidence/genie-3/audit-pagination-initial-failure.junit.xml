@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true}" time="0.007557" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:&amp;quot;true&amp;quot;}" time="0.000129" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;other&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;native&amp;quot;}" time="0.000116" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;subject&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;other&amp;quot;}" time="0.000098" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {}" time="0.000129" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts bounds response size and rejects redirects or HTTP failures" time="0.000286" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="unsafe issuer and app origins or missing secrets fail configuration" time="0.000097" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims" time="0.659603" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="anonymous requests and unrecognized opaque cookies cannot open protected views" time="0.009556" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-2 AC2: disabling membership denies reads and destroys the presented session" time="0.011157" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disabling genie_users blocks the existing session" time="0.007609" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disabling genie_tenants blocks the existing session" time="0.007586" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="membership revocation during central verification is caught by the second database read" time="0.009789" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="central revocation is checked on every request without positive caching" time="0.013401" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="authority outage fails closed and does not disclose secrets" time="0.007687" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="mismatched central local-user mapping cannot issue a session" time="0.005916" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="unknown identities never provision accounts from claims" time="0.006148" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="multiple active tenants require explicit future workspace selection, not arbitrary choice" time="0.006256" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie" time="0.009460" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="cross-origin and GET sign-out do not mutate a valid session" time="0.007737" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="single-use login transactions reject browser mismatches and concurrent callback replay" time="0.006596" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="expired login transactions and duplicate callback parameters cannot issue sessions" time="0.005435" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="expired sessions and duplicate session cookies fail closed" time="0.007751" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="restarting the application preserves a valid PostgreSQL-backed session" time="0.007496" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="callback errors never reflect provider details and transient browser state is cleared" time="0.004786" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disablement during callback verification prevents session insertion" time="0.005147" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="identity relinking during verification invalidates the old session" time="0.006309" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="tampered encrypted upstream state cannot authenticate or reach Accounts" time="0.008886" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="bearer headers cannot substitute for the opaque browser session" time="0.006188" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="authentication admission is rate-limited before unbounded login rows accumulate" time="0.017392" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 HTTP: ordinary members cannot read admin data or mutate using forged actor and tenant values" time="0.025862" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 UI: reviewed labels are escaped and administrator forms retain same-origin provenance" time="0.009405" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 HTTP: deactivation blocks subsequent protected reads and membership mutations" time="0.014781" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 HTTP: cross-origin writes and malformed payloads cannot mutate memberships" time="0.014618" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 OIDC: an explicit same-origin invitation acceptance binds the exact reviewed recipient" time="0.018354" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 OIDC: wrong identity and forged GET invitation context cannot activate membership" time="0.015232" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 OIDC: authority outage cannot consume an invitation or activate membership" time="0.015894" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 OIDC: inviter revocation during fresh Accounts proof prevents acceptance" time="0.012911" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-3 AC1: ordinary members cannot invite or change membership" time="0.544987" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="administrators cannot mutate another tenant or invite a foreign identity" time="0.008626" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="current session, membership, identity and administrator role are required at mutation time" time="0.007981" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="last active administrator cannot be removed or demoted" time="0.007765" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="an administrator may step down when another enabled administrator remains" time="0.007237" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="GENIE-3 AC2: deactivation removes target sessions and reactivation does not revive them" time="0.007200" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="no-op membership retries produce no duplicate audit event" time="0.006625" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="GENIE-3 AC3: audit records bind actor, target, tenant and before/after atomically" time="0.007081" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="an audit failure rolls back the membership change and session deletion" time="0.006223" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="invitation hashes never appear in audit data and duplicate pending invitations conflict" time="0.007583" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="only the exact reviewed issuer and subject can accept a single-use invitation" time="0.009010" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="revoked and expired invitations cannot activate membership" time="0.009013" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="revoking the inviting administrator invalidates pending invitation authority" time="0.006458" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="membership entry points have no implicit PUBLIC execute grants" time="0.007324" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="stale membership forms cannot overwrite a newer administrator change" time="0.005356" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="administrator pages stay tenant-scoped and never expose invitation hashes" time="0.006598" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="reviewed people use bounded keyset pages without duplicate or foreign records" time="0.012454" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs"/>
+	<testcase name="actual PostgreSQL concurrent administrator removals preserve one active administrator" time="0.000034" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs">
+		<skipped type="skipped" message="true"/>
+	</testcase>
+	<testcase name="actual PostgreSQL runtime entry points work without identity, audit or DDL write privileges" time="0.000016" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs">
+		<skipped type="skipped" message="true"/>
+	</testcase>
+	<testcase name="authorized audit pages retain event ordering, before/after state and bounded cursors" time="0.021494" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/memberships.test.mjs" failure="Expected values to be strictly equal:&#10;&#10;9 !== 1&#10;">
+		<failure type="testCodeFailure" message="Expected values to be strictly equal:&#10;&#10;9 !== 1">
+[Error [ERR_TEST_FAILURE]: Expected values to be strictly equal:
+
+9 !== 1
+] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 1
+  
+      at TestContext.&lt;anonymous> (file:///Users/athena/Documents/ChatGPT/Holy%20Sheet/work/aplyd-genie/tests/memberships.test.mjs:205:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange" time="0.011508" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="invitations require fresh provider login while ordinary suite sign-in retains SSO" time="0.001404" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong issuer" time="0.001073" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong audience" time="0.000782" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong nonce" time="0.000830" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects expired token" time="0.000639" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects future issue time" time="0.000788" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects excessive lifetime" time="0.000857" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects missing session binding" time="0.000832" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong authorized party" time="0.000966" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects multiple audiences without authorized party" time="0.000593" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects future not-before time" time="0.000937" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects invalid signature" time="0.000612" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="OIDC state mismatch is rejected before the token endpoint is called" time="0.000544" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="discovery cannot redirect credentials or signing-key lookups to another origin" time="0.001285" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="independent service instances share atomic windows without storing raw client addresses" time="0.523806" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/rate-store.test.mjs"/>
+	<testcase name="encrypted session material is bound to its user and tenant" time="0.000860" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
+	<testcase name="ciphertext modification and a different session key fail authentication" time="0.000136" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
+	<!-- tests 76 -->
+	<!-- suites 0 -->
+	<!-- pass 73 -->
+	<!-- fail 1 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 2 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 2594.829875 -->
+</testsuites>

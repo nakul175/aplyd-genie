@@ -19,7 +19,7 @@ const config = readConfig({ GENIE_ORIGIN: 'https://genie.example.test',
 let database;
 before(async () => {
   database = new PGlite();
-  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql'])
+  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql'])
     await database.exec(await readFile(new URL('../migrations/'+name, import.meta.url), 'utf8'));
 });
 after(async () => { await database.close(); });

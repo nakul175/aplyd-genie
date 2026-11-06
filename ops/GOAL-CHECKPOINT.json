@@ -8,18 +8,21 @@
   "backlog_stories": 88,
   "branch": "codex/genie-3-membership-management",
   "local_tests": {
-    "passed": 72,
+    "passed": 74,
     "failed": 0,
     "skipped": 2,
     "skip_reason": "Actual PostgreSQL concurrency and runtime-role tests run in the new dedicated CI service job, not PGlite."
   },
   "acceptance": "GENIE-3 cases 2557\u20132559 Not run",
-  "next_work": "Deploy the form-to-SSO continuation fix after CI; complete isolated QA sign-in with its existing credentials, then live cases 2557\u20132559. No merge is yet authorized for PR #2.",
+  "next_work": "Publish and qualify fresh invitation login plus migration 004 audit cursor fix; apply 004 and stage the qualified candidate after the QA login handoff. Then complete cases 2557\u20132559 before any merge/next story.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
     "do not bypass merge or security approvals",
-    "preserve shared Accounts and unrelated application state"
+    "preserve shared Accounts and unrelated application state",
+    "Automatic review rejected private QA credential-file lookup: do not search alternate private sources or retrieve the QA password as a workaround.",
+    "Automatic review rejected decrypting live login transactions as a diagnostic: use non-sensitive counts and normal UI only.",
+    "Complete and close parent epics only when all their children have passed acceptance."
   ],
   "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/2",
   "postgres_tests": {
@@ -29,11 +32,19 @@
     "ci_run": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909"
   },
   "staging": {
-    "deployed_runtime": "eaf4964b525c746f47bb6af40a448af34953afd1",
+    "deployed_runtime": "08be21e475cf99224995461d7fb76b9ebb474e9b",
     "migration_003": "applied and replayed successfully",
     "fixture_grants": "explicitly approved and applied",
     "owner_role": "admin",
     "ordinary_recipient": "existing HS QA Viewer; invitation issued, not yet accepted",
     "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-fixture.json"
+  },
+  "external_dependency": {
+    "kind": "normal QA sign-in",
+    "required_account": "HS QA Viewer",
+    "surface": "isolated in-app browser, normal SHO sign-in form",
+    "question_pending": true,
+    "blocking_audits": 1,
+    "instruction": "User must complete the normal sign-in and reply Signed in. Do not inspect typed password fields or operate that browser during the handoff."
   }
 }

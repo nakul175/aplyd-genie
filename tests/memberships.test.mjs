@@ -20,8 +20,12 @@ before(async()=>{
     const {PGlite}=await import('@electric-sql/pglite');
     db=new PGlite();
   }
-  for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql'])
+  for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql']) {
     await db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
+    if(realPostgres && name==='003_workspace_memberships.sql') {
+      await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_qualification_reader') THEN CREATE ROLE genie_qualification_reader NOLOGIN; END IF; END $$; GRANT EXECUTE ON FUNCTION genie_membership_page(text,text,text,text) TO genie_qualification_reader;");
+    }
+  }
 });
 after(async()=>{await db.close()});
 beforeEach(async()=>{
@@ -139,7 +143,7 @@ test('revoking the inviting administrator invalidates pending invitation authori
   await assert.rejects(accept(i),{code:'P0002'});
 });
 test('membership entry points have no implicit PUBLIC execute grants',async()=>{
-  const rows=await db.query("SELECT p.proname FROM pg_proc p CROSS JOIN LATERAL aclexplode(p.proacl) a WHERE p.proname IN ('genie_admin_actor','genie_change_member','genie_create_invite','genie_revoke_invite','genie_invite_recipient','genie_accept_invite') AND a.grantee=0 AND a.privilege_type='EXECUTE'");
+  const rows=await db.query("SELECT p.proname FROM pg_proc p CROSS JOIN LATERAL aclexplode(p.proacl) a WHERE p.proname IN ('genie_admin_actor','genie_change_member','genie_create_invite','genie_revoke_invite','genie_invite_recipient','genie_accept_invite','genie_membership_page') AND a.grantee=0 AND a.privilege_type='EXECUTE'");
   assert.equal(rows.rows.length,0);
 });
 
@@ -180,7 +184,7 @@ test('actual PostgreSQL concurrent administrator removals preserve one active ad
   assert.equal((await db.query("SELECT count(*)::int AS n FROM genie_memberships WHERE tenant_id=$1 AND role='admin' AND status='active'",[tenant])).rows[0].n,1);
 });
 test('actual PostgreSQL runtime entry points work without identity, audit or DDL write privileges',{skip:!realPostgres},async()=>{
-  await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_qualification_reader') THEN CREATE ROLE genie_qualification_reader NOLOGIN; END IF; END $$; GRANT EXECUTE ON FUNCTION genie_membership_page(text,text,text,text),genie_change_member(text,uuid,text,text,bigint) TO genie_qualification_reader;");
+  await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_qualification_reader') THEN CREATE ROLE genie_qualification_reader NOLOGIN; END IF; END $$; GRANT EXECUTE ON FUNCTION genie_change_member(text,uuid,text,text,bigint) TO genie_qualification_reader;");
   const client=await db.connect();
   try {
     await client.query('SET ROLE genie_qualification_reader');
@@ -191,4 +195,18 @@ test('actual PostgreSQL runtime entry points work without identity, audit or DDL
     await client.query("SELECT genie_change_member($1,$2,'disabled','member',1)",[adminSession,member]);
   } finally {await client.query('RESET ROLE');client.release()}
   assert.equal((await audit()).length,1);
+});
+
+test('authorized audit pages retain event ordering, before/after state and bounded cursors',async()=>{
+  for(let n=0;n<51;n++)await change(adminSession,member,n%2?'active':'disabled','member');
+  const first=await value("SELECT genie_membership_page($1,'audit') AS value",[adminSession]);
+  assert.equal(first.items.length,50);assert.ok(first.nextCursor);
+  assert.equal(first.items[0].action,'deactivated');
+  assert.deepEqual(first.items[0].before,{role:'member',status:'active'});
+  assert.deepEqual(first.items[0].after,{role:'member',status:'disabled'});
+  assert.ok(!JSON.stringify(first).includes('subject-'));
+  const second=await value("SELECT genie_membership_page($1,'audit',$2) AS value",[adminSession,first.nextCursor]);
+  assert.equal(second.items.length,1);assert.equal(second.nextCursor,null);
+  const events=[...first.items,...second.items];assert.equal(new Set(events.map(e=>e.id)).size,51);
+  for(let n=1;n<events.length;n++)assert.ok(BigInt(events[n-1].id)>BigInt(events[n].id));
 });
