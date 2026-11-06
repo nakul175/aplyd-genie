@@ -18,6 +18,6 @@
 
 ## Import reconciliation
 
-The first comment-save pass left 50 coverage notes unpersisted. Export-based reconciliation repaired the missing links and verified saved comment content. Five stories received an extra identical coverage note during that repair: PROJ-204, PROJ-205, DOC-103, DOC-105 and DOC-201. All required links are present. Automatic approval review rejected consolidation as outside the explicit request; a focused approval question is pending. The five notes remain unchanged and are explicitly counted in the final verification report.
+The first comment-save pass left 50 coverage notes unpersisted. Export-based reconciliation repaired the missing links and verified saved comment content. Five stories received an extra identical coverage note during that repair: PROJ-204, PROJ-205, DOC-103, DOC-105 and DOC-201. All required links are present. After explicit user approval, each extra note was converted into an import-verification record. The original canonical coverage links remain intact and no history was deleted. Fresh export verification confirms one canonical coverage comment per story, five verification records, and zero duplicate coverage notes.
 
 No temporary API key was created. The import used the existing authenticated UI. All cases remain unexecuted requirements coverage, not evidence that the product works.

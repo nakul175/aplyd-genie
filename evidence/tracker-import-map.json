@@ -380,7 +380,8 @@
       "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23",
       "coverage_linked": true,
       "coverage_verified": true,
-      "coverage_verified_from_export": true
+      "coverage_verified_from_export": true,
+      "extra_note_consolidated": true
     },
     {
       "spec_id": "PROJ-205",
@@ -389,7 +390,8 @@
       "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24",
       "coverage_linked": true,
       "coverage_verified": true,
-      "coverage_verified_from_export": true
+      "coverage_verified_from_export": true,
+      "extra_note_consolidated": true
     },
     {
       "spec_id": "DOC-101",
@@ -414,7 +416,8 @@
       "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28",
       "coverage_linked": true,
       "coverage_verified": true,
-      "coverage_verified_from_export": true
+      "coverage_verified_from_export": true,
+      "extra_note_consolidated": true
     },
     {
       "spec_id": "DOC-104",
@@ -431,7 +434,8 @@
       "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30",
       "coverage_linked": true,
       "coverage_verified": true,
-      "coverage_verified_from_export": true
+      "coverage_verified_from_export": true,
+      "extra_note_consolidated": true
     },
     {
       "spec_id": "DOC-106",
@@ -448,7 +452,8 @@
       "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33",
       "coverage_linked": true,
       "coverage_verified": true,
-      "coverage_verified_from_export": true
+      "coverage_verified_from_export": true,
+      "extra_note_consolidated": true
     },
     {
       "spec_id": "DOC-202",
@@ -3957,12 +3962,7 @@
     }
   ],
   "required_import_complete": true,
-  "extra_coverage_notes_pending_approval": [
-    "PROJ-204",
-    "PROJ-205",
-    "DOC-103",
-    "DOC-105",
-    "DOC-201"
-  ],
-  "temporary_api_key_created": false
+  "extra_coverage_notes_pending_approval": [],
+  "temporary_api_key_created": false,
+  "duplicate_notes_consolidated": true
 }

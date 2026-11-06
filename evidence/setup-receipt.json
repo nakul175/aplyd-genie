@@ -42,5 +42,6 @@
     "status": "Backlog / Draft / Not run"
   },
   "temporary_api_key_created": false,
-  "extra_coverage_notes_pending_consolidation": 5
+  "extra_coverage_notes_pending_consolidation": 0,
+  "approved_verification_records": 5
 }

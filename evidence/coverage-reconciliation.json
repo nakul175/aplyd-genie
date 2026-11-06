@@ -1,352 +1,357 @@
-[
-  {
-    "kind": "epics",
-    "spec_id": "PLAT-02",
-    "key": "GENIE-7",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-7",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "PROJ-01",
-    "key": "GENIE-12",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-12",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "DOC-01",
-    "key": "GENIE-25",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-25",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "AGENT-02",
-    "key": "GENIE-65",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-65",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "AGENT-03",
-    "key": "GENIE-70",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-70",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "CTX-01",
-    "key": "GENIE-76",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-76",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "CTX-02",
-    "key": "GENIE-81",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-81",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "OPS-01",
-    "key": "GENIE-86",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-86",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "OPS-02",
-    "key": "GENIE-91",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-91",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "OPS-03",
-    "key": "GENIE-97",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-97",
-    "comments": 0
-  },
-  {
-    "kind": "epics",
-    "spec_id": "DELEG-01",
-    "key": "GENIE-106",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-106",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PLAT-105",
-    "key": "GENIE-6",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-6",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PLAT-203",
-    "key": "GENIE-10",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-10",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PROJ-103",
-    "key": "GENIE-15",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-15",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PROJ-105",
-    "key": "GENIE-17",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-17",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PROJ-106",
-    "key": "GENIE-18",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-18",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PROJ-204",
-    "key": "GENIE-23",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "PROJ-205",
-    "key": "GENIE-24",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-103",
-    "key": "GENIE-28",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-105",
-    "key": "GENIE-30",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-201",
-    "key": "GENIE-33",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-202",
-    "key": "GENIE-34",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-34",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-204",
-    "key": "GENIE-36",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-36",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DOC-205",
-    "key": "GENIE-37",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-37",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "CAL-101",
-    "key": "GENIE-39",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-39",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "CAL-204",
-    "key": "GENIE-48",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-48",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "MAIL-101",
-    "key": "GENIE-50",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-50",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "MAIL-102",
-    "key": "GENIE-51",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-51",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "MAIL-103",
-    "key": "GENIE-52",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-52",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "MAIL-105",
-    "key": "GENIE-54",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-54",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "MAIL-202",
-    "key": "GENIE-57",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-57",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-101",
-    "key": "GENIE-61",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-61",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-102",
-    "key": "GENIE-62",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-62",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-103",
-    "key": "GENIE-63",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-63",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-201",
-    "key": "GENIE-66",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-66",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-203",
-    "key": "GENIE-68",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-68",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-204",
-    "key": "GENIE-69",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-69",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-301",
-    "key": "GENIE-71",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-71",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-304",
-    "key": "GENIE-74",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-74",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "AGENT-305",
-    "key": "GENIE-75",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-75",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "CTX-101",
-    "key": "GENIE-77",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-77",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "CTX-104",
-    "key": "GENIE-80",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-80",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "CTX-204",
-    "key": "GENIE-85",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-85",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "OPS-101",
-    "key": "GENIE-87",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-87",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "OPS-201",
-    "key": "GENIE-92",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-92",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "SEC-101",
-    "key": "GENIE-103",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-103",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "SEC-102",
-    "key": "GENIE-104",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-104",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "SEC-103",
-    "key": "GENIE-105",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-105",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DELEG-101",
-    "key": "GENIE-107",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-107",
-    "comments": 0
-  },
-  {
-    "kind": "stories",
-    "spec_id": "DELEG-102",
-    "key": "GENIE-108",
-    "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-108",
-    "comments": 0
-  }
-]
+{
+  "historical_missing_link_findings": [
+    {
+      "kind": "epics",
+      "spec_id": "PLAT-02",
+      "key": "GENIE-7",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-7",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "PROJ-01",
+      "key": "GENIE-12",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-12",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "DOC-01",
+      "key": "GENIE-25",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-25",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "AGENT-02",
+      "key": "GENIE-65",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-65",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "AGENT-03",
+      "key": "GENIE-70",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-70",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "CTX-01",
+      "key": "GENIE-76",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-76",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "CTX-02",
+      "key": "GENIE-81",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-81",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "OPS-01",
+      "key": "GENIE-86",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-86",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "OPS-02",
+      "key": "GENIE-91",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-91",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "OPS-03",
+      "key": "GENIE-97",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-97",
+      "comments": 0
+    },
+    {
+      "kind": "epics",
+      "spec_id": "DELEG-01",
+      "key": "GENIE-106",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-106",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PLAT-105",
+      "key": "GENIE-6",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-6",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PLAT-203",
+      "key": "GENIE-10",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-10",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PROJ-103",
+      "key": "GENIE-15",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-15",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PROJ-105",
+      "key": "GENIE-17",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-17",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PROJ-106",
+      "key": "GENIE-18",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-18",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PROJ-204",
+      "key": "GENIE-23",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "PROJ-205",
+      "key": "GENIE-24",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-103",
+      "key": "GENIE-28",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-105",
+      "key": "GENIE-30",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-201",
+      "key": "GENIE-33",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-202",
+      "key": "GENIE-34",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-34",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-204",
+      "key": "GENIE-36",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-36",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DOC-205",
+      "key": "GENIE-37",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-37",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "CAL-101",
+      "key": "GENIE-39",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-39",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "CAL-204",
+      "key": "GENIE-48",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-48",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "MAIL-101",
+      "key": "GENIE-50",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-50",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "MAIL-102",
+      "key": "GENIE-51",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-51",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "MAIL-103",
+      "key": "GENIE-52",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-52",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "MAIL-105",
+      "key": "GENIE-54",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-54",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "MAIL-202",
+      "key": "GENIE-57",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-57",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-101",
+      "key": "GENIE-61",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-61",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-102",
+      "key": "GENIE-62",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-62",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-103",
+      "key": "GENIE-63",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-63",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-201",
+      "key": "GENIE-66",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-66",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-203",
+      "key": "GENIE-68",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-68",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-204",
+      "key": "GENIE-69",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-69",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-301",
+      "key": "GENIE-71",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-71",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-304",
+      "key": "GENIE-74",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-74",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "AGENT-305",
+      "key": "GENIE-75",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-75",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "CTX-101",
+      "key": "GENIE-77",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-77",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "CTX-104",
+      "key": "GENIE-80",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-80",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "CTX-204",
+      "key": "GENIE-85",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-85",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "OPS-101",
+      "key": "GENIE-87",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-87",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "OPS-201",
+      "key": "GENIE-92",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-92",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "SEC-101",
+      "key": "GENIE-103",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-103",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "SEC-102",
+      "key": "GENIE-104",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-104",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "SEC-103",
+      "key": "GENIE-105",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-105",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DELEG-101",
+      "key": "GENIE-107",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-107",
+      "comments": 0
+    },
+    {
+      "kind": "stories",
+      "spec_id": "DELEG-102",
+      "key": "GENIE-108",
+      "url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-108",
+      "comments": 0
+    }
+  ],
+  "resolution": "All missing links repaired and verified; five extra notes consolidated into verification records with explicit user approval. See final-tracker-verification.json.",
+  "current_missing_links": 0,
+  "current_duplicate_coverage_notes": 0
+}

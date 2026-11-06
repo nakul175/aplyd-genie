@@ -17,7 +17,7 @@ All 21 epics and 90 stories are imported into BTF in Backlog. Every story is a n
 
 See [live traceability](../docs/TRACEABILITY.md), [structured mappings](../evidence/tracker-import-map.json), and persisted-export verification reports under evidence. No product tests were executed and no implementation is claimed.
 
-Five extra coverage notes were found during export verification. Consolidation is awaiting explicit user approval after automatic review rejected editing the existing notes. These notes do not duplicate issues or test cases or remove any required link.
+Five extra coverage notes found during export verification were consolidated with explicit user approval. Each affected story retains one canonical coverage comment and one import-verification record. Fresh export checks confirm zero duplicate coverage notes, with all required links and history preserved.
 
 ## DNS
 
