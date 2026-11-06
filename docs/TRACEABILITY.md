@@ -2,7 +2,7 @@
 
 6 November 2026
 
-All items are imported. BTF items remain Backlog; Bug Off cases remain Draft / Not run. One case covers each acceptance criterion. Each case contains preconditions, three ordered steps and per-step expected results, its acceptance criterion and its BTF story backlink. BTF stories contain direct coverage links in comments.
+All items are imported. GENIE-2 / PLAT-101 is implemented and accepted on staging; its three Active cases Passed in [run 45](https://bugoff.aplyd.org/en-US/projects/runs/7/45). The remaining 89 stories are Backlog and their 267 cases remain Draft / Not run. The earlier browser logout failure is retained in result history. See [deployment and acceptance evidence](../evidence/genie-2/staging/ACCEPTANCE.md). Each case retains its acceptance criterion and BTF backlink; each story retains its direct coverage links.
 
 ## Coverage totals
 

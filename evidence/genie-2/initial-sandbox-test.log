@@ -1,0 +1,285 @@
+
+> aplyd-genie@0.1.0 test
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ Accounts rejects malformed or mismatched proof {"active":true} (9.112542ms)
+✔ Accounts rejects malformed or mismatched proof {"active":"true"} (0.151375ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"other","local_id":"native"} (0.121375ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"subject","local_id":"other"} (0.102167ms)
+✔ Accounts rejects malformed or mismatched proof {} (0.132291ms)
+✔ Accounts bounds response size and rejects redirects or HTTP failures (0.293125ms)
+✔ unsafe issuer and app origins or missing secrets fail configuration (0.121667ms)
+✖ GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims (550.211208ms)
+✖ anonymous requests and unrecognized opaque cookies cannot open protected views (4.451458ms)
+✖ GENIE-2 AC2: disabling membership denies reads and destroys the presented session (2.3635ms)
+✖ disabling genie_users blocks the existing session (2.239917ms)
+✖ disabling genie_tenants blocks the existing session (2.527917ms)
+✖ membership revocation during central verification is caught by the second database read (2.508875ms)
+✖ central revocation is checked on every request without positive caching (2.194917ms)
+✖ authority outage fails closed and does not disclose secrets (2.173208ms)
+✖ mismatched central local-user mapping cannot issue a session (2.366583ms)
+✖ unknown identities never provision accounts from claims (2.477125ms)
+✖ multiple active tenants require explicit future workspace selection, not arbitrary choice (2.859708ms)
+✖ GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie (2.325208ms)
+✖ cross-origin and GET sign-out do not mutate a valid session (2.618208ms)
+✖ single-use login transactions reject browser mismatches and concurrent callback replay (2.31275ms)
+✖ expired login transactions and duplicate callback parameters cannot issue sessions (2.329334ms)
+✖ expired sessions and duplicate session cookies fail closed (2.263917ms)
+✖ restarting the application preserves a valid PostgreSQL-backed session (2.077167ms)
+✖ callback errors never reflect provider details and transient browser state is cleared (1.942625ms)
+✔ real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange (11.31025ms)
+✔ real OIDC adapter rejects wrong issuer (1.190625ms)
+✔ real OIDC adapter rejects wrong audience (0.784ms)
+✔ real OIDC adapter rejects wrong nonce (0.78075ms)
+✔ real OIDC adapter rejects expired token (0.778333ms)
+✔ real OIDC adapter rejects future issue time (0.841709ms)
+✔ real OIDC adapter rejects excessive lifetime (0.85275ms)
+✔ real OIDC adapter rejects missing session binding (0.909167ms)
+✔ real OIDC adapter rejects wrong authorized party (0.819791ms)
+✔ real OIDC adapter rejects invalid signature (0.80575ms)
+✔ OIDC state mismatch is rejected before the token endpoint is called (0.564625ms)
+✔ discovery cannot redirect credentials or signing-key lookups to another origin (1.666083ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 19
+ℹ fail 18
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 856.932917
+
+✖ failing tests:
+
+test at tests/identity.integration.test.mjs:88:1
+✖ GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims (550.211208ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:105:1
+✖ anonymous requests and unrecognized opaque cookies cannot open protected views (4.451458ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:113:1
+✖ GENIE-2 AC2: disabling membership denies reads and destroys the presented session (2.3635ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:123:3
+✖ disabling genie_users blocks the existing session (2.239917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:123:3
+✖ disabling genie_tenants blocks the existing session (2.527917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:130:1
+✖ membership revocation during central verification is caught by the second database read (2.508875ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:138:1
+✖ central revocation is checked on every request without positive caching (2.194917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:146:1
+✖ authority outage fails closed and does not disclose secrets (2.173208ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:154:1
+✖ mismatched central local-user mapping cannot issue a session (2.366583ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:160:1
+✖ unknown identities never provision accounts from claims (2.477125ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:167:1
+✖ multiple active tenants require explicit future workspace selection, not arbitrary choice (2.859708ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:176:1
+✖ GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie (2.325208ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:188:1
+✖ cross-origin and GET sign-out do not mutate a valid session (2.618208ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:197:1
+✖ single-use login transactions reject browser mismatches and concurrent callback replay (2.31275ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:207:1
+✖ expired login transactions and duplicate callback parameters cannot issue sessions (2.329334ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:216:1
+✖ expired sessions and duplicate session cookies fail closed (2.263917ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:223:1
+✖ restarting the application preserves a valid PostgreSQL-backed session (2.077167ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
+
+test at tests/identity.integration.test.mjs:229:1
+✖ callback errors never reflect provider details and transient browser state is cleared (1.942625ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+      at listenInCluster (node:net:2437:12)
+      at node:net:2666:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }

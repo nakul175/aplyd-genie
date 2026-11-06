@@ -1,0 +1,49 @@
+
+> aplyd-genie@0.1.0 test
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ Accounts rejects malformed or mismatched proof {"active":true} (7.244916ms)
+✔ Accounts rejects malformed or mismatched proof {"active":"true"} (0.12925ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"other","local_id":"native"} (0.109292ms)
+✔ Accounts rejects malformed or mismatched proof {"active":true,"sub":"subject","local_id":"other"} (0.10275ms)
+✔ Accounts rejects malformed or mismatched proof {} (0.132917ms)
+✔ Accounts bounds response size and rejects redirects or HTTP failures (0.279583ms)
+✔ unsafe issuer and app origins or missing secrets fail configuration (0.113208ms)
+✔ GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims (572.372ms)
+✔ anonymous requests and unrecognized opaque cookies cannot open protected views (8.703166ms)
+✔ GENIE-2 AC2: disabling membership denies reads and destroys the presented session (8.319458ms)
+✔ disabling genie_users blocks the existing session (6.438042ms)
+✔ disabling genie_tenants blocks the existing session (8.531542ms)
+✔ membership revocation during central verification is caught by the second database read (7.642625ms)
+✔ central revocation is checked on every request without positive caching (7.286375ms)
+✔ authority outage fails closed and does not disclose secrets (6.291208ms)
+✔ mismatched central local-user mapping cannot issue a session (7.92675ms)
+✔ unknown identities never provision accounts from claims (4.970375ms)
+✔ multiple active tenants require explicit future workspace selection, not arbitrary choice (4.718917ms)
+✔ GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie (6.021ms)
+✔ cross-origin and GET sign-out do not mutate a valid session (6.635958ms)
+✔ single-use login transactions reject browser mismatches and concurrent callback replay (5.358125ms)
+✔ expired login transactions and duplicate callback parameters cannot issue sessions (4.201958ms)
+✔ expired sessions and duplicate session cookies fail closed (6.129167ms)
+✔ restarting the application preserves a valid PostgreSQL-backed session (5.810792ms)
+✔ callback errors never reflect provider details and transient browser state is cleared (3.53ms)
+✔ real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange (11.468125ms)
+✔ real OIDC adapter rejects wrong issuer (1.129958ms)
+✔ real OIDC adapter rejects wrong audience (0.789541ms)
+✔ real OIDC adapter rejects wrong nonce (0.731875ms)
+✔ real OIDC adapter rejects expired token (0.795709ms)
+✔ real OIDC adapter rejects future issue time (0.827458ms)
+✔ real OIDC adapter rejects excessive lifetime (0.890708ms)
+✔ real OIDC adapter rejects missing session binding (0.761917ms)
+✔ real OIDC adapter rejects wrong authorized party (0.832125ms)
+✔ real OIDC adapter rejects invalid signature (0.862541ms)
+✔ OIDC state mismatch is rejected before the token endpoint is called (0.559625ms)
+✔ discovery cannot redirect credentials or signing-key lookups to another origin (1.654167ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 919.570584

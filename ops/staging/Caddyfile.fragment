@@ -1,0 +1,7 @@
+staging.genie.aplyd.org {
+    encode zstd gzip
+    header X-Robots-Tag "noindex, nofollow"
+    reverse_proxy 127.0.0.1:3910 {
+        header_up X-Forwarded-For {remote_host}
+    }
+}
