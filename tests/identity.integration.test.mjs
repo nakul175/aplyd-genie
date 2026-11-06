@@ -175,6 +175,9 @@ test('multiple active tenants require explicit future workspace selection, not a
 
 test('GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie', async t => {
   const f = await fixture(t); const { session } = await f.signIn();
+  const workspace = await f.request('/workspace', { headers: { Cookie: session } });
+  assert.equal(workspace.status, 200);
+  assert.equal(workspace.headers.get('referrer-policy'), 'same-origin', 'native form POST must retain same-origin provenance');
   f.authority.unavailable = true; // Local sign-out must remain available during upstream outages.
   const response = await f.request('/auth/sign-out', { method: 'POST', headers: { Origin: config.origin, Cookie: session } });
   assert.equal(response.status, 303);

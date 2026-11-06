@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testsuites>
-	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true}" time="0.007282" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:&amp;quot;true&amp;quot;}" time="0.000126" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;other&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;native&amp;quot;}" time="0.000110" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;subject&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;other&amp;quot;}" time="0.000110" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="Accounts rejects malformed or mismatched proof {}" time="0.000124" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true}" time="0.007556" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:&amp;quot;true&amp;quot;}" time="0.000136" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;other&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;native&amp;quot;}" time="0.000111" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {&amp;quot;active&amp;quot;:true,&amp;quot;sub&amp;quot;:&amp;quot;subject&amp;quot;,&amp;quot;local_id&amp;quot;:&amp;quot;other&amp;quot;}" time="0.000103" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="Accounts rejects malformed or mismatched proof {}" time="0.000125" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
 	<testcase name="Accounts bounds response size and rejects redirects or HTTP failures" time="0.000277" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="unsafe issuer and app origins or missing secrets fail configuration" time="0.000098" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
-	<testcase name="GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims" time="0.618145" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="anonymous requests and unrecognized opaque cookies cannot open protected views" time="0.007874" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="GENIE-2 AC2: disabling membership denies reads and destroys the presented session" time="0.008953" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="disabling genie_users blocks the existing session" time="0.006527" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="disabling genie_tenants blocks the existing session" time="0.007938" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="membership revocation during central verification is caught by the second database read" time="0.007054" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="central revocation is checked on every request without positive caching" time="0.007493" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="authority outage fails closed and does not disclose secrets" time="0.006464" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="mismatched central local-user mapping cannot issue a session" time="0.007638" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="unknown identities never provision accounts from claims" time="0.004939" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="multiple active tenants require explicit future workspace selection, not arbitrary choice" time="0.004799" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie" time="0.007250" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="cross-origin and GET sign-out do not mutate a valid session" time="0.007275" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="single-use login transactions reject browser mismatches and concurrent callback replay" time="0.006226" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="expired login transactions and duplicate callback parameters cannot issue sessions" time="0.004688" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="expired sessions and duplicate session cookies fail closed" time="0.007240" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="restarting the application preserves a valid PostgreSQL-backed session" time="0.006507" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="callback errors never reflect provider details and transient browser state is cleared" time="0.003802" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="disablement during callback verification prevents session insertion" time="0.004323" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="identity relinking during verification invalidates the old session" time="0.005229" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="tampered encrypted upstream state cannot authenticate or reach Accounts" time="0.005189" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="bearer headers cannot substitute for the opaque browser session" time="0.005738" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="authentication admission is rate-limited before unbounded login rows accumulate" time="0.011983" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
-	<testcase name="real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange" time="0.012171" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects wrong issuer" time="0.001295" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects wrong audience" time="0.000836" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects wrong nonce" time="0.000815" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects expired token" time="0.000792" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects future issue time" time="0.000863" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects excessive lifetime" time="0.000831" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects missing session binding" time="0.000779" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects wrong authorized party" time="0.000765" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects multiple audiences without authorized party" time="0.000705" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects future not-before time" time="0.001267" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="real OIDC adapter rejects invalid signature" time="0.000689" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="OIDC state mismatch is rejected before the token endpoint is called" time="0.000560" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="discovery cannot redirect credentials or signing-key lookups to another origin" time="0.001471" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
-	<testcase name="independent service instances share atomic windows without storing raw client addresses" time="0.494189" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/rate-store.test.mjs"/>
-	<testcase name="encrypted session material is bound to its user and tenant" time="0.000836" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
-	<testcase name="ciphertext modification and a different session key fail authentication" time="0.000136" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
+	<testcase name="unsafe issuer and app origins or missing secrets fail configuration" time="0.000103" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/accounts.test.mjs"/>
+	<testcase name="GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims" time="0.624757" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="anonymous requests and unrecognized opaque cookies cannot open protected views" time="0.007624" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-2 AC2: disabling membership denies reads and destroys the presented session" time="0.008212" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disabling genie_users blocks the existing session" time="0.006563" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disabling genie_tenants blocks the existing session" time="0.008810" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="membership revocation during central verification is caught by the second database read" time="0.007540" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="central revocation is checked on every request without positive caching" time="0.007594" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="authority outage fails closed and does not disclose secrets" time="0.006062" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="mismatched central local-user mapping cannot issue a session" time="0.004823" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="unknown identities never provision accounts from claims" time="0.004812" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="multiple active tenants require explicit future workspace selection, not arbitrary choice" time="0.005692" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie" time="0.010611" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="cross-origin and GET sign-out do not mutate a valid session" time="0.006502" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="single-use login transactions reject browser mismatches and concurrent callback replay" time="0.005183" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="expired login transactions and duplicate callback parameters cannot issue sessions" time="0.004235" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="expired sessions and duplicate session cookies fail closed" time="0.005590" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="restarting the application preserves a valid PostgreSQL-backed session" time="0.006015" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="callback errors never reflect provider details and transient browser state is cleared" time="0.004879" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="disablement during callback verification prevents session insertion" time="0.004322" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="identity relinking during verification invalidates the old session" time="0.005161" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="tampered encrypted upstream state cannot authenticate or reach Accounts" time="0.005084" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="bearer headers cannot substitute for the opaque browser session" time="0.004384" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="authentication admission is rate-limited before unbounded login rows accumulate" time="0.013330" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/identity.integration.test.mjs"/>
+	<testcase name="real OIDC adapter verifies signed tokens and sends PKCE with a confidential token exchange" time="0.011925" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong issuer" time="0.001172" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong audience" time="0.000770" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong nonce" time="0.000941" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects expired token" time="0.000821" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects future issue time" time="0.000826" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects excessive lifetime" time="0.000917" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects missing session binding" time="0.000843" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects wrong authorized party" time="0.000776" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects multiple audiences without authorized party" time="0.000731" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects future not-before time" time="0.001237" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="real OIDC adapter rejects invalid signature" time="0.000692" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="OIDC state mismatch is rejected before the token endpoint is called" time="0.000538" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="discovery cannot redirect credentials or signing-key lookups to another origin" time="0.001357" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/oidc.test.mjs"/>
+	<testcase name="independent service instances share atomic windows without storing raw client addresses" time="0.512683" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/rate-store.test.mjs"/>
+	<testcase name="encrypted session material is bound to its user and tenant" time="0.000996" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
+	<testcase name="ciphertext modification and a different session key fail authentication" time="0.000184" classname="test" file="/Users/athena/Documents/ChatGPT/Holy Sheet/work/aplyd-genie/tests/security.test.mjs"/>
 	<!-- tests 47 -->
 	<!-- suites 0 -->
 	<!-- pass 47 -->
@@ -54,5 +54,5 @@
 	<!-- cancelled 0 -->
 	<!-- skipped 0 -->
 	<!-- todo 0 -->
-	<!-- duration_ms 1618.723208 -->
+	<!-- duration_ms 1663.968708 -->
 </testsuites>

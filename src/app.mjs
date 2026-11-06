@@ -107,6 +107,9 @@ export function createApp({ config, store, oidc, accounts, rateStore }) {
 
   app.get('/workspace', async (request, response) => {
     await authenticate(request);
+    // no-referrer makes native form POSTs send Origin:null in browsers. Keep
+    // same-origin form provenance while withholding cross-origin referrers.
+    response.set('Referrer-Policy', 'same-origin');
     response.type('html').send(document('<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +
       '<form method="post" action="/auth/sign-out"><button type="submit">Sign out of Genie</button></form>'));
   });
