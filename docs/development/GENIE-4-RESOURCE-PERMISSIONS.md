@@ -1,0 +1,36 @@
+# GENIE-4 / PLAT-103 — resource and action permissions
+
+Status: In Progress. Branch `codex/genie-4-resource-permissions`, based on merged main `5d4570db2ea45d3115dce6c035fd6df605f6069b`. GENIE-3 is Done in BTF; its approved PR2 head was cd3dab4 and all three Active cases Passed in completed run46. Staging receipt records accepted GENIE-3 and merged/Done status. No new GENIE-4 code, staging grant or pass is claimed by this plan.
+
+## Acceptance and evidence
+
+- Case2560 / AC1: read and mutation permissions are distinct.
+- Case2561 / AC2: role changes apply to UI, registered tools and background execution.
+- Case2562 / AC3: an administrator cannot grant authority they cannot manage.
+- Existing identity, membership, last-admin, invitation, audit and origin gates remain regression requirements. Actual PostgreSQL privilege/concurrency tests and actual staging password/OIDC acceptance remain required. No auth mocks count as live acceptance.
+
+## Implementation decisions
+
+1. Explicit, bounded permission catalogue for actual current workspace resources: `workspace.members` (read/manage), `workspace.people` (read), `workspace.invitations` (read/create/revoke), `workspace.audit` (read), `workspace.roles` (read/manage/assign). Do not invent capabilities for the four unspecified apps or ship fictional connectors. Resource/action contracts can be extended by later concrete application stories; there is no wildcard or model-generated authority.
+2. Tenant-scoped named custom roles, explicit catalogue grants, and custom-role assignments to ordinary members. Preserve the immutable built-in administrator authority and existing member/admin membership role. Empty custom grants explicitly remove authority. Bound role/grant/assignment counts and validate complete input shapes.
+3. SECURITY DEFINER entry points with static search_path and no PUBLIC execute. Runtime receives only reviewed entry-point grants during later authorized staging activation; no direct policy/identity/audit table writes. Existing migration001–004 checksums remain untouched. Add new migrations for policy, membership adapters and export jobs as needed.
+4. All policy changes serialize with the existing `genie-membership:<tenant>` advisory lock. Grant/role assignment changes must be subsets of the actor's current authority; editing an existing role also requires authority over its existing grants. Deny cross-tenant role/member IDs and browser-supplied principal/tenant overrides. Built-in administrator grants cannot be edited by custom-role operations.
+5. Current capabilities are evaluated on every request/dispatch, with no positive permission cache. Read-side permission checks avoid unnecessary tenant-wide serialization; mutations recheck under the tenant lock. Existing Accounts source-session and native membership checks remain mandatory.
+6. Make current member pages and mutation services permission-aware. Read-only roles see member data without mutation controls. Delegated membership managers cannot promote a built-in administrator or change/deactivate an administrator unless they are themselves a built-in administrator. Invitation creation by a delegate cannot issue an administrator invitation. Preserve version checks, last-admin protection and atomic membership audit.
+7. Roles UI/API lets authorized actors view/create/edit catalogue grants and assign/revoke custom roles. Current permission gates also govern role-management navigation and controls. Persist immutable actor/tenant/target/before-after permission audit records. Preserve legacy public `/api/auth/session` response shape; expose current capabilities separately.
+8. A small registered platform-tool executor supports actual member read/status-change operations through the same normal membership services; no arbitrary SQL/shell/code tools, no client-chosen principal, and no bypass of the service's transactional authorization.
+9. To prove actual background authorization now, implement a bounded user-triggered member-list export job. Queue creation captures the authenticated actor/session hash and tenant server-side, not from request JSON. A real worker revalidates the original Accounts proof and current local permission at execution and again in the final database operation. Revocation while queued/running must deny rather than use captured permissions. Job status/download require current permission and original-creator ownership.
+10. Export jobs are a minimal reusable queue boundary, not a claim that later OPS workflow/recovery stories are complete. Limit kind to `members.export`; read-only export fields, bounded output with explicit truncation state, short deadlines/leases and bounded retries. Do not hold a database connection/transaction across Accounts I/O. Cookie/token values and sealed proofs never appear in public output. Actual worker execution is required in live acceptance; a mock background context is insufficient.
+11. Existing tenant administrator remains the full authority. Reuse the dedicated synthetic Genie staging QA identity only within separately reviewed live grants. New runtime function grants, delegated-role fixtures and worker activation need a concrete staging packet and applicable action-time confirmation before live mutation. Do all code, tests and packet preparation first.
+12. No proprietary inference API, GPU deployment, external email, production Genie activation, existing password change or recurring automation. User-triggered application workers are distinct from paused personal schedules/heartbeats; no schedule is created or resumed.
+
+## Planned gates
+
+- Policy SQL: tenant isolation, read/write separation, escalation/role-edit/assignment denial, current-role revocation, optimistic versions, audit rollback, privilege restrictions and concurrency.
+- HTTP/service: server-derived actor, ordinary/read-only UI controls, direct API/tool mutation denials, same-origin checks, current capabilities and existing-session response compatibility.
+- Queue/worker: actual persisted actor capture, original source-session freshness, revoked role while queued/in Accounts I/O, deactivation/logout, cross-tenant/other-owner job access, lease/retry/deadline boundaries, result disclosure after permission removal.
+- Live: real ordinary QA sign-in, approved reader/delegate grants, normal UI/API/tool checks, real queued export denied after role removal, bounded delegation denial, audit and final fixture cleanup. Keep cases2560–2562 Not run until their actual scripts execute.
+
+## First implementation batch
+
+Migration005 defines the ten current catalogue grants, tenant-scoped custom roles/assignments, current effective-capability checks, bounded role creation/edit/assignment and immutable policy audit. It preserves built-in administrator authority, denies cross-tenant IDs and excess delegation, uses optimistic versions, and revokes PUBLIC access. Nine focused PGlite database tests passed with zero failures/skips; full report is evidence/genie-4/policy-database-initial.log. A strict Permissions service wrapper is added. These are database-boundary results only: UI/tool/background wiring, actual PostgreSQL qualification and live acceptance remain open. Migration005 is deliberately not yet in the production migration runner until the compatible integration batch is complete.

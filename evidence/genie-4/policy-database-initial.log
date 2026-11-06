@@ -1,0 +1,17 @@
+✔ GENIE-4 AC1 database boundary: catalogue grants separate read from management (632.360291ms)
+✔ roles and assignments cannot cross tenant boundaries (12.726ms)
+✔ GENIE-4 AC3 database boundary: a delegated role manager cannot create or assign stronger authority (14.038ms)
+✔ ordinary members cannot grant roles, assign roles or modify built-in administrator authority (8.898708ms)
+✔ GENIE-4 AC2 database boundary: definition edits and unassignment take effect on the existing session (11.481542ms)
+✔ expired sessions and disabled membership, identity or tenant do not retain policy authority (7.818333ms)
+✔ unknown, wildcard, duplicate and malformed grants are rejected without writes (8.137708ms)
+✔ stale role and assignment versions reject lost updates; no-op retries add no audit (13.607792ms)
+✔ policy audit failure rolls back definition edits and assignment state atomically (11.552959ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 806.249292
