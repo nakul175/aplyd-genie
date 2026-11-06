@@ -39,6 +39,6 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci --ignore-scripts
-      - run: node --test tests/memberships.test.mjs
+      - run: node --test --test-concurrency=1 tests/memberships.test.mjs tests/permissions.test.mjs
         env:
           GENIE_TEST_DATABASE_URL: postgresql://genie_test_owner:synthetic-ci-only@127.0.0.1:5432/genie_qual_memberships

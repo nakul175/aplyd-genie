@@ -31,6 +31,15 @@ export class Permissions {
   }
  }
  capabilities(session){return this.call('SELECT genie_current_capabilities($1) AS result',session);}
+ async require(session,resource,action){
+  const current=await this.capabilities(session);
+  if(!current?.some(grant=>grant.resource===resource&&grant.action===action))throw new HttpError(403,'permission_required');
+ }
+ page(session,kind='roles',after,search=''){
+  if(!['roles','assignments','audit'].includes(kind)||typeof search!=='string'||search.length>80||
+   (after!==undefined&&(typeof after!=='string'||after.length>64||kind==='roles')))throw invalid();
+  return this.call('SELECT genie_roles_page($1,$2,$3,$4) AS result',session,[kind,after??null,search]);
+ }
  save(session,{roleId=null,name,grants,version:expected}={}){
   if(typeof name!=='string'||name.length<1||name.length>80||name!==name.trim()||/[\u0000-\u001f\u007f]/.test(name))throw invalid();
   return this.call('SELECT genie_save_role($1,$2,$3,$4::jsonb,$5) AS result',session,

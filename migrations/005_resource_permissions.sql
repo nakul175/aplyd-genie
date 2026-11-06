@@ -170,3 +170,64 @@ END $$;
 REVOKE ALL ON TABLE genie_permission_catalog,genie_roles,genie_role_permissions,genie_member_roles,genie_permission_audit FROM PUBLIC;
 REVOKE ALL ON FUNCTION genie_has_permission(uuid,uuid,text,text),genie_permission_actor(text,text,text,boolean),
  genie_current_capabilities(text),genie_save_role(text,uuid,text,jsonb,bigint),genie_assign_role(text,uuid,uuid,boolean,bigint) FROM PUBLIC;
+
+CREATE FUNCTION genie_roles_page(p_session text,p_kind text,p_after text DEFAULT NULL,p_search text DEFAULT '')
+RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog,public AS $$
+DECLARE a record; result jsonb; extras jsonb;
+BEGIN
+ IF p_kind IS NULL OR p_kind NOT IN ('roles','assignments','audit') OR length(p_search)>80 OR length(p_after)>64
+   OR (p_kind='roles' AND p_after IS NOT NULL) THEN RAISE EXCEPTION 'invalid policy page' USING ERRCODE='22023'; END IF;
+ SELECT * INTO a FROM public.genie_permission_actor(p_session,
+   CASE p_kind WHEN 'audit' THEN 'workspace.audit' ELSE 'workspace.roles' END,
+   CASE p_kind WHEN 'assignments' THEN 'assign' ELSE 'read' END,false);
+ IF p_kind='roles' THEN
+  SELECT coalesce(jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'version',r.version::text,
+   'grants',(SELECT coalesce(jsonb_agg(jsonb_build_object('resource',g.resource,'action',g.action) ORDER BY g.resource,g.action),'[]'::jsonb)
+     FROM public.genie_role_permissions g WHERE g.tenant_id=r.tenant_id AND g.role_id=r.id),
+   'canManage',public.genie_has_permission(a.user_id,a.tenant_id,'workspace.roles','manage') AND NOT EXISTS(
+     SELECT 1 FROM public.genie_role_permissions g WHERE g.role_id=r.id AND g.tenant_id=a.tenant_id
+     AND NOT public.genie_has_permission(a.user_id,a.tenant_id,g.resource,g.action)),
+   'canAssign',public.genie_has_permission(a.user_id,a.tenant_id,'workspace.roles','assign') AND NOT EXISTS(
+     SELECT 1 FROM public.genie_role_permissions g WHERE g.role_id=r.id AND g.tenant_id=a.tenant_id
+     AND NOT public.genie_has_permission(a.user_id,a.tenant_id,g.resource,g.action))) ORDER BY lower(r.name),r.id),'[]'::jsonb)
+   INTO result FROM public.genie_roles r WHERE r.tenant_id=a.tenant_id AND position(lower(p_search) IN lower(r.name))>0;
+  SELECT coalesce(jsonb_agg(jsonb_build_object('resource',c.resource,'action',c.action,
+    'available',public.genie_has_permission(a.user_id,a.tenant_id,c.resource,c.action)) ORDER BY c.resource,c.action),'[]'::jsonb)
+   INTO extras FROM public.genie_permission_catalog c;
+  RETURN jsonb_build_object('items',result,'catalog',extras,'nextCursor',NULL);
+ ELSIF p_kind='assignments' THEN
+  PERFORM public.genie_permission_actor(p_session,'workspace.members','read',false);
+  WITH page AS (
+   SELECT m.user_id::text cursor,jsonb_build_object('userId',m.user_id,'displayName',coalesce(p.display_name,'Workspace member'),
+    'status',m.status,'version',m.version::text,'roles',
+    (SELECT coalesce(jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) ORDER BY lower(r.name),r.id),'[]'::jsonb)
+     FROM public.genie_member_roles ar JOIN public.genie_roles r ON r.tenant_id=ar.tenant_id AND r.id=ar.role_id
+     WHERE ar.tenant_id=m.tenant_id AND ar.user_id=m.user_id)) item
+   FROM public.genie_memberships m LEFT JOIN public.genie_workspace_people p ON p.tenant_id=m.tenant_id AND p.user_id=m.user_id
+   WHERE m.tenant_id=a.tenant_id AND m.role='member' AND (p_after IS NULL OR m.user_id>p_after::uuid)
+    AND position(lower(p_search) IN lower(coalesce(p.display_name,'Workspace member')))>0
+   ORDER BY m.user_id LIMIT 51
+  ), shown AS (SELECT * FROM page ORDER BY cursor LIMIT 50)
+  SELECT jsonb_build_object('items',coalesce(jsonb_agg(item ORDER BY cursor),'[]'::jsonb),
+   'nextCursor',CASE WHEN (SELECT count(*) FROM page)>50 THEN (SELECT max(cursor) FROM shown) END) INTO result FROM shown;
+  SELECT coalesce(jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) ORDER BY lower(r.name),r.id),'[]'::jsonb)
+   INTO extras FROM public.genie_roles r WHERE r.tenant_id=a.tenant_id AND NOT EXISTS(
+    SELECT 1 FROM public.genie_role_permissions g WHERE g.role_id=r.id AND g.tenant_id=a.tenant_id
+    AND NOT public.genie_has_permission(a.user_id,a.tenant_id,g.resource,g.action));
+  RETURN result||jsonb_build_object('availableRoles',extras);
+ ELSE
+  WITH page AS (
+   SELECT e.id cursor,jsonb_build_object('id',e.id::text,'action',e.action,'roleName',r.name,
+    'actor',coalesce(actor.display_name,'Workspace member'),'target',target.display_name,
+    'before',e.before_state,'after',e.after_state,'createdAt',e.created_at) item
+   FROM public.genie_permission_audit e JOIN public.genie_roles r ON r.tenant_id=e.tenant_id AND r.id=e.role_id
+   LEFT JOIN public.genie_workspace_people actor ON actor.tenant_id=e.tenant_id AND actor.user_id=e.actor_id
+   LEFT JOIN public.genie_workspace_people target ON target.tenant_id=e.tenant_id AND target.user_id=e.target_id
+   WHERE e.tenant_id=a.tenant_id AND (p_after IS NULL OR e.id<p_after::bigint) ORDER BY e.id DESC LIMIT 51
+  ), shown AS (SELECT * FROM page ORDER BY cursor DESC LIMIT 50)
+  SELECT jsonb_build_object('items',coalesce(jsonb_agg(item ORDER BY cursor DESC),'[]'::jsonb),
+   'nextCursor',CASE WHEN (SELECT count(*) FROM page)>50 THEN (SELECT min(cursor)::text FROM shown) END) INTO result FROM shown;
+  RETURN result;
+ END IF;
+END $$;
+REVOKE ALL ON FUNCTION genie_roles_page(text,text,text,text) FROM PUBLIC;

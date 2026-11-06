@@ -1,3 +1,7 @@
+import {allows} from './capabilities.mjs';
+import {roleView} from './role-views.mjs';
+import {createMemberTools} from './member-tools.mjs';
+import {createSessionAuthenticator} from './authentication.mjs';
 import express from 'express';
 import { rateLimit } from 'express-rate-limit';
 import { digest, randomToken, seal, open, readCookie, setCookie,
@@ -8,7 +12,8 @@ const unauthorized = () => new HttpError(401, 'authentication_required');
 const document = body => `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Aplyd Genie</title><main>${body}</main></html>`;
 
 /** Dependencies are injected for contract tests; production supplies the real adapters. */
-export function createApp({ config, store, oidc, accounts, rateStore, memberships }) {
+export function createApp({ config, store, oidc, accounts, rateStore, memberships, permissions, memberExports }) {
+  const memberTools=permissions&&memberships?createMemberTools({permissions,memberships}):null;
   const app = express();
   app.disable('x-powered-by');
   app.disable('etag');
@@ -19,33 +24,11 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     standardHeaders: 'draft-8', legacyHeaders: false,
     message: { error: 'too_many_authentication_requests' } }));
 
+  const authenticateSession=createSessionAuthenticator({config,store,accounts});
   async function authenticate(request) {
-    const token = readCookie(request, sessionCookie);
-    if (!token) throw unauthorized();
-    const hash = digest(token);
-    const before = await store.getSession(hash);
-    if (!before || before.issuer !== config.issuer) {
-      await store.deleteSession(hash);
-      throw unauthorized();
-    }
-    let upstream;
-    try { upstream = open(config.key, `session:${before.user_id}:${before.tenant_id}`, before.sealed_upstream); }
-    catch { await store.deleteSession(hash); throw unauthorized(); }
-    try { await accounts.requireSession(before.subject, upstream.uid, before.user_id); }
-    catch (error) {
-      if (error instanceof HttpError && error.status === 401) await store.deleteSession(hash);
-      throw error;
-    }
-    // Never retain a positive authority result across requests or across membership changes.
-    const after = await store.getSession(hash);
-    if (!after || after.user_id !== before.user_id || after.subject !== before.subject ||
-        after.issuer !== before.issuer || after.tenant_id !== before.tenant_id ||
-        after.sealed_upstream !== before.sealed_upstream) {
-      await store.deleteSession(hash);
-      throw unauthorized();
-    }
-    return { userId: after.user_id, tenantId: after.tenant_id, role: after.role,
-      sessionHash: hash, issuer: after.issuer, subject: after.subject };
+    const token=readCookie(request,sessionCookie);
+    if(!token)throw unauthorized();
+    return authenticateSession(digest(token));
   }
 
   app.get('/health/live', (_request, response) => response.json({ status: 'live' }));
@@ -142,13 +125,21 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     response.json({ authenticated: true, userId,tenantId });
   });
 
+  app.get('/api/workspace/capabilities',async(request,response)=>{
+    const actor=await authenticate(request);
+    if(!permissions)throw new HttpError(503,'service_unavailable');
+    response.json({capabilities:await permissions.capabilities(actor.sessionHash)});
+  });
   app.get('/workspace', async (request, response) => {
     const actor = await authenticate(request);
-    // no-referrer makes native form POSTs send Origin:null in browsers. Keep
-    // same-origin form provenance while withholding cross-origin referrers.
+    const caps=permissions?await permissions.capabilities(actor.sessionHash):undefined;
+    const readMembers=caps===undefined?actor.role==='admin':allows(caps,'workspace.members','read');
+    let links=readMembers?`<p><a href="/workspace/members">${actor.role==='admin'?'Manage workspace members':'Workspace members'}</a></p>`:'';
+    if(allows(caps,'workspace.roles','read'))links+='<p><a href="/workspace/roles">Workspace roles</a></p>';
+    if(allows(caps,'workspace.roles','assign')&&allows(caps,'workspace.members','read'))links+='<p><a href="/workspace/roles?view=assignments">Role assignments</a></p>';
+    if(allows(caps,'workspace.audit','read'))links+='<p><a href="/workspace/roles?view=audit">Role activity</a></p>';
     response.set('Referrer-Policy', 'same-origin');
-    response.type('html').send(document('<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +
-      (memberships && actor.role==='admin' ? '<p><a href="/workspace/members">Manage workspace members</a></p>' : '') +
+    response.type('html').send(document('<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +links+
       '<form method="post" action="/auth/sign-out"><button type="submit">Sign out of Genie</button></form>'));
   });
 
@@ -157,12 +148,12 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     const actor = await authenticate(request);
     const kind = request.query.view ?? 'members';
     const page = await memberships.page(actor.sessionHash,kind,request.query.after,request.query.search ?? '');
-    return { kind,page };
+    return {kind,page,builtinRole:actor.role,capabilities:permissions?await permissions.capabilities(actor.sessionHash):undefined};
   }
-  app.get('/api/workspace/members', async (request,response) => response.json(await memberPage(request)));
+  app.get('/api/workspace/members', async (request,response) => {const {kind,page}=await memberPage(request);response.json({kind,page});});
   app.get('/workspace/members', async (request,response) => {
-    const { kind,page } = await memberPage(request);
-    response.set('Referrer-Policy','same-origin').type('html').send(document(memberView(kind,page,{search:request.query.search??''})));
+    const {kind,page,builtinRole,capabilities}=await memberPage(request);
+    response.set('Referrer-Policy','same-origin').type('html').send(document(memberView(kind,page,{search:request.query.search??'',builtinRole,capabilities})));
   });
   async function membershipAction(request,action) {
     sameOrigin(request);
@@ -185,6 +176,76 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     });
   }
 
+  async function rolePage(request){
+    const actor=await authenticate(request);
+    if(!permissions)throw new HttpError(503,'service_unavailable');
+    const kind=request.query.view??'roles';
+    return {kind,page:await permissions.page(actor.sessionHash,kind,request.query.after,request.query.search??''),
+      capabilities:await permissions.capabilities(actor.sessionHash)};
+  }
+  app.get('/api/workspace/roles',async(request,response)=>{const {kind,page}=await rolePage(request);response.json({kind,page});});
+  app.get('/workspace/roles',async(request,response)=>{
+    const {kind,page,capabilities}=await rolePage(request);
+    response.set('Referrer-Policy','same-origin').type('html').send(document(roleView(kind,page,{capabilities,search:request.query.search??''})));
+  });
+  const roleForm=express.urlencoded({extended:false,limit:'16kb',parameterLimit:64});
+  async function roleAction(request,action,fromForm=false){
+    sameOrigin(request);const actor=await authenticate(request);
+    if(!permissions)throw new HttpError(503,'service_unavailable');
+    const body=request.body??{};
+    if(action==='save'){
+      let grants=body.grants;
+      if(fromForm){
+        grants=grants===undefined?[]:Array.isArray(grants)?grants:[grants];
+        grants=grants.map(value=>{
+          if(typeof value!=='string'||value.split(':').length!==2)throw new HttpError(400,'invalid_role_request');
+          const [resource,action]=value.split(':');return {resource,action};
+        });
+      }
+      return permissions.save(actor.sessionHash,{roleId:fromForm?(body.roleId||null):(body.roleId??null),name:body.name,grants,version:body.version});
+    }
+    let assigned=body.assigned;
+    if(fromForm){if(!['true','false'].includes(assigned))throw new HttpError(400,'invalid_role_request');assigned=assigned==='true';}
+    return permissions.assign(actor.sessionHash,{target:body.target,roleId:body.roleId,assigned,version:body.version});
+  }
+  for(const action of ['save','assign']){
+    app.post(`/api/workspace/roles/${action}`,express.json({strict:true,limit:'16kb'}),async(request,response)=>response.json(await roleAction(request,action)));
+    app.post(`/workspace/roles/${action}`,roleForm,async(request,response)=>{
+      await roleAction(request,action,true);response.redirect(303,action==='assign'?'/workspace/roles?view=assignments':'/workspace/roles');
+    });
+  }
+  app.post('/api/tools/:name',express.json({strict:true,limit:'8kb'}),async(request,response)=>{
+    sameOrigin(request);const actor=await authenticate(request);
+    if(!memberTools)throw new HttpError(503,'service_unavailable');
+    response.json(await memberTools.execute(request.params.name,actor,request.body??{}));
+  });
+
+  app.get('/workspace/member-exports',async(request,response)=>{
+    const actor=await authenticate(request);
+    if(!memberExports||!permissions)throw new HttpError(503,'service_unavailable');
+    await permissions.require(actor.sessionHash,'workspace.members','read');
+    const job=request.query.id?await memberExports.get(actor.sessionHash,request.query.id):null;
+    const labels={queued:'Waiting to prepare your export.',running:'Preparing your export.',completed:'Your export is ready.',denied:'Access changed. This export was stopped.',failed:'This export could not be completed. You can try again.'};
+    const status=job?`<p>${labels[job.status]}</p>${job.status==='completed'?`<p><a href="/api/workspace/member-exports/${escapeHtml(job.id)}">View export JSON</a></p>`:''}<p><a href="/workspace/member-exports?id=${escapeHtml(job.id)}">Refresh status</a></p>`:'';
+    response.type('html').send(document(`<h1>Export workspace members</h1><p>Exports contain up to 1,000 member names, roles and membership statuses. Your access is checked again when the export runs and when you open it.</p>${status}<form method="post" action="/workspace/member-exports"><button>Prepare export</button></form><p><a href="/workspace/members">Back to members</a></p>`));
+  });
+  app.post('/workspace/member-exports',parseForm,async(request,response)=>{
+    sameOrigin(request);const actor=await authenticate(request);
+    if(!memberExports)throw new HttpError(503,'service_unavailable');
+    const job=await memberExports.enqueue(actor.sessionHash);
+    response.redirect(303,'/workspace/member-exports?id='+encodeURIComponent(job.id));
+  });
+  app.post('/api/workspace/member-exports',express.json({strict:true,limit:'1kb'}),async(request,response)=>{
+    sameOrigin(request);const actor=await authenticate(request);
+    if(!memberExports)throw new HttpError(503,'service_unavailable');
+    response.status(202).json(await memberExports.enqueue(actor.sessionHash));
+  });
+  app.get('/api/workspace/member-exports/:id',async(request,response)=>{
+    const actor=await authenticate(request);
+    if(!memberExports)throw new HttpError(503,'service_unavailable');
+    response.json(await memberExports.get(actor.sessionHash,request.params.id));
+  });
+
   app.post('/auth/sign-out', async (request, response) => {
     if (request.get('origin') !== config.origin) throw new HttpError(403, 'origin_denied');
     const token = readCookie(request, sessionCookie);
@@ -201,6 +262,14 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
       error.type==='entity.parse.failed'?new HttpError(400,'invalid_request'):
       error.type==='entity.too.large'?new HttpError(413,'request_too_large'):new HttpError(503, 'service_unavailable');
     if (safe.status === 401) setCookie(response, sessionCookie, '', 0);
+    if(request.path.startsWith('/workspace/member-exports')){
+      const message={permission_required:'Your role does not allow member exports.',export_queue_full:'You already have exports waiting. Please try again later.',export_unavailable:'This export is unavailable.',authentication_required:'Please sign in again.'}[safe.code]??'The export request could not be completed.';
+      return response.status(safe.status).type('html').send(document(`<h1>Member export</h1><p>${message}</p><a href="/workspace">Back to workspace</a>`));
+    }
+    if(request.path.startsWith('/workspace/roles')){
+      const message={permission_required:'Your role does not allow this action.',role_name_conflict:'A role with this name already exists.',role_or_membership_changed_refresh_required:'This role or membership changed. Refresh before trying again.',role_or_member_unavailable:'The role or member is unavailable.',role_or_assignment_limit:'The workspace role or assignment limit has been reached.',invalid_role_request:'Check the role name, permissions and assignment details.',authentication_required:'Please sign in again.',origin_denied:'This request could not be verified. Return to your workspace and try again.'}[safe.code]??'The request could not be completed. Please return to your workspace and try again.';
+      return response.status(safe.status).type('html').send(document(`<h1>Role request</h1><p>${message}</p><a href="/workspace/roles">Back to roles</a> · <a href="/workspace">Workspace</a>`));
+    }
     if(request.path.startsWith('/workspace/members')) {
       const message={administrator_required:'Only workspace administrators can manage members.',last_administrator_required:'Keep at least one active administrator.',membership_conflict:'This person is already a member or has a pending invitation.',membership_changed_refresh_required:'This membership changed. Refresh the page before trying again.',reviewed_membership_or_invitation_unavailable:'The reviewed person or invitation is unavailable.',authentication_required:'Please sign in again.',origin_denied:'This request could not be verified. Return to your workspace and try again.'}[safe.code]??'The request could not be completed. Please return to your workspace and try again.';
       return response.status(safe.status).type('html').send(document(`<h1>Membership request</h1><p>${message}</p><a href="/workspace/members">Back to members</a> · <a href="/auth/sign-in">Sign in</a>`));

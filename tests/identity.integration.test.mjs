@@ -7,6 +7,9 @@ import { createApp } from '../src/app.mjs';
 import { IdentityStore } from '../src/store.mjs';
 import { createAccounts } from '../src/accounts.mjs';
 import { Memberships } from '../src/memberships.mjs';
+import {MemberExports,runMemberExport} from '../src/exports.mjs';
+import {createSessionAuthenticator} from '../src/authentication.mjs';
+import {Permissions} from '../src/permissions.mjs';
 import { readConfig } from '../src/config.mjs';
 import { sessionCookie, loginCookie, digest } from '../src/security.mjs';
 
@@ -19,7 +22,7 @@ const config = readConfig({ GENIE_ORIGIN: 'https://genie.example.test',
 let database;
 before(async () => {
   database = new PGlite();
-  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql'])
+  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql'])
     await database.exec(await readFile(new URL('../migrations/'+name, import.meta.url), 'utf8'));
 });
 after(async () => { await database.close(); });
@@ -59,7 +62,7 @@ async function fixture(t, options = {}) {
     if (authority.unavailable) throw Error(config.clientSecret);
     return Response.json(authority.active ? { active: true, sub: authority.subject, local_id: authority.localId } : { active: false });
   } });
-  const app = createApp({ config, store, oidc, accounts, memberships: new Memberships(database) });
+  const app = createApp({ config, store, oidc, accounts, memberships: new Memberships(database),permissions:new Permissions(database),memberExports:new MemberExports(database) });
   const server = app.listen(0, '127.0.0.1');
   await once(server, 'listening');
   t.after(async () => {
@@ -371,4 +374,82 @@ test('GENIE-3 OIDC: inviter revocation during fresh Accounts proof prevents acce
   const f=await fixture(t,{onProof:async()=>{await database.query("UPDATE genie_memberships SET role='member' WHERE user_id=$1",[adminUser])}});
   assert.equal((await f.finish(await inviteLogin(f,invitation.token))).status,404);
   assert.equal((await database.query('SELECT state FROM genie_membership_invites')).rows[0].state,'pending');
+});
+
+const policyMember='00000000-0000-4000-8000-000000000090';
+async function policyFixture(t){
+ await database.query("UPDATE genie_memberships SET role='admin' WHERE user_id=$1",[user]);
+ await database.query('INSERT INTO genie_users VALUES($1,$2,$3,true)',[policyMember,config.issuer,'policy-member-subject']);
+ await database.query("INSERT INTO genie_memberships(user_id,tenant_id,status,review_reference) VALUES($1,$2,'active','synthetic-policy-review')",[policyMember,tenant]);
+ for(const [u,name] of [[user,'Fixture owner'],[policyMember,'Fixture member']])await database.query("INSERT INTO genie_workspace_people VALUES($1,$2,$3,'synthetic-policy-review')",[tenant,u,name]);
+ const owner=await fixture(t),member=await fixture(t,{userId:policyMember,subject:'policy-member-subject',proofSubject:'policy-member-subject'});
+ const ownerSession=(await owner.signIn()).session,memberSession=(await member.signIn()).session;
+ const headers=cookie=>({Cookie:cookie,Origin:config.origin,'Content-Type':'application/json'});
+ const post=(actor,cookie,path,body)=>actor.request(path,{method:'POST',headers:headers(cookie),body:JSON.stringify(body)});
+ async function role(name,grants){const r=await post(owner,ownerSession,'/api/workspace/roles/save',{name,grants});assert.equal(r.status,200);return r.json();}
+ async function assign(roleId,assigned=true){const v=(await database.query('SELECT version::text FROM genie_memberships WHERE user_id=$1',[policyMember])).rows[0].version;
+  const r=await post(owner,ownerSession,'/api/workspace/roles/assign',{target:policyMember,roleId,assigned,version:v});assert.equal(r.status,200);return r.json();}
+ return{owner,member,ownerSession,memberSession,post,role,assign};
+}
+
+test('GENIE-4 AC1 HTTP: reader UI, API and registered tools allow reads and reject mutations',async t=>{
+ const f=await policyFixture(t);const role=await f.role('Member reader',[{resource:'workspace.members',action:'read'}]);await f.assign(role.id);
+ const h={Cookie:f.memberSession};
+ const page=await f.member.request('/workspace/members',{headers:h});assert.equal(page.status,200);const html=await page.text();assert.match(html,/Fixture member/);assert.doesNotMatch(html,/Save membership/);
+ const api=await f.member.request('/api/workspace/members',{headers:h});assert.equal(api.status,200);const data=await api.json();assert.deepEqual(Object.keys(data).sort(),['kind','page']);assert.equal(data.page.items.length,2);assert.ok(!JSON.stringify(data).includes('sessionHash'));
+ assert.equal((await f.post(f.member,f.memberSession,'/api/tools/members.list',{})).status,200);
+ const change={target:policyMember,status:'disabled',role:'member',version:'2',userId:user,tenantId:otherTenant};
+ assert.equal((await f.post(f.member,f.memberSession,'/api/workspace/members/change',change)).status,403);
+ assert.equal((await f.post(f.member,f.memberSession,'/api/tools/members.change',change)).status,403);
+ assert.equal((await f.post(f.member,f.memberSession,'/api/tools/arbitrary.sql',{query:'select *'})).status,404);
+});
+test('GENIE-4 AC2 HTTP/tool: unassignment updates an existing session without cached authority',async t=>{
+ const f=await policyFixture(t);const role=await f.role('Member reader',[{resource:'workspace.members',action:'read'}]);await f.assign(role.id);
+ let workspace=await f.member.request('/workspace',{headers:{Cookie:f.memberSession}});assert.match(await workspace.text(),/href="\/workspace\/members"/);
+ assert.equal((await f.post(f.member,f.memberSession,'/api/tools/members.list',{})).status,200);
+ await f.assign(role.id,false);
+ workspace=await f.member.request('/workspace',{headers:{Cookie:f.memberSession}});assert.equal(workspace.status,200);assert.doesNotMatch(await workspace.text(),/href="\/workspace\/members"/);
+ assert.equal((await f.member.request('/api/workspace/members',{headers:{Cookie:f.memberSession}})).status,403);
+ assert.equal((await f.post(f.member,f.memberSession,'/api/tools/members.list',{})).status,403);
+ const identity=await f.member.request('/api/auth/session',{headers:{Cookie:f.memberSession}});assert.equal(identity.status,200);assert.deepEqual(await identity.json(),{authenticated:true,userId:policyMember,tenantId:tenant});
+});
+test('GENIE-4 AC3 HTTP: scoped managers cannot grant or assign a stronger role using browser claims',async t=>{
+ const f=await policyFixture(t);const limited=await f.role('Scoped manager',[{resource:'workspace.roles',action:'read'},{resource:'workspace.roles',action:'manage'},{resource:'workspace.roles',action:'assign'},{resource:'workspace.members',action:'read'}]);await f.assign(limited.id);
+ const excess=[{resource:'workspace.members',action:'manage'}];
+ const denied=await f.post(f.member,f.memberSession,'/api/workspace/roles/save',{name:'Escalation',grants:excess,userId:user,tenantId:tenant,role:'admin'});assert.equal(denied.status,403);
+ const strong=await f.role('Membership manager',excess);
+ const assignment=await f.post(f.member,f.memberSession,'/api/workspace/roles/assign',{target:policyMember,roleId:strong.id,assigned:true,version:'2',actorId:user});assert.equal(assignment.status,403);
+ const caps=await f.member.request('/api/workspace/capabilities',{headers:{Cookie:f.memberSession}});assert.equal(caps.status,200);assert.ok(!(await caps.json()).capabilities.some(x=>x.resource==='workspace.members'&&x.action==='manage'));
+});
+test('role-management native forms preserve origin checks and escape stored role names',async t=>{
+ const f=await policyFixture(t);const role=await f.role('<script>synthetic</script>',[{resource:'workspace.members',action:'read'}]);
+ const page=await f.owner.request('/workspace/roles',{headers:{Cookie:f.ownerSession}});assert.equal(page.status,200);assert.equal(page.headers.get('referrer-policy'),'same-origin');const html=await page.text();assert.match(html,/&lt;script&gt;synthetic&lt;\/script&gt;/);assert.doesNotMatch(html,/<script>/);
+ for(const Origin of ['null','https://attacker.example'])assert.equal((await f.owner.request('/workspace/roles/save',{method:'POST',headers:{Cookie:f.ownerSession,Origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({roleId:role.id,version:'1',name:'Changed'}).toString()})).status,403);
+ const saved=await f.owner.request('/workspace/roles/save',{method:'POST',headers:{Cookie:f.ownerSession,Origin:config.origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({roleId:role.id,version:'1',name:'Cleared reader'}).toString()});assert.equal(saved.status,303);
+ const rows=await database.query('SELECT * FROM genie_role_permissions WHERE role_id=$1',[role.id]);assert.equal(rows.rows.length,0);
+});
+
+test('GENIE-4 HTTP background flow checks current authority and keeps job principals private',async t=>{
+ const f=await policyFixture(t),role=await f.role('Export reader',[{resource:'workspace.members',action:'read'}]);await f.assign(role.id);
+ const queued=await f.post(f.member,f.memberSession,'/api/workspace/member-exports',{userId:user,tenantId:otherTenant});assert.equal(queued.status,202);
+ const job=await queued.json();assert.deepEqual(Object.keys(job).sort(),['id','status']);
+ assert.equal((await f.member.request('/workspace/member-exports?id='+job.id,{headers:{Cookie:f.memberSession}})).status,200);
+ assert.equal((await f.owner.request('/api/workspace/member-exports/'+job.id,{headers:{Cookie:f.ownerSession}})).status,404);
+ await f.assign(role.id,false);
+ const stored=(await database.query('SELECT session_hash FROM genie_member_exports WHERE id=$1',[job.id])).rows[0];
+ const actor=await new IdentityStore(database).getSession(stored.session_hash);
+ assert.equal(actor.user_id,policyMember);assert.equal(actor.tenant_id,tenant);
+ const result=await runMemberExport({exports:new MemberExports(database),permissions:new Permissions(database),
+  authenticateSession:createSessionAuthenticator({config,store:new IdentityStore(database),accounts:createAccounts(config,{fetch:async()=>new Response(JSON.stringify({active:true,sub:'policy-member-subject',local_id:policyMember}),{status:200})})})});
+ assert.equal(result.status,'denied');
+ assert.equal((await f.member.request('/api/workspace/member-exports/'+job.id,{headers:{Cookie:f.memberSession}})).status,403);
+ await f.assign(role.id);
+ const read=await f.member.request('/api/workspace/member-exports/'+job.id,{headers:{Cookie:f.memberSession}});assert.equal(read.status,200);
+ const body=await read.json();assert.equal(body.status,'denied');assert.equal(body.result,null);assert.ok(!JSON.stringify(body).includes(stored.session_hash));
+});
+test('export creation requires origin and native forms redirect to scoped status',async t=>{
+ const f=await policyFixture(t);await f.assign((await f.role('Reader',[{resource:'workspace.members',action:'read'}])).id);
+ assert.equal((await f.member.request('/api/workspace/member-exports',{method:'POST',headers:{Cookie:f.memberSession}})).status,403);
+ const response=await f.member.request('/workspace/member-exports',{method:'POST',headers:{Cookie:f.memberSession,Origin:config.origin,'Content-Type':'application/x-www-form-urlencoded'},body:''});
+ assert.equal(response.status,303);assert.match(response.headers.get('location'),/^\/workspace\/member-exports\?id=/);
 });
