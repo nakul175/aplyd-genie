@@ -8,7 +8,7 @@
   "bugoff_project": "https://bugoff.aplyd.org/en-US/projects/overview/7",
   "bugoff_documentation": "https://bugoff.aplyd.org/en-US/projects/documentation/7",
   "dns": {
-    "authority": "ns51.domaincontrol.com",
+    "authority": "ns51.domaincontrol.com and ns52.domaincontrol.com",
     "records": [
       {
         "name": "genie.aplyd.org",
@@ -17,7 +17,7 @@
         "ttl": 600
       },
       {
-        "name": "staging.ginie.aplyd.org",
+        "name": "staging.genie.aplyd.org",
         "type": "A",
         "value": "168.144.144.69",
         "ttl": 600
@@ -32,5 +32,6 @@
   },
   "individual_tracker_items_created": false,
   "application_deployed": false,
-  "schedules_changed": false
+  "schedules_changed": false,
+  "hostname_correction_verified": true
 }

@@ -24,9 +24,9 @@ Aplyd Genie helps users complete bounded, authorized workflows across Aplyd Suit
 | Repository | https://github.com/nakul175/aplyd-genie |
 | BTF project | https://backlogtothefuture.aplyd.org/aplyd/GENIE |
 | Production hostname | genie.aplyd.org |
-| Staging hostname | staging.ginie.aplyd.org |
+| Staging hostname | staging.genie.aplyd.org |
 
-The staging spelling is intentionally preserved from the user's explicit request. DNS registration does not establish application deployment, routing, TLS readiness, or release acceptance.
+Production and staging use the confirmed Genie spelling. DNS registration does not establish application deployment, routing, TLS readiness, or release acceptance.
 
 ## Status
 

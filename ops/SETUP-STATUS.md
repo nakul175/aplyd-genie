@@ -16,9 +16,9 @@ GoDaddy accepted two new A records in the aplyd.org zone, increasing the visible
 | Host | Target | TTL |
 |---|---|---|
 | genie.aplyd.org | 168.144.144.69 | 600 seconds |
-| staging.ginie.aplyd.org | 168.144.144.69 | 600 seconds |
+| staging.genie.aplyd.org | 168.144.144.69 | 600 seconds |
 
-Target matches the existing Aplyd application records observed for Holy Sheet, BTF, Bug Off and Mai Samay Hoon. Staging retains the explicitly requested `ginie` spelling. Both names resolved to 168.144.144.69 through a fresh DNS lookup after creation. Authoritative nameserver ns51.domaincontrol.com returned both exact A records with 600-second TTLs. No application route, TLS certificate, running Genie service or production release is claimed.
+Target matches the existing Aplyd application records observed for Holy Sheet, BTF, Bug Off and Mai Samay Hoon. Production and staging both use the confirmed `genie` spelling. Both names resolved to 168.144.144.69 through a fresh DNS lookup after creation. Authoritative nameserver ns51.domaincontrol.com returned both exact A records with 600-second TTLs. No application route, TLS certificate, running Genie service or production release is claimed.
 
 ## Tracker documentation
 
@@ -33,3 +33,7 @@ Target matches the existing Aplyd application records observed for Holy Sheet, B
 ## Standing constraints
 
 All schedules and heartbeat automations remain paused. No recurring work, GPU deployment, shared server modification or application deployment was performed as part of registration.
+
+## Hostname correction
+
+The user confirmed `genie` for both environments. The staging A record was renamed in place to `staging.genie.aplyd.org`, retaining 168.144.144.69 and TTL 600. Both authoritative nameservers returned the corrected record; ns51 returned NXDOMAIN for the former misspelling. BTF and Bug Off documentation and project descriptions were corrected. The repository remains private; the earlier public-visibility change is still awaiting explicit disclosure approval after automatic review rejection.
