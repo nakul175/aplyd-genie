@@ -2,7 +2,7 @@
   "product": "Aplyd Genie",
   "version": "1.3",
   "date": "2026-11-06",
-  "note": "All 21 epics and 90 stories are imported into BTF. GENIE-2 / PLAT-101 is implemented and accepted on staging: three Active Bug Off cases Passed in run 45, 47 local regression tests Passed. Remaining 89 stories are Backlog and their 267 cases are Draft / Not run.",
+  "note": "GENIE-2 is Done with three live acceptance cases Passed. GENIE-3 is In Progress; initial database/security regression tests pass, UI and live acceptance are pending. Remaining 88 stories are Backlog. No other live acceptance result is claimed.",
   "epics": [
     {
       "id": "PLAT-01",
@@ -61,7 +61,7 @@
             "Deactivation blocks new reads and mutations.",
             "Membership changes are auditable."
           ],
-          "status": "Backlog",
+          "status": "In Progress",
           "tracker_issue": "GENIE-3",
           "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-3",
           "test_cases": [

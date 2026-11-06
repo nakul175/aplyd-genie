@@ -1,0 +1,23 @@
+{
+  "goal": "Aplyd Genie backlog to zero",
+  "completed_stories": [
+    "GENIE-2"
+  ],
+  "active_story": "GENIE-3",
+  "remaining_stories": 89,
+  "backlog_stories": 88,
+  "branch": "codex/genie-3-membership-management",
+  "local_tests": {
+    "passed": 61,
+    "failed": 0,
+    "skipped": 0
+  },
+  "acceptance": "GENIE-3 cases 2557\u20132559 Not run",
+  "next_work": "Wire admin UI and APIs plus invite-aware OIDC callback; prepare concrete staging role/recipient fixture approval before security grants.",
+  "constraints": [
+    "one story at a time",
+    "no scheduled/recurring work",
+    "do not bypass merge or security approvals",
+    "preserve shared Accounts and unrelated application state"
+  ]
+}
