@@ -1,0 +1,1323 @@
+{
+  "product": "Aplyd Genie",
+  "version": "1.2",
+  "date": "2026-11-06",
+  "note": "Specification IDs are stable local references, not claimed live BTF issue keys. All stories Proposed; tracker_issue null until created.",
+  "epics": [
+    {
+      "id": "PLAT-01",
+      "title": "Identity membership and permissions",
+      "outcome": "Enforce one verified identity and tenant boundary across applications.",
+      "scope": "Shared platform prerequisite",
+      "depends_on": [],
+      "stories": [
+        {
+          "id": "PLAT-101",
+          "priority": "P0",
+          "story": "As a user, I can sign in once and access applications available to my membership.",
+          "acceptance_criteria": [
+            "Session establishes user and active tenant server-side.",
+            "Disabled membership is rejected at the service boundary.",
+            "Signing out removes access to protected Genie views."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-102",
+          "priority": "P0",
+          "story": "As an administrator, I can invite, deactivate and manage workspace members.",
+          "acceptance_criteria": [
+            "Only authorized administrators can change membership.",
+            "Deactivation blocks new reads and mutations.",
+            "Membership changes are auditable."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-103",
+          "priority": "P0",
+          "story": "As an administrator, I can grant roles with explicit resource and action permissions.",
+          "acceptance_criteria": [
+            "Read and mutation permissions are distinct.",
+            "Role changes apply to UI, tools and background execution.",
+            "A user cannot grant a permission they are unauthorized to manage."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-104",
+          "priority": "P0",
+          "story": "As a multi-workspace user, I can explicitly switch my active workspace.",
+          "acceptance_criteria": [
+            "Active workspace is visible.",
+            "Conversations and resource search remain tenant-scoped.",
+            "Pending jobs retain their original tenant context."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-105",
+          "priority": "P0",
+          "story": "As an administrator, I can revoke access before pending actions execute.",
+          "acceptance_criteria": [
+            "Permissions are rechecked at mutation time.",
+            "Revoked actions stop without exposing inaccessible content.",
+            "Denied actions are recorded without sensitive payload leakage."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "PLAT-02",
+      "title": "Shared references activity and notifications",
+      "outcome": "Keep connected work traceable.",
+      "scope": "Shared platform prerequisite",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "PLAT-201",
+          "priority": "P0",
+          "story": "As a user, I can follow a generated task to its source document.",
+          "acceptance_criteria": [
+            "Stable source identifiers are recorded.",
+            "Following the link checks current access.",
+            "Inaccessible source titles are not exposed through backlinks."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-202",
+          "priority": "P0",
+          "story": "As a user, I can distinguish manual changes from Genie actions.",
+          "acceptance_criteria": [
+            "Activity identifies requester and execution source.",
+            "Each automated mutation references its workflow.",
+            "Activity does not imply an unexecuted proposal changed data."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-203",
+          "priority": "P1",
+          "story": "As a user, I can inspect linked tasks, events and documents.",
+          "acceptance_criteria": [
+            "Links are visible only under current authorization.",
+            "Deleted targets have a clear unavailable state.",
+            "Links use stable resource identifiers."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PLAT-204",
+          "priority": "P1",
+          "story": "As a user, I receive useful workflow completion notifications.",
+          "acceptance_criteria": [
+            "Notification reflects actual terminal state.",
+            "Retry does not duplicate the same completion alert.",
+            "Notification preferences are respected."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "PROJ-01",
+      "title": "Project and task fundamentals",
+      "outcome": "Manage work through dependable application services.",
+      "scope": "Existing application prerequisite; integration mapping required",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "PROJ-101",
+          "priority": "P0",
+          "story": "As a member, I can create a project with a name, description and access settings.",
+          "acceptance_criteria": [
+            "Required fields are validated.",
+            "Creation respects workspace permissions.",
+            "Project appears in authorized lists after creation."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-102",
+          "priority": "P0",
+          "story": "As a member, I can create a task with title, description, status, owner and due date.",
+          "acceptance_criteria": [
+            "Owner is an eligible member.",
+            "Date-only deadlines remain distinct from event timestamps.",
+            "UI and tool requests enforce identical field rules."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-103",
+          "priority": "P0",
+          "story": "As a member, I can view tasks in list or board views and filter them.",
+          "acceptance_criteria": [
+            "Filters apply to authorized tasks only.",
+            "Owner, status and due-date filters compose correctly.",
+            "Empty and failed states are distinguishable."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-104",
+          "priority": "P0",
+          "story": "As an owner, I can update and complete a task.",
+          "acceptance_criteria": [
+            "Invalid transitions are rejected.",
+            "Concurrent updates do not silently overwrite newer state.",
+            "Changes retain actor and time."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-105",
+          "priority": "P1",
+          "story": "As a collaborator, I can comment on tasks and review activity.",
+          "acceptance_criteria": [
+            "Only authorized collaborators can comment.",
+            "Activity identifies the actor.",
+            "Comment failures preserve recoverable user input."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-106",
+          "priority": "P2",
+          "story": "As a manager, I can define task dependencies and identify blocked work.",
+          "acceptance_criteria": [
+            "Dependency targets are accessible.",
+            "Self-dependency and forbidden cycles are rejected.",
+            "Blocked status is distinguishable from completion status."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "PROJ-02",
+      "title": "Genie project capabilities",
+      "outcome": "Delegate bounded project operations.",
+      "scope": "Genie connector",
+      "depends_on": [
+        "PROJ-01",
+        "AGENT-02",
+        "AGENT-03"
+      ],
+      "stories": [
+        {
+          "id": "PROJ-201",
+          "priority": "P0",
+          "story": "As a user, I can ask Genie for overdue or upcoming tasks.",
+          "acceptance_criteria": [
+            "Queries use current user timezone and ownership scope.",
+            "Only authorized tasks are returned.",
+            "Results link to supporting task records."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-202",
+          "priority": "P0",
+          "story": "As a user, I can review tasks extracted from notes before creation.",
+          "acceptance_criteria": [
+            "Preview contains exact proposed fields.",
+            "Unresolved owners or projects require clarification.",
+            "Created tasks use stable operation keys."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-203",
+          "priority": "P1",
+          "story": "As a user, I can request a change to a specific task through Genie.",
+          "acceptance_criteria": [
+            "Ambiguous tasks require clarification.",
+            "Preview shows affected fields.",
+            "Execution rechecks current task version and permission."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-204",
+          "priority": "P1",
+          "story": "As a manager, I can obtain a project summary grounded in accessible tasks.",
+          "acceptance_criteria": [
+            "Claims have resource references where applicable.",
+            "Recorded facts are separated from inferred risks.",
+            "Summary states its reporting period."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "PROJ-205",
+          "priority": "P2",
+          "story": "As a manager, I can review updates to several tasks before applying them.",
+          "acceptance_criteria": [
+            "Batch size is bounded.",
+            "Each affected task is included in approval.",
+            "Partial failures identify individual outcomes."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "DOC-01",
+      "title": "Document fundamentals",
+      "outcome": "Create and edit trustworthy source material.",
+      "scope": "Existing application prerequisite; integration mapping required",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "DOC-101",
+          "priority": "P0",
+          "story": "As a user, I can create, edit and save a document.",
+          "acceptance_criteria": [
+            "Save state is visible.",
+            "Failures do not silently discard input.",
+            "Document has a stable identifier and version reference."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-102",
+          "priority": "P0",
+          "story": "As a user, I can share a document at supported access levels.",
+          "acceptance_criteria": [
+            "Only permitted actors change sharing.",
+            "Read and edit permissions differ.",
+            "Revocation is enforced by content APIs."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-103",
+          "priority": "P0",
+          "story": "As a user, I can select text for Genie context.",
+          "acceptance_criteria": [
+            "Selection includes document ID and version.",
+            "Empty selection is explicit.",
+            "Submitted selection does not change after navigation."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-104",
+          "priority": "P1",
+          "story": "As a user, I can inspect and recover earlier document content.",
+          "acceptance_criteria": [
+            "Version access respects current permissions.",
+            "Restore creates an auditable revision.",
+            "User can preview the restore target."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-105",
+          "priority": "P1",
+          "story": "As a collaborator, I can comment on document content.",
+          "acceptance_criteria": [
+            "Comment anchors retain source references.",
+            "Deleted anchors have a visible fallback.",
+            "Comment access follows document permissions."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-106",
+          "priority": "P1",
+          "story": "As a collaborator, I can edit alongside others without losing changes.",
+          "acceptance_criteria": [
+            "Conflict-resolution behavior is defined.",
+            "Disconnect and reconnect preserve reconciled edits.",
+            "Collaboration load is tested separately from ordinary API load."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "DOC-02",
+      "title": "Genie document capabilities",
+      "outcome": "Extract and transform information with explicit source scope.",
+      "scope": "Genie connector",
+      "depends_on": [
+        "DOC-01",
+        "AGENT-02"
+      ],
+      "stories": [
+        {
+          "id": "DOC-201",
+          "priority": "P0",
+          "story": "As a user, I can summarize selected text or a specified document.",
+          "acceptance_criteria": [
+            "Selection takes precedence when intended.",
+            "Summary identifies source scope.",
+            "Oversized input is bounded or asks for narrower scope."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-202",
+          "priority": "P0",
+          "story": "As a user, I can extract decisions and action items from notes.",
+          "acceptance_criteria": [
+            "Decisions and proposals are distinguished.",
+            "Missing owners and dates remain unresolved.",
+            "Source content cannot authorize tools."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-203",
+          "priority": "P1",
+          "story": "As a user, I can review a rewrite before applying it.",
+          "acceptance_criteria": [
+            "Preview shows affected passage.",
+            "No silent overwrite is allowed.",
+            "Changed source version triggers revalidation."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-204",
+          "priority": "P1",
+          "story": "As a user, I can ask document questions and inspect supporting passages.",
+          "acceptance_criteria": [
+            "Answers reference supporting passages.",
+            "Unsupported claims are acknowledged.",
+            "Current source permissions are checked before retrieval."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DOC-205",
+          "priority": "P1",
+          "story": "As a user, I can create a draft from authorized project information.",
+          "acceptance_criteria": [
+            "Only authorized sources contribute.",
+            "Generated draft is editable.",
+            "Creation links relevant sources without leaking inaccessible metadata."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-01",
+      "title": "Calendar fundamentals",
+      "outcome": "Represent schedules and invitations accurately.",
+      "scope": "Existing application prerequisite; integration mapping required",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "CAL-101",
+          "priority": "P1",
+          "story": "As a user, I can view events in my configured timezone.",
+          "acceptance_criteria": [
+            "Stored times are unambiguous.",
+            "Timezone changes preserve event instants.",
+            "All-day events remain date-based."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-102",
+          "priority": "P1",
+          "story": "As a user, I can create, edit and cancel personal events.",
+          "acceptance_criteria": [
+            "Calendar write access is enforced.",
+            "Cancellation state is visible.",
+            "Provider failures are not shown as success."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-103",
+          "priority": "P1",
+          "story": "As a user, I can specify working hours and scheduling preferences.",
+          "acceptance_criteria": [
+            "Timezone is stored with preferences.",
+            "Invalid ranges are rejected.",
+            "Preferences do not imply permission to schedule automatically."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-104",
+          "priority": "P1",
+          "story": "As an organizer, I can invite participants and inspect responses.",
+          "acceptance_criteria": [
+            "Recipients are visible before sending invitations.",
+            "Responses map to the correct event.",
+            "Private blocks are distinguished from invitations."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-105",
+          "priority": "P2",
+          "story": "As a user, I can manage recurring events.",
+          "acceptance_criteria": [
+            "Single occurrence and whole-series edits are distinct.",
+            "Exceptions retain correct dates.",
+            "Series changes require an explicit scope choice."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "CAL-02",
+      "title": "Genie scheduling",
+      "outcome": "Coordinate approved schedules.",
+      "scope": "Genie connector",
+      "depends_on": [
+        "CAL-01",
+        "AGENT-03"
+      ],
+      "stories": [
+        {
+          "id": "CAL-201",
+          "priority": "P1",
+          "story": "As a user, I can ask for available slots in a date range.",
+          "acceptance_criteria": [
+            "Date range resolves in user timezone.",
+            "Missing duration triggers clarification.",
+            "Unknown participant availability is explicit."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-202",
+          "priority": "P1",
+          "story": "As a user, I can approve a focus block linked to a task.",
+          "acceptance_criteria": [
+            "Preview shows exact start, end and calendar.",
+            "Availability is rechecked before creation.",
+            "Task deadlines do not automatically authorize blocks."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-203",
+          "priority": "P1",
+          "story": "As an organizer, I can approve an event and attendee list before invitations.",
+          "acceptance_criteria": [
+            "Approval includes recipients and event details.",
+            "Material attendee edits invalidate approval.",
+            "Unauthorized calendars cannot be selected."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CAL-204",
+          "priority": "P2",
+          "story": "As a user, I can request a rescheduling proposal.",
+          "acceptance_criteria": [
+            "Original event is identified unambiguously.",
+            "Conflicts are shown before mutation.",
+            "Only the approved occurrence or series is changed."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "MAIL-01",
+      "title": "Connected mailbox fundamentals",
+      "outcome": "Operate connected mailboxes with explicit boundaries.",
+      "scope": "Existing application prerequisite; mailbox hosting excluded",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "MAIL-101",
+          "priority": "P1",
+          "story": "As a user, I can connect and disconnect a supported mailbox.",
+          "acceptance_criteria": [
+            "Provider permissions are explicit.",
+            "Tokens remain server-side.",
+            "Disconnect prevents new access and applies retention policy."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-102",
+          "priority": "P1",
+          "story": "As a user, I can view synchronized messages and threads.",
+          "acceptance_criteria": [
+            "Only permitted mailbox content appears.",
+            "Sync freshness is visible.",
+            "Provider errors have recoverable states."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-103",
+          "priority": "P1",
+          "story": "As a user, I can compose and save drafts.",
+          "acceptance_criteria": [
+            "Drafts remain editable.",
+            "Save failures preserve recoverable input.",
+            "Retries do not create duplicate drafts."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-104",
+          "priority": "P1",
+          "story": "As a user, I can review and manually send email.",
+          "acceptance_criteria": [
+            "Recipients and content are visible.",
+            "Sending differs from saving a draft.",
+            "Uncertain provider outcomes are reconciled before retry."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-105",
+          "priority": "P1",
+          "story": "As a user, I can recover synchronization failures.",
+          "acceptance_criteria": [
+            "Reconnect preserves existing resource identity.",
+            "Revoked provider permission is reported accurately.",
+            "Recovery does not request unnecessary broader scopes."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "MAIL-02",
+      "title": "Genie email assistance",
+      "outcome": "Connect correspondence to drafts and tracked work.",
+      "scope": "Genie connector",
+      "depends_on": [
+        "MAIL-01",
+        "AGENT-02"
+      ],
+      "stories": [
+        {
+          "id": "MAIL-201",
+          "priority": "P1",
+          "story": "As a user, I can summarize a selected thread.",
+          "acceptance_criteria": [
+            "Only the authorized selected thread is read.",
+            "Commitments and suggestions are distinguished.",
+            "Summary references its source."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-202",
+          "priority": "P1",
+          "story": "As a user, I can draft a reply using authorized project context.",
+          "acceptance_criteria": [
+            "Recipients come from verified data or user input.",
+            "Draft remains editable.",
+            "No agent send tool is available initially."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-203",
+          "priority": "P1",
+          "story": "As a user, I can propose tasks from an email commitment.",
+          "acceptance_criteria": [
+            "Destination project is verified.",
+            "Preview retains source reference.",
+            "Creation requires approval and duplicate protection."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "MAIL-204",
+          "priority": "P1",
+          "story": "As a user, I can review a project update draft before manually sending.",
+          "acceptance_criteria": [
+            "Reporting period is explicit.",
+            "Workspace claims are grounded in accessible records.",
+            "Draft creation never implies sending."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "AGENT-01",
+      "title": "Persistent Genie conversation",
+      "outcome": "Maintain useful continuity across apps.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "AGENT-101",
+          "priority": "P0",
+          "story": "As a user, I can open Genie from any supported application.",
+          "acceptance_criteria": [
+            "Entry point is consistently available.",
+            "Keyboard navigation is supported.",
+            "Inference failure does not hide manual app controls."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-102",
+          "priority": "P0",
+          "story": "As a user, I can see the resource Genie will use.",
+          "acceptance_criteria": [
+            "Source app and resource are displayed.",
+            "User can correct context before submitting.",
+            "Inaccessible metadata is omitted."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-103",
+          "priority": "P0",
+          "story": "As a user, I can continue a conversation after changing apps.",
+          "acceptance_criteria": [
+            "History persists within its authorized scope.",
+            "Submitted jobs keep captured context.",
+            "New requests clearly show their new context."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-104",
+          "priority": "P1",
+          "story": "As a user, I can inspect, change and delete saved preferences.",
+          "acceptance_criteria": [
+            "Preferences differ from approval records.",
+            "Changes affect subsequent requests.",
+            "Deletion propagates to applicable derived memory."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "AGENT-02",
+      "title": "Bounded workflow routing",
+      "outcome": "Map natural language to registered capabilities.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "CTX-01"
+      ],
+      "stories": [
+        {
+          "id": "AGENT-201",
+          "priority": "P0",
+          "story": "As a user, I can express a supported outcome naturally.",
+          "acceptance_criteria": [
+            "Routing selects a registered workflow or clarification.",
+            "Equivalent phrases map to the same contract.",
+            "Unsupported actions do not fabricate tools."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-202",
+          "priority": "P0",
+          "story": "As a user, I receive focused clarification for missing inputs.",
+          "acceptance_criteria": [
+            "Only unresolved required fields are requested.",
+            "Ambiguous people and projects are not guessed.",
+            "Answers update the pending plan without mutations."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-203",
+          "priority": "P0",
+          "story": "As an operator, I can restrict each workflow's tools and limits.",
+          "acceptance_criteria": [
+            "Only relevant tool schemas enter the prompt.",
+            "Input and output pass schema validation.",
+            "Context, model calls, action count and runtime have bounds."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-204",
+          "priority": "P0",
+          "story": "As a user, I receive a clear unsupported-action response.",
+          "acceptance_criteria": [
+            "No unauthorized side effects occur.",
+            "Response explains the supported alternative where available.",
+            "Unsupported requests do not enter unbounded planning loops."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "AGENT-03",
+      "title": "Approval and execution",
+      "outcome": "Make consequential changes explicit and recoverable.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "AGENT-02",
+        "OPS-01"
+      ],
+      "stories": [
+        {
+          "id": "AGENT-301",
+          "priority": "P0",
+          "story": "As a user, I can review exact proposed changes.",
+          "acceptance_criteria": [
+            "Preview shows target resources and field values.",
+            "External consequences are explicit.",
+            "Approval binds to a plan version."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-302",
+          "priority": "P0",
+          "story": "As a user, I can edit or reject a proposal.",
+          "acceptance_criteria": [
+            "Rejected plans do not execute.",
+            "Material edits invalidate previous approval.",
+            "A new preview reflects accepted edits."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-303",
+          "priority": "P0",
+          "story": "As a user, I can see individual action results.",
+          "acceptance_criteria": [
+            "Success requires an execution receipt.",
+            "Partial completion identifies successful and failed steps.",
+            "Results link only to accessible resources."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-304",
+          "priority": "P0",
+          "story": "As a user, I can retry failed steps safely.",
+          "acceptance_criteria": [
+            "Successful actions are not repeated.",
+            "Unknown outcomes are reconciled first.",
+            "Retry respects current permission and expiry."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "AGENT-305",
+          "priority": "P1",
+          "story": "As a user, I can cancel pending actions.",
+          "acceptance_criteria": [
+            "Pending steps stop where cancellable.",
+            "Completed changes remain visible.",
+            "Cancellation does not promise unsupported rollback."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "CTX-01",
+      "title": "Context selection",
+      "outcome": "Supply authoritative and bounded request context.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "CTX-101",
+          "priority": "P0",
+          "story": "As a user, I want relevant selected content used directly.",
+          "acceptance_criteria": [
+            "Known source is fetched without unnecessary semantic search.",
+            "Selection scope is preserved.",
+            "Source version accompanies the content."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-102",
+          "priority": "P0",
+          "story": "As an operator, I want structured facts fetched from application services.",
+          "acceptance_criteria": [
+            "Permissions and current state come from authoritative services.",
+            "Model output cannot replace access checks.",
+            "Queries request necessary fields only."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-103",
+          "priority": "P0",
+          "story": "As an operator, I can bound prompt context.",
+          "acceptance_criteria": [
+            "History and source content have budgets.",
+            "Omission does not silently claim full-source analysis.",
+            "Large inputs trigger supported narrowing or explicit processing policy."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-104",
+          "priority": "P0",
+          "story": "As a user, I want stale plans detected before execution.",
+          "acceptance_criteria": [
+            "Relevant source versions are compared.",
+            "Conflicts produce refresh or clarification.",
+            "A refresh requiring material changes renews approval."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "CTX-02",
+      "title": "Search retrieval and memory",
+      "outcome": "Find authorized knowledge without expanding every prompt.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "CTX-01"
+      ],
+      "stories": [
+        {
+          "id": "CTX-201",
+          "priority": "P1",
+          "story": "As a user, I can find resources by names and keywords.",
+          "acceptance_criteria": [
+            "Search respects tenant and resource access.",
+            "Exact references remain usable.",
+            "Empty results differ from service failure."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-202",
+          "priority": "P1",
+          "story": "As a user, I can find relevant passages with different wording.",
+          "acceptance_criteria": [
+            "Semantic retrieval is evaluated against representative queries.",
+            "Returned context is bounded.",
+            "Permissions are enforced before content reaches the model."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-203",
+          "priority": "P1",
+          "story": "As a user, I can inspect sources supporting an answer.",
+          "acceptance_criteria": [
+            "Passages retain resource and version references.",
+            "Unavailable evidence is not invented.",
+            "Source links check current access."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "CTX-204",
+          "priority": "P1",
+          "story": "As an administrator, I can remove deleted or restricted content from retrieval.",
+          "acceptance_criteria": [
+            "Deletion covers chunks and applicable derived summaries.",
+            "Permission revocation prevents access despite index lag.",
+            "Index freshness and purge failures are observable."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "OPS-01",
+      "title": "Durable workflow jobs",
+      "outcome": "Keep accepted work safe across failures.",
+      "scope": "Genie operations",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "OPS-101",
+          "priority": "P0",
+          "story": "As a user, my accepted request survives disconnect.",
+          "acceptance_criteria": [
+            "Job is persisted before acceptance.",
+            "Job status can be reopened.",
+            "Repeated submission identity does not duplicate mutations."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-102",
+          "priority": "P0",
+          "story": "As an operator, workers reconcile interrupted jobs.",
+          "acceptance_criteria": [
+            "Restart tests recover accepted work.",
+            "In-flight actions are reconciled before retry.",
+            "No inference wait holds a database transaction open."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-103",
+          "priority": "P0",
+          "story": "As a user, I can distinguish progress and terminal outcomes.",
+          "acceptance_criteria": [
+            "Queued, planning, approval, execution and terminal states differ.",
+            "Partial results survive refresh.",
+            "UI never equates generated text with completed action."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-104",
+          "priority": "P0",
+          "story": "As an operator, I can bound retries and expiry.",
+          "acceptance_criteria": [
+            "Transient and permanent errors differ.",
+            "Attempt limits and deadlines are enforced.",
+            "Expired actions cannot execute unnoticed."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "OPS-02",
+      "title": "Budget capacity and reporting",
+      "outcome": "Control workload and operating exposure.",
+      "scope": "Genie operations",
+      "depends_on": [
+        "OPS-01"
+      ],
+      "stories": [
+        {
+          "id": "OPS-201",
+          "priority": "P0",
+          "story": "As an operator, I can enforce tenant and global quotas.",
+          "acceptance_criteria": [
+            "Limits apply before inference.",
+            "One tenant cannot consume the entire queue.",
+            "Quota errors explain when retry is useful."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-202",
+          "priority": "P0",
+          "story": "As an operator, I reserve estimated cost before inference.",
+          "acceptance_criteria": [
+            "Reservations include in-flight work.",
+            "Usage reconciliation adjusts reservations.",
+            "Safety headroom accounts for estimation error."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-203",
+          "priority": "P1",
+          "story": "As an administrator, I can inspect workflow usage and cost.",
+          "acceptance_criteria": [
+            "Estimated and reconciled figures are distinguished.",
+            "Failed and retried usage is included.",
+            "Access to tenant reports is restricted."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-204",
+          "priority": "P0",
+          "story": "As a user, I receive a clear capacity response.",
+          "acceptance_criteria": [
+            "Queue depth and request expiry are bounded.",
+            "Overload does not create unlimited jobs.",
+            "Provider unavailability is not presented as a user error."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-205",
+          "priority": "P0",
+          "story": "As a user, I can keep using apps during AI downtime.",
+          "acceptance_criteria": [
+            "Manual CRUD does not depend on inference.",
+            "Inference kill switch prevents new paid work.",
+            "Pending workflow status remains readable."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "OPS-03",
+      "title": "Quality security and release evaluation",
+      "outcome": "Release evidence-backed changes.",
+      "scope": "Genie operations",
+      "depends_on": [
+        "OPS-01",
+        "AGENT-03"
+      ],
+      "stories": [
+        {
+          "id": "OPS-301",
+          "priority": "P0",
+          "story": "As an engineer, I evaluate representative workflows before release.",
+          "acceptance_criteria": [
+            "Dataset covers successful, ambiguous and unsupported requests.",
+            "Correctness and latency results are recorded.",
+            "A model or prompt change reruns affected evaluations."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-302",
+          "priority": "P0",
+          "story": "As an engineer, I test malicious document and email instructions.",
+          "acceptance_criteria": [
+            "Source text cannot expand tool access.",
+            "Cross-tenant negative tests prevent disclosure.",
+            "External communication approval cannot be bypassed."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-303",
+          "priority": "P0",
+          "story": "As an operator, I investigate failures through redacted traces.",
+          "acceptance_criteria": [
+            "Secrets and unnecessary content are excluded.",
+            "Traces connect workflow and tool attempts.",
+            "Audit access and retention are explicit."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "OPS-304",
+          "priority": "P1",
+          "story": "As an engineer, I compare model choices by useful outcomes.",
+          "acceptance_criteria": [
+            "Compare cost per successful workflow.",
+            "Use the same workload for comparisons.",
+            "GPU allocation and startup costs are included."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "SEC-01",
+      "title": "Security audit and retention",
+      "outcome": "Preserve trust across all connectors.",
+      "scope": "Genie platform",
+      "depends_on": [
+        "PLAT-01"
+      ],
+      "stories": [
+        {
+          "id": "SEC-101",
+          "priority": "P0",
+          "story": "As an administrator, I can audit automated mutations.",
+          "acceptance_criteria": [
+            "Record includes requester, tenant, approval, tool and result.",
+            "Unexecuted proposals remain distinguishable.",
+            "Sensitive trace access is restricted."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "SEC-102",
+          "priority": "P0",
+          "story": "As an operator, I can rotate webhook secrets without exposing them.",
+          "acceptance_criteria": [
+            "Credentials remain server-side.",
+            "Logs omit authorization values.",
+            "Invalid credentials are rejected before expensive inference."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "SEC-103",
+          "priority": "P1",
+          "story": "As an administrator, I can apply retention and deletion policies.",
+          "acceptance_criteria": [
+            "Policy covers conversations, sources, derived content and audit exceptions.",
+            "Deletion state is observable.",
+            "Backups follow documented retention boundaries."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "DELEG-01",
+      "title": "Bounded delegation",
+      "outcome": "Reduce approvals only under explicit policies.",
+      "scope": "Later Genie scope",
+      "depends_on": [
+        "AGENT-03",
+        "SEC-01"
+      ],
+      "stories": [
+        {
+          "id": "DELEG-101",
+          "priority": "P2",
+          "story": "As an administrator, I can define permitted delegated actions.",
+          "acceptance_criteria": [
+            "Policy specifies resources, tools, limits and expiry.",
+            "Policy cannot exceed actor permissions.",
+            "External sends and destructive actions remain separately governed."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "DELEG-102",
+          "priority": "P2",
+          "story": "As a user, I can inspect and revoke my delegation policies.",
+          "acceptance_criteria": [
+            "Active scopes are visible.",
+            "Revocation affects pending execution.",
+            "Changes are audited."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    },
+    {
+      "id": "EXT-01",
+      "title": "Additional application onboarding",
+      "outcome": "Extend Genie through verified contracts.",
+      "scope": "Four application identities pending",
+      "depends_on": [],
+      "stories": [
+        {
+          "id": "EXT-101",
+          "priority": "P2",
+          "story": "As a product owner, I can register each remaining application's scope.",
+          "acceptance_criteria": [
+            "Name, users and entities are specified.",
+            "Manual prerequisites and agent capabilities are separate.",
+            "No capabilities are invented for unspecified apps."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        },
+        {
+          "id": "EXT-102",
+          "priority": "P2",
+          "story": "As an engineer, I can implement a connector against its approved contract.",
+          "acceptance_criteria": [
+            "Tools define schemas, ACLs, limits, approval and recovery.",
+            "Context identifies resource and version.",
+            "Connector passes isolation and duplicate tests."
+          ],
+          "status": "Proposed",
+          "tracker_issue": null
+        }
+      ]
+    }
+  ]
+}

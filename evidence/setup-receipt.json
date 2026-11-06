@@ -1,0 +1,36 @@
+{
+  "product": "Aplyd Genie",
+  "date": "2026-11-06",
+  "repository": "https://github.com/nakul175/aplyd-genie",
+  "repository_visibility": "private",
+  "btf_project": "https://backlogtothefuture.aplyd.org/aplyd/GENIE",
+  "btf_document": "https://backlogtothefuture.aplyd.org/aplyd/GENIE/docs/225",
+  "bugoff_project": "https://bugoff.aplyd.org/en-US/projects/overview/7",
+  "bugoff_documentation": "https://bugoff.aplyd.org/en-US/projects/documentation/7",
+  "dns": {
+    "authority": "ns51.domaincontrol.com",
+    "records": [
+      {
+        "name": "genie.aplyd.org",
+        "type": "A",
+        "value": "168.144.144.69",
+        "ttl": 600
+      },
+      {
+        "name": "staging.ginie.aplyd.org",
+        "type": "A",
+        "value": "168.144.144.69",
+        "ttl": 600
+      }
+    ]
+  },
+  "documented_backlog": {
+    "epics": 21,
+    "stories": 90,
+    "acceptance_criteria": 270,
+    "workflows": 6
+  },
+  "individual_tracker_items_created": false,
+  "application_deployed": false,
+  "schedules_changed": false
+}

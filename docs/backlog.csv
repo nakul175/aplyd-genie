@@ -1,0 +1,271 @@
+Product,Epic,Epic title,Story ID,Priority,Story,Acceptance criteria,Scope,Status
+Aplyd Genie,PLAT-01,Identity membership and permissions,PLAT-101,P0,"As a user, I can sign in once and access applications available to my membership.","Session establishes user and active tenant server-side.
+Disabled membership is rejected at the service boundary.
+Signing out removes access to protected Genie views.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-01,Identity membership and permissions,PLAT-102,P0,"As an administrator, I can invite, deactivate and manage workspace members.","Only authorized administrators can change membership.
+Deactivation blocks new reads and mutations.
+Membership changes are auditable.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-01,Identity membership and permissions,PLAT-103,P0,"As an administrator, I can grant roles with explicit resource and action permissions.","Read and mutation permissions are distinct.
+Role changes apply to UI, tools and background execution.
+A user cannot grant a permission they are unauthorized to manage.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-01,Identity membership and permissions,PLAT-104,P0,"As a multi-workspace user, I can explicitly switch my active workspace.","Active workspace is visible.
+Conversations and resource search remain tenant-scoped.
+Pending jobs retain their original tenant context.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-01,Identity membership and permissions,PLAT-105,P0,"As an administrator, I can revoke access before pending actions execute.","Permissions are rechecked at mutation time.
+Revoked actions stop without exposing inaccessible content.
+Denied actions are recorded without sensitive payload leakage.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-02,Shared references activity and notifications,PLAT-201,P0,"As a user, I can follow a generated task to its source document.","Stable source identifiers are recorded.
+Following the link checks current access.
+Inaccessible source titles are not exposed through backlinks.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-02,Shared references activity and notifications,PLAT-202,P0,"As a user, I can distinguish manual changes from Genie actions.","Activity identifies requester and execution source.
+Each automated mutation references its workflow.
+Activity does not imply an unexecuted proposal changed data.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-02,Shared references activity and notifications,PLAT-203,P1,"As a user, I can inspect linked tasks, events and documents.","Links are visible only under current authorization.
+Deleted targets have a clear unavailable state.
+Links use stable resource identifiers.",Shared platform prerequisite,Proposed
+Aplyd Genie,PLAT-02,Shared references activity and notifications,PLAT-204,P1,"As a user, I receive useful workflow completion notifications.","Notification reflects actual terminal state.
+Retry does not duplicate the same completion alert.
+Notification preferences are respected.",Shared platform prerequisite,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-101,P0,"As a member, I can create a project with a name, description and access settings.","Required fields are validated.
+Creation respects workspace permissions.
+Project appears in authorized lists after creation.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-102,P0,"As a member, I can create a task with title, description, status, owner and due date.","Owner is an eligible member.
+Date-only deadlines remain distinct from event timestamps.
+UI and tool requests enforce identical field rules.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-103,P0,"As a member, I can view tasks in list or board views and filter them.","Filters apply to authorized tasks only.
+Owner, status and due-date filters compose correctly.
+Empty and failed states are distinguishable.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-104,P0,"As an owner, I can update and complete a task.","Invalid transitions are rejected.
+Concurrent updates do not silently overwrite newer state.
+Changes retain actor and time.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-105,P1,"As a collaborator, I can comment on tasks and review activity.","Only authorized collaborators can comment.
+Activity identifies the actor.
+Comment failures preserve recoverable user input.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-01,Project and task fundamentals,PROJ-106,P2,"As a manager, I can define task dependencies and identify blocked work.","Dependency targets are accessible.
+Self-dependency and forbidden cycles are rejected.
+Blocked status is distinguishable from completion status.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,PROJ-02,Genie project capabilities,PROJ-201,P0,"As a user, I can ask Genie for overdue or upcoming tasks.","Queries use current user timezone and ownership scope.
+Only authorized tasks are returned.
+Results link to supporting task records.",Genie connector,Proposed
+Aplyd Genie,PROJ-02,Genie project capabilities,PROJ-202,P0,"As a user, I can review tasks extracted from notes before creation.","Preview contains exact proposed fields.
+Unresolved owners or projects require clarification.
+Created tasks use stable operation keys.",Genie connector,Proposed
+Aplyd Genie,PROJ-02,Genie project capabilities,PROJ-203,P1,"As a user, I can request a change to a specific task through Genie.","Ambiguous tasks require clarification.
+Preview shows affected fields.
+Execution rechecks current task version and permission.",Genie connector,Proposed
+Aplyd Genie,PROJ-02,Genie project capabilities,PROJ-204,P1,"As a manager, I can obtain a project summary grounded in accessible tasks.","Claims have resource references where applicable.
+Recorded facts are separated from inferred risks.
+Summary states its reporting period.",Genie connector,Proposed
+Aplyd Genie,PROJ-02,Genie project capabilities,PROJ-205,P2,"As a manager, I can review updates to several tasks before applying them.","Batch size is bounded.
+Each affected task is included in approval.
+Partial failures identify individual outcomes.",Genie connector,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-101,P0,"As a user, I can create, edit and save a document.","Save state is visible.
+Failures do not silently discard input.
+Document has a stable identifier and version reference.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-102,P0,"As a user, I can share a document at supported access levels.","Only permitted actors change sharing.
+Read and edit permissions differ.
+Revocation is enforced by content APIs.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-103,P0,"As a user, I can select text for Genie context.","Selection includes document ID and version.
+Empty selection is explicit.
+Submitted selection does not change after navigation.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-104,P1,"As a user, I can inspect and recover earlier document content.","Version access respects current permissions.
+Restore creates an auditable revision.
+User can preview the restore target.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-105,P1,"As a collaborator, I can comment on document content.","Comment anchors retain source references.
+Deleted anchors have a visible fallback.
+Comment access follows document permissions.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-01,Document fundamentals,DOC-106,P1,"As a collaborator, I can edit alongside others without losing changes.","Conflict-resolution behavior is defined.
+Disconnect and reconnect preserve reconciled edits.
+Collaboration load is tested separately from ordinary API load.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,DOC-02,Genie document capabilities,DOC-201,P0,"As a user, I can summarize selected text or a specified document.","Selection takes precedence when intended.
+Summary identifies source scope.
+Oversized input is bounded or asks for narrower scope.",Genie connector,Proposed
+Aplyd Genie,DOC-02,Genie document capabilities,DOC-202,P0,"As a user, I can extract decisions and action items from notes.","Decisions and proposals are distinguished.
+Missing owners and dates remain unresolved.
+Source content cannot authorize tools.",Genie connector,Proposed
+Aplyd Genie,DOC-02,Genie document capabilities,DOC-203,P1,"As a user, I can review a rewrite before applying it.","Preview shows affected passage.
+No silent overwrite is allowed.
+Changed source version triggers revalidation.",Genie connector,Proposed
+Aplyd Genie,DOC-02,Genie document capabilities,DOC-204,P1,"As a user, I can ask document questions and inspect supporting passages.","Answers reference supporting passages.
+Unsupported claims are acknowledged.
+Current source permissions are checked before retrieval.",Genie connector,Proposed
+Aplyd Genie,DOC-02,Genie document capabilities,DOC-205,P1,"As a user, I can create a draft from authorized project information.","Only authorized sources contribute.
+Generated draft is editable.
+Creation links relevant sources without leaking inaccessible metadata.",Genie connector,Proposed
+Aplyd Genie,CAL-01,Calendar fundamentals,CAL-101,P1,"As a user, I can view events in my configured timezone.","Stored times are unambiguous.
+Timezone changes preserve event instants.
+All-day events remain date-based.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,CAL-01,Calendar fundamentals,CAL-102,P1,"As a user, I can create, edit and cancel personal events.","Calendar write access is enforced.
+Cancellation state is visible.
+Provider failures are not shown as success.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,CAL-01,Calendar fundamentals,CAL-103,P1,"As a user, I can specify working hours and scheduling preferences.","Timezone is stored with preferences.
+Invalid ranges are rejected.
+Preferences do not imply permission to schedule automatically.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,CAL-01,Calendar fundamentals,CAL-104,P1,"As an organizer, I can invite participants and inspect responses.","Recipients are visible before sending invitations.
+Responses map to the correct event.
+Private blocks are distinguished from invitations.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,CAL-01,Calendar fundamentals,CAL-105,P2,"As a user, I can manage recurring events.","Single occurrence and whole-series edits are distinct.
+Exceptions retain correct dates.
+Series changes require an explicit scope choice.",Existing application prerequisite; integration mapping required,Proposed
+Aplyd Genie,CAL-02,Genie scheduling,CAL-201,P1,"As a user, I can ask for available slots in a date range.","Date range resolves in user timezone.
+Missing duration triggers clarification.
+Unknown participant availability is explicit.",Genie connector,Proposed
+Aplyd Genie,CAL-02,Genie scheduling,CAL-202,P1,"As a user, I can approve a focus block linked to a task.","Preview shows exact start, end and calendar.
+Availability is rechecked before creation.
+Task deadlines do not automatically authorize blocks.",Genie connector,Proposed
+Aplyd Genie,CAL-02,Genie scheduling,CAL-203,P1,"As an organizer, I can approve an event and attendee list before invitations.","Approval includes recipients and event details.
+Material attendee edits invalidate approval.
+Unauthorized calendars cannot be selected.",Genie connector,Proposed
+Aplyd Genie,CAL-02,Genie scheduling,CAL-204,P2,"As a user, I can request a rescheduling proposal.","Original event is identified unambiguously.
+Conflicts are shown before mutation.
+Only the approved occurrence or series is changed.",Genie connector,Proposed
+Aplyd Genie,MAIL-01,Connected mailbox fundamentals,MAIL-101,P1,"As a user, I can connect and disconnect a supported mailbox.","Provider permissions are explicit.
+Tokens remain server-side.
+Disconnect prevents new access and applies retention policy.",Existing application prerequisite; mailbox hosting excluded,Proposed
+Aplyd Genie,MAIL-01,Connected mailbox fundamentals,MAIL-102,P1,"As a user, I can view synchronized messages and threads.","Only permitted mailbox content appears.
+Sync freshness is visible.
+Provider errors have recoverable states.",Existing application prerequisite; mailbox hosting excluded,Proposed
+Aplyd Genie,MAIL-01,Connected mailbox fundamentals,MAIL-103,P1,"As a user, I can compose and save drafts.","Drafts remain editable.
+Save failures preserve recoverable input.
+Retries do not create duplicate drafts.",Existing application prerequisite; mailbox hosting excluded,Proposed
+Aplyd Genie,MAIL-01,Connected mailbox fundamentals,MAIL-104,P1,"As a user, I can review and manually send email.","Recipients and content are visible.
+Sending differs from saving a draft.
+Uncertain provider outcomes are reconciled before retry.",Existing application prerequisite; mailbox hosting excluded,Proposed
+Aplyd Genie,MAIL-01,Connected mailbox fundamentals,MAIL-105,P1,"As a user, I can recover synchronization failures.","Reconnect preserves existing resource identity.
+Revoked provider permission is reported accurately.
+Recovery does not request unnecessary broader scopes.",Existing application prerequisite; mailbox hosting excluded,Proposed
+Aplyd Genie,MAIL-02,Genie email assistance,MAIL-201,P1,"As a user, I can summarize a selected thread.","Only the authorized selected thread is read.
+Commitments and suggestions are distinguished.
+Summary references its source.",Genie connector,Proposed
+Aplyd Genie,MAIL-02,Genie email assistance,MAIL-202,P1,"As a user, I can draft a reply using authorized project context.","Recipients come from verified data or user input.
+Draft remains editable.
+No agent send tool is available initially.",Genie connector,Proposed
+Aplyd Genie,MAIL-02,Genie email assistance,MAIL-203,P1,"As a user, I can propose tasks from an email commitment.","Destination project is verified.
+Preview retains source reference.
+Creation requires approval and duplicate protection.",Genie connector,Proposed
+Aplyd Genie,MAIL-02,Genie email assistance,MAIL-204,P1,"As a user, I can review a project update draft before manually sending.","Reporting period is explicit.
+Workspace claims are grounded in accessible records.
+Draft creation never implies sending.",Genie connector,Proposed
+Aplyd Genie,AGENT-01,Persistent Genie conversation,AGENT-101,P0,"As a user, I can open Genie from any supported application.","Entry point is consistently available.
+Keyboard navigation is supported.
+Inference failure does not hide manual app controls.",Genie platform,Proposed
+Aplyd Genie,AGENT-01,Persistent Genie conversation,AGENT-102,P0,"As a user, I can see the resource Genie will use.","Source app and resource are displayed.
+User can correct context before submitting.
+Inaccessible metadata is omitted.",Genie platform,Proposed
+Aplyd Genie,AGENT-01,Persistent Genie conversation,AGENT-103,P0,"As a user, I can continue a conversation after changing apps.","History persists within its authorized scope.
+Submitted jobs keep captured context.
+New requests clearly show their new context.",Genie platform,Proposed
+Aplyd Genie,AGENT-01,Persistent Genie conversation,AGENT-104,P1,"As a user, I can inspect, change and delete saved preferences.","Preferences differ from approval records.
+Changes affect subsequent requests.
+Deletion propagates to applicable derived memory.",Genie platform,Proposed
+Aplyd Genie,AGENT-02,Bounded workflow routing,AGENT-201,P0,"As a user, I can express a supported outcome naturally.","Routing selects a registered workflow or clarification.
+Equivalent phrases map to the same contract.
+Unsupported actions do not fabricate tools.",Genie platform,Proposed
+Aplyd Genie,AGENT-02,Bounded workflow routing,AGENT-202,P0,"As a user, I receive focused clarification for missing inputs.","Only unresolved required fields are requested.
+Ambiguous people and projects are not guessed.
+Answers update the pending plan without mutations.",Genie platform,Proposed
+Aplyd Genie,AGENT-02,Bounded workflow routing,AGENT-203,P0,"As an operator, I can restrict each workflow's tools and limits.","Only relevant tool schemas enter the prompt.
+Input and output pass schema validation.
+Context, model calls, action count and runtime have bounds.",Genie platform,Proposed
+Aplyd Genie,AGENT-02,Bounded workflow routing,AGENT-204,P0,"As a user, I receive a clear unsupported-action response.","No unauthorized side effects occur.
+Response explains the supported alternative where available.
+Unsupported requests do not enter unbounded planning loops.",Genie platform,Proposed
+Aplyd Genie,AGENT-03,Approval and execution,AGENT-301,P0,"As a user, I can review exact proposed changes.","Preview shows target resources and field values.
+External consequences are explicit.
+Approval binds to a plan version.",Genie platform,Proposed
+Aplyd Genie,AGENT-03,Approval and execution,AGENT-302,P0,"As a user, I can edit or reject a proposal.","Rejected plans do not execute.
+Material edits invalidate previous approval.
+A new preview reflects accepted edits.",Genie platform,Proposed
+Aplyd Genie,AGENT-03,Approval and execution,AGENT-303,P0,"As a user, I can see individual action results.","Success requires an execution receipt.
+Partial completion identifies successful and failed steps.
+Results link only to accessible resources.",Genie platform,Proposed
+Aplyd Genie,AGENT-03,Approval and execution,AGENT-304,P0,"As a user, I can retry failed steps safely.","Successful actions are not repeated.
+Unknown outcomes are reconciled first.
+Retry respects current permission and expiry.",Genie platform,Proposed
+Aplyd Genie,AGENT-03,Approval and execution,AGENT-305,P1,"As a user, I can cancel pending actions.","Pending steps stop where cancellable.
+Completed changes remain visible.
+Cancellation does not promise unsupported rollback.",Genie platform,Proposed
+Aplyd Genie,CTX-01,Context selection,CTX-101,P0,"As a user, I want relevant selected content used directly.","Known source is fetched without unnecessary semantic search.
+Selection scope is preserved.
+Source version accompanies the content.",Genie platform,Proposed
+Aplyd Genie,CTX-01,Context selection,CTX-102,P0,"As an operator, I want structured facts fetched from application services.","Permissions and current state come from authoritative services.
+Model output cannot replace access checks.
+Queries request necessary fields only.",Genie platform,Proposed
+Aplyd Genie,CTX-01,Context selection,CTX-103,P0,"As an operator, I can bound prompt context.","History and source content have budgets.
+Omission does not silently claim full-source analysis.
+Large inputs trigger supported narrowing or explicit processing policy.",Genie platform,Proposed
+Aplyd Genie,CTX-01,Context selection,CTX-104,P0,"As a user, I want stale plans detected before execution.","Relevant source versions are compared.
+Conflicts produce refresh or clarification.
+A refresh requiring material changes renews approval.",Genie platform,Proposed
+Aplyd Genie,CTX-02,Search retrieval and memory,CTX-201,P1,"As a user, I can find resources by names and keywords.","Search respects tenant and resource access.
+Exact references remain usable.
+Empty results differ from service failure.",Genie platform,Proposed
+Aplyd Genie,CTX-02,Search retrieval and memory,CTX-202,P1,"As a user, I can find relevant passages with different wording.","Semantic retrieval is evaluated against representative queries.
+Returned context is bounded.
+Permissions are enforced before content reaches the model.",Genie platform,Proposed
+Aplyd Genie,CTX-02,Search retrieval and memory,CTX-203,P1,"As a user, I can inspect sources supporting an answer.","Passages retain resource and version references.
+Unavailable evidence is not invented.
+Source links check current access.",Genie platform,Proposed
+Aplyd Genie,CTX-02,Search retrieval and memory,CTX-204,P1,"As an administrator, I can remove deleted or restricted content from retrieval.","Deletion covers chunks and applicable derived summaries.
+Permission revocation prevents access despite index lag.
+Index freshness and purge failures are observable.",Genie platform,Proposed
+Aplyd Genie,OPS-01,Durable workflow jobs,OPS-101,P0,"As a user, my accepted request survives disconnect.","Job is persisted before acceptance.
+Job status can be reopened.
+Repeated submission identity does not duplicate mutations.",Genie operations,Proposed
+Aplyd Genie,OPS-01,Durable workflow jobs,OPS-102,P0,"As an operator, workers reconcile interrupted jobs.","Restart tests recover accepted work.
+In-flight actions are reconciled before retry.
+No inference wait holds a database transaction open.",Genie operations,Proposed
+Aplyd Genie,OPS-01,Durable workflow jobs,OPS-103,P0,"As a user, I can distinguish progress and terminal outcomes.","Queued, planning, approval, execution and terminal states differ.
+Partial results survive refresh.
+UI never equates generated text with completed action.",Genie operations,Proposed
+Aplyd Genie,OPS-01,Durable workflow jobs,OPS-104,P0,"As an operator, I can bound retries and expiry.","Transient and permanent errors differ.
+Attempt limits and deadlines are enforced.
+Expired actions cannot execute unnoticed.",Genie operations,Proposed
+Aplyd Genie,OPS-02,Budget capacity and reporting,OPS-201,P0,"As an operator, I can enforce tenant and global quotas.","Limits apply before inference.
+One tenant cannot consume the entire queue.
+Quota errors explain when retry is useful.",Genie operations,Proposed
+Aplyd Genie,OPS-02,Budget capacity and reporting,OPS-202,P0,"As an operator, I reserve estimated cost before inference.","Reservations include in-flight work.
+Usage reconciliation adjusts reservations.
+Safety headroom accounts for estimation error.",Genie operations,Proposed
+Aplyd Genie,OPS-02,Budget capacity and reporting,OPS-203,P1,"As an administrator, I can inspect workflow usage and cost.","Estimated and reconciled figures are distinguished.
+Failed and retried usage is included.
+Access to tenant reports is restricted.",Genie operations,Proposed
+Aplyd Genie,OPS-02,Budget capacity and reporting,OPS-204,P0,"As a user, I receive a clear capacity response.","Queue depth and request expiry are bounded.
+Overload does not create unlimited jobs.
+Provider unavailability is not presented as a user error.",Genie operations,Proposed
+Aplyd Genie,OPS-02,Budget capacity and reporting,OPS-205,P0,"As a user, I can keep using apps during AI downtime.","Manual CRUD does not depend on inference.
+Inference kill switch prevents new paid work.
+Pending workflow status remains readable.",Genie operations,Proposed
+Aplyd Genie,OPS-03,Quality security and release evaluation,OPS-301,P0,"As an engineer, I evaluate representative workflows before release.","Dataset covers successful, ambiguous and unsupported requests.
+Correctness and latency results are recorded.
+A model or prompt change reruns affected evaluations.",Genie operations,Proposed
+Aplyd Genie,OPS-03,Quality security and release evaluation,OPS-302,P0,"As an engineer, I test malicious document and email instructions.","Source text cannot expand tool access.
+Cross-tenant negative tests prevent disclosure.
+External communication approval cannot be bypassed.",Genie operations,Proposed
+Aplyd Genie,OPS-03,Quality security and release evaluation,OPS-303,P0,"As an operator, I investigate failures through redacted traces.","Secrets and unnecessary content are excluded.
+Traces connect workflow and tool attempts.
+Audit access and retention are explicit.",Genie operations,Proposed
+Aplyd Genie,OPS-03,Quality security and release evaluation,OPS-304,P1,"As an engineer, I compare model choices by useful outcomes.","Compare cost per successful workflow.
+Use the same workload for comparisons.
+GPU allocation and startup costs are included.",Genie operations,Proposed
+Aplyd Genie,SEC-01,Security audit and retention,SEC-101,P0,"As an administrator, I can audit automated mutations.","Record includes requester, tenant, approval, tool and result.
+Unexecuted proposals remain distinguishable.
+Sensitive trace access is restricted.",Genie platform,Proposed
+Aplyd Genie,SEC-01,Security audit and retention,SEC-102,P0,"As an operator, I can rotate webhook secrets without exposing them.","Credentials remain server-side.
+Logs omit authorization values.
+Invalid credentials are rejected before expensive inference.",Genie platform,Proposed
+Aplyd Genie,SEC-01,Security audit and retention,SEC-103,P1,"As an administrator, I can apply retention and deletion policies.","Policy covers conversations, sources, derived content and audit exceptions.
+Deletion state is observable.
+Backups follow documented retention boundaries.",Genie platform,Proposed
+Aplyd Genie,DELEG-01,Bounded delegation,DELEG-101,P2,"As an administrator, I can define permitted delegated actions.","Policy specifies resources, tools, limits and expiry.
+Policy cannot exceed actor permissions.
+External sends and destructive actions remain separately governed.",Later Genie scope,Proposed
+Aplyd Genie,DELEG-01,Bounded delegation,DELEG-102,P2,"As a user, I can inspect and revoke my delegation policies.","Active scopes are visible.
+Revocation affects pending execution.
+Changes are audited.",Later Genie scope,Proposed
+Aplyd Genie,EXT-01,Additional application onboarding,EXT-101,P2,"As a product owner, I can register each remaining application's scope.","Name, users and entities are specified.
+Manual prerequisites and agent capabilities are separate.
+No capabilities are invented for unspecified apps.",Four application identities pending,Proposed
+Aplyd Genie,EXT-01,Additional application onboarding,EXT-102,P2,"As an engineer, I can implement a connector against its approved contract.","Tools define schemas, ACLs, limits, approval and recovery.
+Context identifies resource and version.
+Connector passes isolation and duplicate tests.",Four application identities pending,Proposed
