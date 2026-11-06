@@ -1,0 +1,13 @@
+{
+  "suite": "actual PostgreSQL membership boundaries",
+  "run_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909",
+  "job_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909/job/127915714115",
+  "passed": 19,
+  "failed": 0,
+  "skipped": 0,
+  "includes": [
+    "concurrent last-administrator protection",
+    "runtime EXECUTE entry points without direct identity/audit/DDL writes"
+  ],
+  "full_log": "Retained locally outside the public repository; CI is the authoritative published report."
+}

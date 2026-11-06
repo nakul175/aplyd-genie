@@ -14,11 +14,18 @@
     "skip_reason": "Actual PostgreSQL concurrency and runtime-role tests run in the new dedicated CI service job, not PGlite."
   },
   "acceptance": "GENIE-3 cases 2557\u20132559 Not run",
-  "next_work": "Run the actual PostgreSQL CI gate; review staging owner/admin and recipient fixture packet; obtain required action-time grant approval; deploy and execute GENIE-3 cases 2557\u20132559 before proceeding.",
+  "next_work": "Obtain action-time approval for the exact staging owner administrator bootstrap and existing HS QA Viewer Genie staging invitation; deploy and run real acceptance. The read-only bootstrap dry-run passed; no grants or live migration have occurred.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
     "do not bypass merge or security approvals",
     "preserve shared Accounts and unrelated application state"
-  ]
+  ],
+  "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/2",
+  "postgres_tests": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "ci_run": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909"
+  }
 }
