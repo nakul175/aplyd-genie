@@ -11,15 +11,17 @@ import uuid
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--remove',action='store_true')
+parser.add_argument('--dedicated-qa',action='store_true')
 args=parser.parse_args()
 assert os.geteuid()==0
 lock=open('/run/lock/aplyd-caddy.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 base=Path('/opt/aplyd-genie-staging')
-fixture=json.loads((base/'private/genie3-fixture.json').read_text())
-assert fixture['state']=='applied'
-target=str(uuid.UUID(fixture['recipient_user_id']))
+fixture=json.loads((base/('private/genie3-qa-login.json' if args.dedicated_qa else 'private/genie3-fixture.json')).read_text())
+assert fixture['state'] in ('applied','applied_pending_invitation')
+target=str(uuid.UUID(fixture['user_id'] if args.dedicated_qa else fixture['recipient_user_id']))
+label='Genie Staging QA Member' if args.dedicated_qa else 'HS QA Viewer'
 html=("<!doctype html><html lang='en'><meta charset='utf-8'><title>Genie staging permission checks</title><main>"
-      "<h1>Genie staging permission checks</h1><p>Temporary acceptance fixture. These requests target only HS QA Viewer in the dedicated Genie staging workspace.</p>"
+      f"<h1>Genie staging permission checks</h1><p>Temporary acceptance fixture. These requests target only {label} in the dedicated Genie staging workspace.</p>"
       "<form method='post' action='/workspace/members/invite'>"
       f"<input type='hidden' name='target' value='{target}'><input type='hidden' name='role' value='member'>"
       "<button>Attempt invitation as ordinary member</button></form>"

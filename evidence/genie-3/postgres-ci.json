@@ -1,13 +1,16 @@
 {
   "suite": "actual PostgreSQL membership boundaries",
-  "run_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909",
-  "job_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909/job/127915714115",
-  "passed": 19,
+  "run_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42230234455",
+  "job_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42230234455/job/127933937847",
+  "passed": 20,
   "failed": 0,
   "skipped": 0,
   "includes": [
     "concurrent last-administrator protection",
-    "runtime EXECUTE entry points without direct identity/audit/DDL writes"
+    "runtime EXECUTE entry points without direct identity/audit/DDL writes",
+    "numeric audit cursor pagination",
+    "function EXECUTE grants preserved through migration 004"
   ],
-  "full_log": "Retained locally outside the public repository; CI is the authoritative published report."
+  "full_log": "Retained locally outside the public repository; CI is the authoritative published report.",
+  "qualified_commit": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c"
 }

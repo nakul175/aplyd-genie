@@ -13,38 +13,51 @@
     "skipped": 2,
     "skip_reason": "Actual PostgreSQL concurrency and runtime-role tests run in the new dedicated CI service job, not PGlite."
   },
-  "acceptance": "GENIE-3 cases 2557\u20132559 Not run",
-  "next_work": "Publish and qualify fresh invitation login plus migration 004 audit cursor fix; apply 004 and stage the qualified candidate after the QA login handoff. Then complete cases 2557\u20132559 before any merge/next story.",
+  "acceptance": "Run 46: case 2559 Passed; 2557/2558 Pending ordinary/deactivated POST denial checks",
+  "next_work": "After static-form route approval, install helper with --dedicated-qa, reactivate only dedicated QA via owner UI, fresh QA SSO, verify ordinary POST403, deactivate via owner UI and verify GET/POST401, remove helper, confirm zero QA Genie sessions, record cases2557/2558, finish evidence/CI and request concrete PR2 merge approval. GENIE-3 remains In Progress; no next story.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
     "do not bypass merge or security approvals",
     "preserve shared Accounts and unrelated application state",
-    "Automatic review rejected private QA credential-file lookup: do not search alternate private sources or retrieve the QA password as a workaround.",
     "Automatic review rejected decrypting live login transactions as a diagnostic: use non-sensitive counts and normal UI only.",
     "Complete and close parent epics only when all their children have passed acceptance."
   ],
   "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/2",
   "postgres_tests": {
-    "passed": 19,
+    "passed": 20,
     "failed": 0,
     "skipped": 0,
-    "ci_run": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909"
+    "ci_run": "https://github.com/nakul175/aplyd-genie/actions/runs/42230234455",
+    "job_url": "https://github.com/nakul175/aplyd-genie/actions/runs/42230234455/job/127933937847"
   },
   "staging": {
-    "deployed_runtime": "08be21e475cf99224995461d7fb76b9ebb474e9b",
+    "deployed_runtime": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
     "migration_003": "applied and replayed successfully",
     "fixture_grants": "explicitly approved and applied",
     "owner_role": "admin",
-    "ordinary_recipient": "existing HS QA Viewer; invitation issued, not yet accepted",
-    "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-fixture.json"
+    "ordinary_recipient": "Dedicated approved synthetic QA member created and invitation accepted; original HS QA Viewer unchanged",
+    "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-fixture.json",
+    "migration_004": "applied and replayed successfully; runtime grants preserved",
+    "runtime_privilege_probe": "passed; no direct identity/membership/audit writes or DDL, no internal helper execute"
   },
   "external_dependency": {
-    "kind": "normal QA sign-in",
-    "required_account": "HS QA Viewer",
-    "surface": "isolated in-app browser, normal SHO sign-in form",
-    "question_pending": true,
-    "blocking_audits": 1,
-    "instruction": "User must complete the normal sign-in and reply Signed in. Do not inspect typed password fields or operate that browser during the handoff."
-  }
+    "kind": "temporary same-origin acceptance form approval",
+    "blocking_goal_turns": 1,
+    "required_account": "Genie Staging QA Member \u2014 created and real password/OIDC verified",
+    "ordinary_genie_user_id": "378430ab-a834-40cb-b3c8-aa12dfffffa6",
+    "credential_custody": "root-only /opt/aplyd-genie-staging/private/genie3-qa-login.json; mode0600; no local secret file",
+    "qa_checkpoint": "disabled member; zero Genie sessions; normal fresh sign-in required after reactivation",
+    "pending_question": "Approve temporary staging /__genie3_acceptance static POST forms and immediate cleanup; automatic review rejected installation without exact route approval. No route installed.",
+    "restrictions": [
+      "No auth/session-material inspection",
+      "No live audit screenshot upload without explicit payload/destination approval; sanitized JSON result report successfully attached instead",
+      "No existing password changes or other-app grants"
+    ],
+    "latest_revalidation": "User reactivated goal; no approval response for static-form route is present. Current PR2 head verified 7d87fe7, draft/open, all four checks successful. Case2559 recorded Passed in run46; two POST-denial cases pending."
+  },
+  "qualified_candidate": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
+  "goal_status": "active",
+  "goal_work_status": "resumed under explicit dedicated-QA identity approval; waiting for temporary static-form route approval",
+  "bugoff_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46"
 }

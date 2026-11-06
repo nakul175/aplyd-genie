@@ -1,0 +1,49 @@
+{
+  "story": "GENIE-3",
+  "specification": "PLAT-102",
+  "runtime": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
+  "date": "2026-11-06",
+  "run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46",
+  "overall": "incomplete",
+  "observed": {
+    "dedicated_synthetic_identity_created": true,
+    "private_credential_mode": "0600 root",
+    "upstream_workspace_existing_projects": 0,
+    "ordinary_password_login": true,
+    "real_accounts_oidc_invitation_acceptance": true,
+    "ordinary_workspace_has_administration_link": false,
+    "ordinary_admin_read": "administrator_required",
+    "deactivated_session_read": "authentication_required",
+    "reactivation_revives_old_session": false,
+    "fresh_login_after_reactivation": true,
+    "audit_events": [
+      "invited",
+      "invitation_accepted",
+      "deactivated",
+      "reactivated"
+    ],
+    "audit_fields_verified": [
+      "actor",
+      "target",
+      "timestamp",
+      "before_status",
+      "before_role",
+      "after_status",
+      "after_role"
+    ],
+    "final_qa_membership": "disabled member",
+    "final_qa_genie_sessions": 0,
+    "temporary_form_route_installed": false
+  },
+  "pending": [
+    "ordinary-member POST mutation denial",
+    "deactivated-member POST mutation denial",
+    "temporary form-route approval or authorized equivalent"
+  ],
+  "cases": {
+    "2557": "pending",
+    "2558": "pending",
+    "2559": "Passed in Bug Off run 46; three executed steps Passed; non-sensitive report attached"
+  },
+  "sensitive_evidence": "Live screenshots retained locally; credential values, session material and membership identities omitted from this report."
+}
