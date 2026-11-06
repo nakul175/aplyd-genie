@@ -14,7 +14,7 @@
     "skip_reason": "Actual PostgreSQL concurrency and runtime-role tests run in the new dedicated CI service job, not PGlite."
   },
   "acceptance": "GENIE-3 cases 2557\u20132559 Not run",
-  "next_work": "Obtain action-time approval for the exact staging owner administrator bootstrap and existing HS QA Viewer Genie staging invitation; deploy and run real acceptance. The read-only bootstrap dry-run passed; no grants or live migration have occurred.",
+  "next_work": "Deploy the form-to-SSO continuation fix after CI; complete isolated QA sign-in with its existing credentials, then live cases 2557\u20132559. No merge is yet authorized for PR #2.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
@@ -27,5 +27,13 @@
     "failed": 0,
     "skipped": 0,
     "ci_run": "https://github.com/nakul175/aplyd-genie/actions/runs/42224872909"
+  },
+  "staging": {
+    "deployed_runtime": "eaf4964b525c746f47bb6af40a448af34953afd1",
+    "migration_003": "applied and replayed successfully",
+    "fixture_grants": "explicitly approved and applied",
+    "owner_role": "admin",
+    "ordinary_recipient": "existing HS QA Viewer; invitation issued, not yet accepted",
+    "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-fixture.json"
   }
 }

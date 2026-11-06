@@ -289,8 +289,15 @@ function jsonPost(session,body,origin=config.origin) {
 }
 async function inviteLogin(f,token) {
   const response=await f.request('/auth/invitation-sign-in',{method:'POST',headers:{Origin:config.origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({token})});
-  assert.equal(response.status,303);
-  return {response,state:new URL(response.headers.get('location')).searchParams.get('state'),browser:cookie(response,loginCookie)};
+  assert.equal(response.status,200);
+  assert.equal(response.headers.get('location'),null,'a form submission must not redirect outside the same-origin form policy');
+  assert.equal(response.headers.get('referrer-policy'),'no-referrer');
+  assert.match(response.headers.get('content-security-policy'),/form-action 'self'/);
+  const html=await response.text();
+  assert.match(html,/Continue to Aplyd Accounts/);
+  const state=/state=([A-Za-z0-9_-]{43})/.exec(html)?.[1];
+  assert.ok(state);
+  return {response,state,browser:cookie(response,loginCookie)};
 }
 
 test('GENIE-3 HTTP: ordinary members cannot read admin data or mutate using forged actor and tenant values',async t=>{

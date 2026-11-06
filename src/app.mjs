@@ -61,6 +61,14 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     await store.putLogin({ stateHash: digest(transaction.state), browserHash: digest(browser),
       sealed: seal(config.key, 'login', transaction), expires: new Date(Date.now() + config.loginSeconds * 1000) });
     setCookie(response, loginCookie, browser, config.loginSeconds);
+    if (inviteHash) {
+      // A form-action 'self' policy can block cross-origin POST redirect chains.
+      // Commit a normal page first; its explicit GET link keeps that policy intact.
+      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/form-action
+      return response.type('html').send(document('<h1>Continue with Aplyd Accounts</h1>' +
+        '<p>Verify the account this invitation was created for.</p>' +
+        `<a href="${escapeHtml(destination)}">Continue to Aplyd Accounts</a>`));
+    }
     response.redirect(303, destination);
   }
   app.get('/auth/sign-in', (request,response) => startLogin(request,response));
