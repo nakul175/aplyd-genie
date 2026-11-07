@@ -16,6 +16,36 @@ export class IdentityStore {
     return result.rows[0]?.sealed_transaction;
   }
 
+  async peekLogin(stateHash, browserHash) {
+    return (await this.database.query(
+      'SELECT sealed_transaction FROM genie_login_transactions WHERE state_hash=$1 AND browser_hash=$2 AND expires_at>now()',
+      [stateHash,browserHash])).rows[0]?.sealed_transaction;
+  }
+
+  async listWorkspaces(userId, after=null) {
+    const result=await this.database.query(`SELECT t.id AS "tenantId",t.display_name AS name
+      FROM genie_memberships m JOIN genie_tenants t ON t.id=m.tenant_id JOIN genie_users u ON u.id=m.user_id
+      WHERE m.user_id=$1 AND m.status='active' AND t.enabled AND u.enabled AND ($2::uuid IS NULL OR t.id>$2)
+      ORDER BY t.id LIMIT 51`,[userId,after]);
+    const items=result.rows.slice(0,50);
+    return {items,nextCursor:result.rows.length>50?items.at(-1).tenantId:null};
+  }
+
+  async hasWorkspace(userId, tenantId) {
+    return (await this.database.query(`SELECT EXISTS(SELECT 1 FROM genie_memberships m
+      JOIN genie_tenants t ON t.id=m.tenant_id JOIN genie_users u ON u.id=m.user_id
+      WHERE m.user_id=$1 AND m.tenant_id=$2 AND m.status='active' AND t.enabled AND u.enabled) AS allowed`,[userId,tenantId])).rows[0].allowed;
+  }
+
+  async switchWorkspace(sourceHash,nextHash,targetTenant,sealed) {
+    return (await this.database.query('SELECT genie_switch_workspace($1,$2,$3,$4) AS result',
+      [sourceHash,nextHash,targetTenant,sealed])).rows[0].result;
+  }
+
+  async signOutFamily(tokenHash) {
+    await this.database.query('SELECT genie_sign_out_family($1)',[tokenHash]);
+  }
+
   async findMembership(issuer, subject) {
     const result = await this.database.query(`
       SELECT u.id AS user_id, u.subject, u.issuer, m.tenant_id
@@ -23,7 +53,7 @@ export class IdentityStore {
       JOIN genie_tenants t ON t.id=m.tenant_id
       WHERE u.issuer=$1 AND u.subject=$2 AND u.enabled=true AND t.enabled=true AND m.status='active'
       ORDER BY m.tenant_id LIMIT 2`, [issuer, subject]);
-    // Multi-tenant selection is a separate story; never silently choose a tenant.
+    // Two rows suffice to distinguish a single destination from explicit selection.
     return result.rows;
   }
 
@@ -41,7 +71,7 @@ export class IdentityStore {
 
   async getSession(tokenHash) {
     const result = await this.database.query(`
-      SELECT u.id AS user_id,u.issuer,u.subject,s.tenant_id,s.sealed_upstream,
+      SELECT u.id AS user_id,u.issuer,u.subject,s.tenant_id,s.sealed_upstream,s.browser_active,t.display_name AS workspace_name,
         coalesce(to_jsonb(m)->>'role','member') AS role
       FROM genie_sessions s JOIN genie_users u ON u.id=s.user_id
       JOIN genie_tenants t ON t.id=s.tenant_id

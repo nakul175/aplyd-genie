@@ -25,7 +25,7 @@ before(async()=>{
   db={query:pool.query.bind(pool),exec:pool.query.bind(pool),close:pool.end.bind(pool),connect:pool.connect.bind(pool)};
   assert.equal((await db.query("SELECT count(*)::int n FROM information_schema.tables WHERE table_schema='public'")).rows[0].n,0);
  }else{const {PGlite}=await import('@electric-sql/pglite');db=new PGlite();}
- for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql'])await db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
+ for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql','008_workspace_sessions.sql'])await db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
 });
 after(async()=>{await db?.close()});
 beforeEach(async()=>{

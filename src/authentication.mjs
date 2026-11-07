@@ -1,7 +1,7 @@
 import {open,HttpError} from './security.mjs';
 const unauthorized=()=>new HttpError(401,'authentication_required');
 /** Shared by normal requests and jobs; never caches Accounts or local authority. */
-export function createSessionAuthenticator({config,store,accounts}){
+export function createSessionAuthenticator({config,store,accounts,background=false}){
  return async function authenticateSession(hash){
   if(typeof hash!=='string'||! /^[a-f0-9]{64}$/.test(hash))throw unauthorized();
     const before = await store.getSession(hash);
@@ -9,6 +9,7 @@ export function createSessionAuthenticator({config,store,accounts}){
       await store.deleteSession(hash);
       throw unauthorized();
     }
+    if (before.browser_active===false && !background) throw new HttpError(409,'workspace_session_changed');
     let upstream;
     try { upstream = open(config.key, `session:${before.user_id}:${before.tenant_id}`, before.sealed_upstream); }
     catch { await store.deleteSession(hash); throw unauthorized(); }
@@ -25,7 +26,9 @@ export function createSessionAuthenticator({config,store,accounts}){
       await store.deleteSession(hash);
       throw unauthorized();
     }
+    if (after.browser_active===false && !background) throw new HttpError(409,'workspace_session_changed');
     return { userId: after.user_id, tenantId: after.tenant_id, role: after.role,
-      sessionHash: hash, issuer: after.issuer, subject: after.subject };
+      sessionHash: hash, issuer: after.issuer, subject: after.subject,
+      workspaceName: after.workspace_name, sourceUid: upstream.uid };
  };
 }

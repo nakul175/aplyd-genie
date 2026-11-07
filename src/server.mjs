@@ -8,6 +8,7 @@ import { PostgresRateStore } from './rate-store.mjs';
 import { Memberships } from './memberships.mjs';
 import { Permissions } from './permissions.mjs';
 import { MemberExports } from './exports.mjs';
+import { WorkspaceContent } from './workspace-content.mjs';
 
 let pool;
 try {
@@ -19,7 +20,7 @@ try {
     connectionTimeoutMillis: 3000, idleTimeoutMillis: 30_000, statement_timeout: 5000 });
   pool.on('error', () => console.error('genie_database_connection_failed'));
   await pool.query('SELECT 1');
-  const app = createApp({ config, store: new IdentityStore(pool), oidc: createOidc(config), accounts: createAccounts(config), rateStore: new PostgresRateStore(pool), memberships: new Memberships(pool), permissions: new Permissions(pool), memberExports: new MemberExports(pool) });
+  const app = createApp({ config, store: new IdentityStore(pool), oidc: createOidc(config), accounts: createAccounts(config), rateStore: new PostgresRateStore(pool), memberships: new Memberships(pool), permissions: new Permissions(pool), memberExports: new MemberExports(pool), workspaceContent: new WorkspaceContent(pool) });
   // Private loopback listener; the reviewed HTTPS reverse proxy owns public ingress.
   const server = app.listen(port, '127.0.0.1', () => console.log('genie_started'));
   server.on('error', async () => {

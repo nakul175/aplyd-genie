@@ -19,7 +19,7 @@ try{
  pool=new pg.Pool({connectionString:process.env.DATABASE_URL,max:2,connectionTimeoutMillis:3000,idleTimeoutMillis:30_000,statement_timeout:5000});
  pool.on('error',()=>console.error('genie_export_database_failed'));
  const dependencies={exports:new MemberExports(pool),permissions:new Permissions(pool),
-  authenticateSession:createSessionAuthenticator({config,store:new IdentityStore(pool),accounts:createAccounts(config)})};
+  authenticateSession:createSessionAuthenticator({config,store:new IdentityStore(pool),accounts:createAccounts(config),background:true})};
  do{
   let result;
   try{result=await runMemberExport(dependencies);if(once||result.status!=='idle')console.log('genie_export_'+result.status);}

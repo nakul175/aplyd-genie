@@ -1,0 +1,223 @@
+{
+  "story": "GENIE-5",
+  "revision": "f05382771e6343d5c217a1212a64509919df890e",
+  "method": "normal HTTPS password and Accounts OIDC; native workspace forms; persisted conversations and real worker; in-memory cookies only",
+  "checks": [
+    {
+      "name": "normal_qa_password_login",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "exact_synthetic_upstream_member",
+      "passed": true
+    },
+    {
+      "name": "normal_oidc_chooser",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "both_workspaces_visible_without_silent_choice",
+      "passed": true
+    },
+    {
+      "name": "no_session_before_explicit_choice",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "native_initial_choice_a",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "active_workspace_a_visible",
+      "passed": true
+    },
+    {
+      "name": "exact_qa_identity_and_a_context",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "qa_identity_matches_reviewed_fixture",
+      "passed": true
+    },
+    {
+      "name": "foreign_workspace_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "foreign_switch_did_not_rotate",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "both_reviewed_choices_only",
+      "passed": true
+    },
+    {
+      "name": "create_real_a_conversation",
+      "passed": true,
+      "http_status": 201
+    },
+    {
+      "name": "append_real_a_message",
+      "passed": true,
+      "http_status": 201
+    },
+    {
+      "name": "a_search_resource",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "a_has_only_a_member_label",
+      "passed": true
+    },
+    {
+      "name": "queue_actual_export_in_a",
+      "passed": true,
+      "http_status": 202
+    },
+    {
+      "name": "native_switch_to_b",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "active_workspace_b_visible",
+      "passed": true
+    },
+    {
+      "name": "retired_browser_token_rejected",
+      "passed": true,
+      "http_status": 409
+    },
+    {
+      "name": "a_conversation_unavailable_in_b",
+      "passed": true,
+      "http_status": 404
+    },
+    {
+      "name": "a_conversation_cannot_append_from_b",
+      "passed": true,
+      "http_status": 404
+    },
+    {
+      "name": "no_a_search_result_in_b",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "forged_search_tenant_ignored",
+      "passed": true
+    },
+    {
+      "name": "create_real_b_conversation",
+      "passed": true,
+      "http_status": 201
+    },
+    {
+      "name": "b_conversation_search",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "b_search_returns_only_b_conversation",
+      "passed": true
+    },
+    {
+      "name": "b_native_resource_search",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "b_ui_shows_b_resources_only",
+      "passed": true
+    },
+    {
+      "name": "b_cannot_open_a_queued_job",
+      "passed": true,
+      "http_status": 404
+    },
+    {
+      "name": "real_worker_completed",
+      "passed": true
+    },
+    {
+      "name": "b_cannot_open_a_completed_job",
+      "passed": true,
+      "http_status": 404
+    },
+    {
+      "name": "switch_back_a",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "a_opens_original_job_result",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "job_completed_only_in_original_a_scope",
+      "passed": true
+    },
+    {
+      "name": "b_conversation_unavailable_in_a",
+      "passed": true,
+      "http_status": 404
+    },
+    {
+      "name": "a_original_conversation_persisted",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "a_messages_unchanged_after_switch",
+      "passed": true
+    },
+    {
+      "name": "queue_second_original_job",
+      "passed": true,
+      "http_status": 202
+    },
+    {
+      "name": "switch_before_family_logout",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "sign_out_browser_family",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "signed_out_browser_has_no_scope",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "real_worker_denied",
+      "passed": true
+    }
+  ],
+  "status": "passed",
+  "completed_job_id": "20137286-8771-4ad3-99e9-f5a292b54792",
+  "denied_job_id": "c1ffcaa9-fc3f-497b-915e-6d86e356a28a",
+  "verified_at": "2026-11-07T06:41:08.653917+00:00",
+  "cleanup": {
+    "workspace_b_disabled": true,
+    "workspace_b_active_memberships": 0,
+    "qa_sessions": 0,
+    "qa_role_assignments": 0,
+    "temporary_grants": 0,
+    "pending_fixture_exports": 0,
+    "original_owner_active": true,
+    "completed_and_denied_jobs_bound_to_a": true
+  },
+  "fixture_management": "Approved staging operator transaction for reader grants and cleanup. Audit entries identify operator provenance. QA used real Accounts OIDC and the normal Genie routes."
+}
