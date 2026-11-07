@@ -18,3 +18,17 @@ Use a short-lived, one-use, browser-bound encrypted workspace-selection record a
 Migrations008–009 are wired into the migration runner and production server. Normal multi-membership OIDC yields an explicit one-use chooser, and protected pages show the active workspace. Same-origin switch rotates browser authorization without extending expiry. A retired token cannot authenticate browser requests; the separate real export worker can reauthorize the old tenant-bound context, while sign-out revokes the browser family. Conversation create/append/list/detail and structured member/role/title search are real persisted, server-scoped operations; resource access is rechecked in PostgreSQL.
 
 Integrated local138 tests:130 passed,8 real-engine-only skips,0 failures. Focused database qualification11 passed and2 PG-only skips; focused HTTP passed43 before the additional pending-choice sign-out regression. Combined counts are not additive. Full logs remain in /private/tmp/genie-5-*.log. CI is extended to actual PostgreSQL workspace/conversation privilege and concurrent switch checks. No live GENIE-5 activation or acceptance has run. Concrete packet: ops/staging/genie-5/FIXTURE-PLAN.md, grants.sql, fixture.sql.
+
+## Staging acceptance
+
+Revision `f05382771e6343d5c217a1212a64509919df890e` passed all 43 live checks. Migrations 008–009 were applied and replayed, and the app health check passed. The evidence file records the observed HTTP and worker outcomes.
+
+- Case 2563 covers the explicit workspace chooser, active workspace indicator, native switch form, forbidden target rejection and retired token rejection.
+- Case 2564 covers persisted conversations and tenant-scoped search. Cross-workspace conversation reads and writes returned 404, and forged tenant values did not change the scope.
+- Case 2565 covers a real export completing in workspace A while the browser was in B. A second export stayed bound to A and was denied after browser-family sign-out.
+
+The owner browser session expired, so the temporary membership and reader roles were managed with scoped staging operator transactions and explicit audit provenance. The live checks still used the dedicated QA identity, normal Accounts OIDC and Genie routes, and the isolated worker in one-shot mode. Cleanup verified that workspace B is disabled, no temporary grants or QA sessions remain, and the original owner remains active.
+
+The acceptance and cleanup harnesses are preserved under `ops/staging/genie-5`. For the recorded run, the operator fixture script was executed with `ACCEPTANCE_SOURCE` bound to the text of `verify-qa-api.py`, followed by `verify-cleanup.py` after the fixture transaction completed. These scripts target the named staging revision and fixture.
+
+BTF and Bug Off require fresh sign-ins before the tracker records can be updated. GENIE-5 is still In Progress and PR #4 is a draft.

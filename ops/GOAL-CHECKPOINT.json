@@ -18,8 +18,8 @@
     "full_log": "/private/tmp/genie-5-integrated-regression.log",
     "limitations": "Eight real-engine-only cases run in separate PostgreSQL CI. No GENIE-5 live acceptance claim."
   },
-  "acceptance": "GENIE-5 cases2563\u20132565 Draft / Not run; GENIE-4 completed run47 retained.",
-  "next_work": "Push draft GENIE-5 PR and qualify exact candidate in CI. Review approved-only staging packet, then request action-time approval for the synthetic second workspace and narrow app grants. Run cases2563\u20132565 on real staging and clean up before final merge authorization.",
+  "acceptance": "GENIE-5 staging passed 43 live checks and verified fixture cleanup. Cases 2563\u20132565 await Bug Off sign-in and recording.",
+  "next_work": "Record the passed cases in Bug Off after sign-in, link the evidence in BTF, verify final CI and request exact-head merge authorization. Close GENIE-5 before starting GENIE-6.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
@@ -28,12 +28,12 @@
     "Automatic review rejected decrypting live login transactions as a diagnostic: use non-sensitive counts and normal UI only.",
     "Complete and close parent epics only when all their children have passed acceptance."
   ],
-  "implementation_pr": null,
+  "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/4",
   "postgres_tests": {
     "status": "Not run for GENIE-5"
   },
   "staging": {
-    "deployed_runtime": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
+    "deployed_runtime": "f05382771e6343d5c217a1212a64509919df890e",
     "migration_003": "applied and replayed successfully",
     "fixture_grants": "explicitly approved and applied",
     "owner_role": "admin",
@@ -41,13 +41,14 @@
     "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-qa-login.json",
     "migration_004": "applied and replayed successfully; runtime grants preserved",
     "runtime_privilege_probe": "passed; no direct identity/membership/audit writes or DDL, no internal helper execute",
-    "final_cleanup": "QA disabled/member;0 sessions, assignments, temporary role grants and pending exports;15 policy audit events; isolated worker grants verified; no persistent worker activated",
-    "migrations_005_007": "applied and replayed successfully"
+    "final_cleanup": "Workspace B disabled. Zero QA sessions, assignments, temporary grants and pending fixture exports. Both export outcomes retained original workspace A.",
+    "migrations_005_007": "applied and replayed successfully",
+    "migrations_008_009": "applied and replayed"
   },
   "external_dependency": null,
-  "qualified_candidate": null,
+  "qualified_candidate": "f05382771e6343d5c217a1212a64509919df890e",
   "goal_status": "active",
-  "goal_work_status": "GENIE-4 merged/Done. GENIE-5 implementation and integrated local tests complete; real PostgreSQL CI and staging acceptance pending.",
+  "goal_work_status": "GENIE-5 deployed and accepted in staging. BTF and Bug Off sessions expired. Tracker recording and merge authorization pending.",
   "bugoff_run": null,
   "final_evidence_commit": null,
   "final_ci": null,
