@@ -2,7 +2,7 @@
   "product": "Aplyd Genie",
   "version": "1.3",
   "date": "2026-11-07",
-  "note": "GENIE-2 is Done with three live acceptance cases Passed. GENIE-3 remains In Progress pending release gates; all three live cases Passed in completed run46. Remaining 88 stories are Backlog and their 264 cases are Not run.",
+  "note": "GENIE-2 and GENIE-3 are Done with six Active cases Passed across completed runs45/46. GENIE-4 is In Progress; its three cases remain Draft / Not run. Remaining87 stories are Backlog. No GENIE-4 live pass or new staging grant is claimed.",
   "epics": [
     {
       "id": "PLAT-01",
@@ -61,7 +61,7 @@
             "Deactivation blocks new reads and mutations.",
             "Membership changes are auditable."
           ],
-          "status": "In Progress",
+          "status": "Done",
           "tracker_issue": "GENIE-3",
           "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-3",
           "test_cases": [
@@ -91,7 +91,8 @@
             }
           ],
           "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/2",
-          "acceptance_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46"
+          "acceptance_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46",
+          "merge_sha": "5d4570db2ea45d3115dce6c035fd6df605f6069b"
         },
         {
           "id": "PLAT-103",
@@ -102,7 +103,7 @@
             "Role changes apply to UI, tools and background execution.",
             "A user cannot grant a permission they are unauthorized to manage."
           ],
-          "status": "Backlog",
+          "status": "In Progress",
           "tracker_issue": "GENIE-4",
           "tracker_url": "https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-4",
           "test_cases": [

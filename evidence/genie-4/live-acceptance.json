@@ -1,0 +1,198 @@
+{
+  "story": "GENIE-4",
+  "revision": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
+  "method": "normal HTTPS password/Accounts OIDC, in-memory cookies; normal owner UI; isolated real worker",
+  "checks": [
+    {
+      "name": "real_password_login_exact_ordinary_upstream_identity",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "real_accounts_oidc_workspace",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "exact_genie_qa_identity_and_tenant",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "ordinary_member_read_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "ordinary_member_export_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "reader_ui_has_members_without_mutation_controls",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "reader_api_allowed",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "reader_registered_tool_allowed",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "reader_direct_mutation_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "reader_tool_mutation_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "reader_cannot_manage_roles",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "reader_queued_server_scoped_export",
+      "passed": true,
+      "http_status": 202
+    },
+    {
+      "name": "same_session_read_lost",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "same_session_tool_lost",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "same_session_navigation_updates",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "real_worker_denied",
+      "passed": true
+    },
+    {
+      "name": "revoked_export_result_denied",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "revoked_queued_job_is_denied_without_result",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "restored_reader_can_queue",
+      "passed": true,
+      "http_status": 202
+    },
+    {
+      "name": "real_worker_completed",
+      "passed": true
+    },
+    {
+      "name": "completed_export_visible_to_creator",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "completed_export_has_no_internal_principal_or_lease",
+      "passed": true
+    },
+    {
+      "name": "completed_export_access_lost_on_same_session",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_ui_only_own_grants_available",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "steward_cannot_grant_membership_mutation",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_cannot_grant_invitations",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_cannot_mutate_administrator",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_browser_claims_do_not_grant_authority",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_can_create_narrow_role",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "steward_can_assign_narrow_role",
+      "passed": true,
+      "http_status": 200
+    },
+    {
+      "name": "steward_cannot_edit_stronger_existing_role",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "steward_cannot_assign_stronger_role",
+      "passed": true,
+      "http_status": 403
+    },
+    {
+      "name": "cleanup_revokes_qa_session_/api/auth/session",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "cleanup_revokes_qa_session_/workspace",
+      "passed": true,
+      "http_status": 401
+    },
+    {
+      "name": "cleanup_revokes_qa_session_/api/tools/members.list",
+      "passed": true,
+      "http_status": 401
+    }
+  ],
+  "status": "passed",
+  "denied_job_id": "c1b16d6c-dbf1-4d02-bd88-a8412b0c74e8",
+  "completed_job_id": "1efdeca5-2cb8-4e7a-8922-7abf1c21fe87",
+  "delegated_role_id": "c942c852-36a5-4690-9414-6346bec69cf7",
+  "verified_at": "2026-11-07T02:34:40.156944+00:00",
+  "cleanup": {
+    "qa_disabled_ordinary_member": true,
+    "qa_sessions": 0,
+    "qa_role_assignments": 0,
+    "temporary_role_grants": 0,
+    "pending_exports": 0,
+    "policy_audit_records": 15,
+    "qa_delegation_audit_records": 2,
+    "forbidden_role_creations": 0,
+    "worker_credential_mode": "0600",
+    "worker_cannot_read_job_table": true,
+    "app_cannot_claim_jobs": true,
+    "worker_superuser_or_role_admin": false
+  }
+}

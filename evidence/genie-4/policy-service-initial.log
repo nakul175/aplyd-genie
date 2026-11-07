@@ -1,0 +1,15 @@
+✔ untrusted grant shapes and ambiguous duplicates never reach database mutation (0.736917ms)
+✔ browser-supplied principal fields cannot replace the server-derived authorization session (0.104208ms)
+✔ effective capabilities are fetched again after authority changes (0.106042ms)
+✔ role assignment validates immutable IDs, boolean intent and bounded optimistic versions (0.165625ms)
+✔ role updates require an explicit valid version before a database write (0.082791ms)
+✔ missing or malformed server sessions are rejected before policy lookup (0.077042ms)
+✔ database authorization and conflict failures become bounded public service errors (0.749041ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.523459

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node --env-file-if-exists=.env src/server.mjs",
+    "worker:exports": "node --env-file-if-exists=.env src/export-worker.mjs",
     "migrate": "node --env-file-if-exists=.env scripts/migrate.mjs",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs"
   },
