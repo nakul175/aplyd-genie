@@ -2,6 +2,7 @@ import { createHash, randomBytes, createCipheriv, createDecipheriv } from 'node:
 
 export const sessionCookie = '__Host-genie_session';
 export const loginCookie = '__Host-genie_login';
+export const workspaceChoiceCookie = '__Host-genie_workspace_choice';
 export const randomToken = () => randomBytes(32).toString('base64url');
 export const digest = value => createHash('sha256').update(value).digest('hex');
 

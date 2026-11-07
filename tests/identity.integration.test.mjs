@@ -9,9 +9,10 @@ import { createAccounts } from '../src/accounts.mjs';
 import { Memberships } from '../src/memberships.mjs';
 import {MemberExports,runMemberExport} from '../src/exports.mjs';
 import {createSessionAuthenticator} from '../src/authentication.mjs';
+import {WorkspaceContent} from '../src/workspace-content.mjs';
 import {Permissions} from '../src/permissions.mjs';
 import { readConfig } from '../src/config.mjs';
-import { sessionCookie, loginCookie, digest } from '../src/security.mjs';
+import { sessionCookie, loginCookie, workspaceChoiceCookie, digest } from '../src/security.mjs';
 
 const user = '00000000-0000-4000-8000-000000000001';
 const tenant = '00000000-0000-4000-8000-000000000002';
@@ -22,7 +23,7 @@ const config = readConfig({ GENIE_ORIGIN: 'https://genie.example.test',
 let database;
 before(async () => {
   database = new PGlite();
-  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql'])
+  for (const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql','008_workspace_sessions.sql','009_workspace_conversations_search.sql'])
     await database.exec(await readFile(new URL('../migrations/'+name, import.meta.url), 'utf8'));
 });
 after(async () => { await database.close(); });
@@ -62,7 +63,7 @@ async function fixture(t, options = {}) {
     if (authority.unavailable) throw Error(config.clientSecret);
     return Response.json(authority.active ? { active: true, sub: authority.subject, local_id: authority.localId } : { active: false });
   } });
-  const app = createApp({ config, store, oidc, accounts, memberships: new Memberships(database),permissions:new Permissions(database),memberExports:new MemberExports(database) });
+  const app = createApp({ config, store, oidc, accounts, memberships: new Memberships(database),permissions:new Permissions(database),memberExports:new MemberExports(database),workspaceContent:new WorkspaceContent(database) });
   const server = app.listen(0, '127.0.0.1');
   await once(server, 'listening');
   t.after(async () => {
@@ -87,7 +88,7 @@ async function fixture(t, options = {}) {
     assert.equal(response.headers.get('location'), '/workspace');
     return { response, session: cookie(response, sessionCookie) };
   }
-  return { request, begin, finish, signIn, authority, calls, store };
+  return { request, begin, finish, signIn, authority, calls, store, accounts };
 }
 
 test('GENIE-2 AC1: identity and tenant come from reviewed records, not browser claims', async t => {
@@ -169,13 +170,77 @@ test('unknown identities never provision accounts from claims', async t => {
   assert.equal((await database.query('SELECT * FROM genie_sessions')).rows.length, 0);
 });
 
-test('multiple active tenants require explicit future workspace selection, not arbitrary choice', async t => {
-  const f = await fixture(t);
-  await database.query('INSERT INTO genie_tenants(id,enabled) VALUES ($1,true)', [otherTenant]);
-  await database.query("INSERT INTO genie_memberships VALUES ($1,$2,'active','reviewed-fixture')", [user, otherTenant]);
-  const response = await f.finish(await f.begin());
-  assert.equal(response.status, 409);
-  assert.equal((await response.json()).error, 'workspace_selection_required');
+async function secondWorkspace({role='member',name='Workspace B'}={}){
+  await database.query("UPDATE genie_tenants SET display_name='Workspace A' WHERE id=$1",[tenant]);
+  await database.query('INSERT INTO genie_tenants(id,enabled,display_name) VALUES ($1,true,$2)', [otherTenant,name]);
+  await database.query("INSERT INTO genie_memberships(user_id,tenant_id,status,review_reference,role) VALUES ($1,$2,'active','reviewed-fixture',$3)", [user,otherTenant,role]);
+}
+function selectWorkspace(cookieValue,target,origin=config.origin){
+ return {method:'POST',headers:{Cookie:cookieValue,Origin:origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({tenantId:target}).toString()};
+}
+test('GENIE-5 AC1: multi-workspace OIDC requires an explicit single-use browser-bound selection', async t => {
+  const f=await fixture(t);await secondWorkspace({name:'<script>Workspace B</script>'});
+  const callback=await f.finish(await f.begin());
+  assert.equal(callback.status,303);assert.equal(callback.headers.get('location'),'/auth/workspace');
+  assert.equal((await database.query('SELECT count(*)::int n FROM genie_sessions')).rows[0].n,0);
+  const choice=cookie(callback,workspaceChoiceCookie);assert.match(choice,/^__Host-genie_workspace_choice=/);
+  assert.equal((await f.request('/auth/workspace')).status,401);
+  const page=await f.request('/auth/workspace',{headers:{Cookie:choice}});assert.equal(page.status,200);
+  const html=await page.text();assert.match(html,/Choose a workspace/);assert.match(html,/Workspace A/);assert.match(html,/&lt;script&gt;Workspace B/);assert.doesNotMatch(html,/<script>/);
+  assert.equal((await f.request('/auth/workspace',selectWorkspace(choice,otherTenant,'https://outside.example'))).status,403);
+  const chosen=await f.request('/auth/workspace',selectWorkspace(choice,otherTenant));
+  assert.equal(chosen.status,303);assert.equal(chosen.headers.get('location'),'/workspace');
+  const selected=cookie(chosen,sessionCookie);const active=await f.request('/api/auth/session',{headers:{Cookie:selected}});
+  assert.deepEqual(await active.json(),{authenticated:true,userId:user,tenantId:otherTenant});
+  assert.equal((await f.request('/auth/workspace',selectWorkspace(choice,tenant))).status,401);
+});
+test('explicit sign-out revokes a pending workspace choice before it can mint a session',async t=>{
+ const f=await fixture(t);await secondWorkspace();const response=await f.finish(await f.begin());const choice=cookie(response,workspaceChoiceCookie);
+ const logout=await f.request('/auth/sign-out',{method:'POST',headers:{Cookie:choice,Origin:config.origin}});assert.equal(logout.status,303);
+ assert.equal((await f.request('/auth/workspace',selectWorkspace(choice,otherTenant))).status,401);
+ assert.equal((await database.query('SELECT count(*)::int n FROM genie_sessions')).rows[0].n,0);
+});
+test('initial workspace selection cannot target a foreign or newly disabled membership',async t=>{
+ const f=await fixture(t);await secondWorkspace();const response=await f.finish(await f.begin());const choice=cookie(response,workspaceChoiceCookie);
+ await database.query('UPDATE genie_tenants SET enabled=false WHERE id=$1',[otherTenant]);
+ assert.equal((await f.request('/auth/workspace',selectWorkspace(choice,otherTenant))).status,403);
+ assert.equal((await database.query('SELECT count(*)::int n FROM genie_sessions')).rows[0].n,0);
+});
+test('workspace switch keeps server identity, rotates the cookie and shows the destination context',async t=>{
+ const f=await fixture(t),{session}=await f.signIn();await secondWorkspace();
+ const page=await f.request('/workspace/switch',{headers:{Cookie:session}});assert.match(await page.text(),/Active workspace: <strong>Workspace A/);
+ const blocked=await f.request('/api/workspaces/switch',jsonPost(session,{tenantId:'00000000-0000-4000-8000-000000000055'}));assert.equal(blocked.status,403);
+ const switched=await f.request('/workspace/switch',selectWorkspace(session,otherTenant));assert.equal(switched.status,303);
+ const next=cookie(switched,sessionCookie);assert.ok(next&&next!==session);
+ const stale=await f.request('/api/auth/session',{headers:{Cookie:session}});assert.equal(stale.status,409);assert.equal(stale.headers.getSetCookie().length,0);
+ const workspace=await f.request('/workspace',{headers:{Cookie:next}});assert.match(await workspace.text(),/Active workspace: <strong>Workspace B/);
+ const response=await f.request('/api/workspaces',{headers:{Cookie:next}});const choices=await response.json();
+ assert.deepEqual(choices.active,{tenantId:otherTenant,name:'Workspace B'});assert.equal(choices.items.length,2);
+ assert.ok(!JSON.stringify(choices).includes('private-upstream-uid'));
+});
+test('workspace switch requires current Accounts proof and cannot revive a disabled destination',async t=>{
+ const f=await fixture(t),{session}=await f.signIn();await secondWorkspace();
+ f.authority.unavailable=true;
+ assert.equal((await f.request('/api/workspaces/switch',jsonPost(session,{tenantId:otherTenant}))).status,503);
+ f.authority.unavailable=false;await database.query('UPDATE genie_tenants SET enabled=false WHERE id=$1',[otherTenant]);
+ assert.equal((await f.request('/api/workspaces/switch',jsonPost(session,{tenantId:otherTenant}))).status,403);
+ assert.equal((await f.request('/api/auth/session',{headers:{Cookie:session}})).status,200);
+});
+test('GENIE-5 AC3 HTTP: the real worker path reauthorizes the pinned original workspace after switching',async t=>{
+ await database.query("UPDATE genie_memberships SET role='admin' WHERE user_id=$1",[user]);
+ const f=await fixture(t),{session}=await f.signIn();await secondWorkspace({role:'admin'});
+ await database.query("INSERT INTO genie_workspace_people VALUES($1,$2,'Original workspace fixture','synthetic-review')",[tenant,user]);
+ await database.query("INSERT INTO genie_workspace_people VALUES($1,$2,'Destination workspace fixture','synthetic-review')",[otherTenant,user]);
+ const queued=await f.request('/api/workspace/member-exports',jsonPost(session,{}));assert.equal(queued.status,202);const job=await queued.json();
+ const switched=await f.request('/api/workspaces/switch',jsonPost(session,{tenantId:otherTenant}));assert.equal(switched.status,200);const bCookie=cookie(switched,sessionCookie);
+ assert.equal((await f.request('/api/workspace/member-exports/'+job.id,{headers:{Cookie:bCookie}})).status,404);
+ const previousProofs=f.calls.proof;
+ const result=await runMemberExport({exports:new MemberExports(database),permissions:new Permissions(database),
+   authenticateSession:createSessionAuthenticator({config,store:f.store,accounts:f.accounts,background:true})});
+ assert.equal(result.status,'completed');assert.equal(f.calls.proof,previousProofs+1);
+ const restored=await f.request('/api/workspaces/switch',jsonPost(bCookie,{tenantId:tenant}));const aCookie=cookie(restored,sessionCookie);
+ const read=await f.request('/api/workspace/member-exports/'+job.id,{headers:{Cookie:aCookie}});assert.equal(read.status,200);
+ assert.deepEqual((await read.json()).result.items.map(x=>x.name),['Original workspace fixture']);
 });
 
 test('GENIE-2 AC3: local sign-out revokes the server session and blocks replay of the old cookie', async t => {
@@ -452,4 +517,35 @@ test('export creation requires origin and native forms redirect to scoped status
  assert.equal((await f.member.request('/api/workspace/member-exports',{method:'POST',headers:{Cookie:f.memberSession}})).status,403);
  const response=await f.member.request('/workspace/member-exports',{method:'POST',headers:{Cookie:f.memberSession,Origin:config.origin,'Content-Type':'application/x-www-form-urlencoded'},body:''});
  assert.equal(response.status,303);assert.match(response.headers.get('location'),/^\/workspace\/member-exports\?id=/);
+});
+
+test('GENIE-5 AC2 HTTP: conversations and search stay in the server-selected workspace',async t=>{
+ await database.query("UPDATE genie_memberships SET role='admin' WHERE user_id=$1",[user]);
+ const f=await fixture(t),{session}=await f.signIn();await secondWorkspace({role:'admin'});
+ const aMember='Only in Workspace A resource',bMember='Only in Workspace B resource';
+ for(const [scope,label] of [[tenant,aMember],[otherTenant,bMember]])await database.query('INSERT INTO genie_workspace_people VALUES($1,$2,$3,$4)',[scope,user,label,'synthetic-search-review']);
+ const created=await f.request('/api/workspace/conversations',jsonPost(session,{title:'Shared title in A',content:'A confidential fixture message',tenantId:otherTenant,ownerId:'forged-owner'}));
+ assert.equal(created.status,201);const aThread=await created.json();
+ const listA=await f.request('/api/workspace/conversations?tenantId='+otherTenant,{headers:{Cookie:session}});assert.deepEqual((await listA.json()).items.map(x=>x.id),[aThread.id]);
+ const searchA=await f.request('/api/workspace/search?q=resource&tenantId='+otherTenant,{headers:{Cookie:session}});assert.deepEqual((await searchA.json()).items.map(x=>x.label),[aMember]);
+ const changed=await f.request('/api/workspaces/switch',jsonPost(session,{tenantId:otherTenant}));assert.equal(changed.status,200);const bSession=cookie(changed,sessionCookie);
+ assert.equal((await f.request('/api/workspace/conversations/'+aThread.id,{headers:{Cookie:bSession}})).status,404);
+ assert.equal((await f.request('/api/workspace/conversations/'+aThread.id+'/messages',jsonPost(bSession,{content:'Cannot cross scope'}))).status,404);
+ assert.equal((await f.request('/api/workspace/search?q=Shared',{headers:{Cookie:session}})).status,409);
+ const b=await f.request('/api/workspace/conversations',jsonPost(bSession,{title:'Shared title in B',content:'B fixture',tenantId:tenant}));assert.equal(b.status,201);const bThread=await b.json();
+ const searchB=await f.request('/api/workspace/search?q=Shared',{headers:{Cookie:bSession}});assert.deepEqual((await searchB.json()).items,[{kind:'conversation',id:bThread.id,label:'Shared title in B'}]);
+ const view=await f.request('/workspace/search?q=resource',{headers:{Cookie:bSession}});const html=await view.text();assert.match(html,/Active workspace: <strong>Workspace B/);assert.match(html,/Only in Workspace B resource/);assert.doesNotMatch(html,/Only in Workspace A resource/);
+ const restored=await f.request('/workspace/switch',selectWorkspace(bSession,tenant));const aSession=cookie(restored,sessionCookie);
+ const thread=await f.request('/api/workspace/conversations/'+aThread.id,{headers:{Cookie:aSession}});assert.equal(thread.status,200);assert.equal((await thread.json()).messages[0].content,'A confidential fixture message');
+ assert.equal((await f.request('/api/workspace/conversations/'+bThread.id,{headers:{Cookie:aSession}})).status,404);
+});
+test('conversation forms require the current origin and escape stored titles and messages',async t=>{
+ const f=await fixture(t),{session}=await f.signIn();
+ const form={method:'POST',headers:{Cookie:session,Origin:config.origin,'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({title:'<script>Title</script>',content:'<img src=x onerror=alert(1)>\nsecond line'}).toString()};
+ assert.equal((await f.request('/workspace/conversations',{...form,headers:{...form.headers,Origin:'https://outside.example'}})).status,403);
+ const create=await f.request('/workspace/conversations',form);assert.equal(create.status,303);const path=create.headers.get('location');
+ const thread=await f.request(path,{headers:{Cookie:session}});const html=await thread.text();assert.match(html,/&lt;script&gt;Title/);assert.match(html,/&lt;img src=x onerror=alert\(1\)&gt;<br>second line/);assert.doesNotMatch(html,/<script>|<img/);
+ assert.equal((await f.request(path+'/messages',{...form,body:'content=Follow-up'})).status,303);
+ const read=await f.request('/api'+path,{headers:{Cookie:session}});assert.equal((await read.json()).messages[1].content,'Follow-up');
+ const malformed=await f.request('/api/workspace/search?q=a',{headers:{Cookie:session}});assert.equal(malformed.status,400);
 });

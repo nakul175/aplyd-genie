@@ -2,22 +2,24 @@
   "goal": "Aplyd Genie backlog to zero",
   "completed_stories": [
     "GENIE-2",
-    "GENIE-3"
+    "GENIE-3",
+    "GENIE-4"
   ],
-  "active_story": "GENIE-4",
-  "remaining_stories": 88,
-  "backlog_stories": 87,
-  "branch": "codex/genie-4-resource-permissions",
+  "active_story": "GENIE-5",
+  "remaining_stories": 87,
+  "backlog_stories": 86,
+  "branch": "codex/genie-5-workspace-switching",
   "local_tests": {
-    "scope": "Integrated regression before final three PG-only tests",
-    "passed": 112,
+    "scope": "GENIE-5 integrated workspace switching, scoped content/search, and original-tenant export reauthorization",
+    "tests": 138,
+    "passed": 130,
     "failed": 0,
-    "skipped": 2,
-    "full_log": "/private/tmp/genie-4-integrated-regression.log",
-    "limitations": "Overlapping focused suites; CI gives final candidate totals. No live acceptance."
+    "skipped": 8,
+    "full_log": "/private/tmp/genie-5-integrated-regression.log",
+    "limitations": "Eight real-engine-only cases run in separate PostgreSQL CI. No GENIE-5 live acceptance claim."
   },
-  "acceptance": "GENIE-4 cases2560\u20132562 Active/Passed in completed run47;35 real live checks and SQL cleanup verified.",
-  "next_work": "Verify latest exact-head PR3 CI, obtain merge authorization, merge and verify GENIE-4 Done in BTF/server receipt. Then start GENIE-5; do not bypass the story order or grant/merge approval gates.",
+  "acceptance": "GENIE-5 cases2563\u20132565 Draft / Not run; GENIE-4 completed run47 retained.",
+  "next_work": "Push draft GENIE-5 PR and qualify exact candidate in CI. Review approved-only staging packet, then request action-time approval for the synthetic second workspace and narrow app grants. Run cases2563\u20132565 on real staging and clean up before final merge authorization.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
@@ -26,14 +28,9 @@
     "Automatic review rejected decrypting live login transactions as a diagnostic: use non-sensitive counts and normal UI only.",
     "Complete and close parent epics only when all their children have passed acceptance."
   ],
-  "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/3",
+  "implementation_pr": null,
   "postgres_tests": {
-    "candidate": "1e74e5e",
-    "passed": 49,
-    "failed": 0,
-    "skipped": 0,
-    "workflow_run": 42300248003,
-    "full_log": "/private/tmp/genie-4-1e74e5e-postgres-ci.json"
+    "status": "Not run for GENIE-5"
   },
   "staging": {
     "deployed_runtime": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
@@ -48,40 +45,28 @@
     "migrations_005_007": "applied and replayed successfully"
   },
   "external_dependency": null,
-  "qualified_candidate": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
+  "qualified_candidate": null,
   "goal_status": "active",
-  "goal_work_status": "GENIE-4 accepted staging and reviewed; Bug Off run47 Completed/Done,3 Active/Passed cases and9 verified Passed steps. Exact-head merge approval pending.",
-  "bugoff_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/47",
-  "final_evidence_commit": "839bf3a9f99daca160d7972bef7d941585f6f295",
-  "final_ci": {
-    "evidence_head": "839bf3a9f99daca160d7972bef7d941585f6f295",
-    "workflow_run": 42330173846,
-    "status": "success",
-    "merge_gate": "Latest PR3 exact-head checks remain authoritative after this documentation checkpoint."
-  },
+  "goal_work_status": "GENIE-4 merged/Done. GENIE-5 implementation and integrated local tests complete; real PostgreSQL CI and staging acceptance pending.",
+  "bugoff_run": null,
+  "final_evidence_commit": null,
+  "final_ci": null,
   "last_completed_story": {
-    "id": "GENIE-3",
-    "approved_head": "cd3dab4a664b453c20851cec6da9e1c6e127d128",
-    "merge_sha": "5d4570db2ea45d3115dce6c035fd6df605f6069b",
+    "id": "GENIE-4",
+    "approved_head": "c80bea3b22b5644b7a54844f8506d11caa447afc",
+    "merge_sha": "b2877f2880b271256c91113e41de034142d1e90b",
     "btf": "Done verified after reload",
-    "bugoff_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/46",
-    "cases": "2557\u20132559 Active / Passed",
-    "server_receipt": "accepted staging; implementation merged; story Done; runtime7d87fe7 unchanged"
+    "bugoff_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/47",
+    "cases": "2560\u20132562 Active/Passed;9 steps Passed",
+    "server_receipt": "GENIE-4 accepted staging; implementation merged; story Done; runtime1e74e5e unchanged",
+    "staging_live_checks": 35,
+    "regression_passes": 112,
+    "postgres_passes": 49
   },
   "baseline_validation": {
     "commit": "5d4570db2ea45d3115dce6c035fd6df605f6069b",
     "combined_passed": 74,
     "actual_postgres_passed": 20,
     "note": "GENIE-3 accepted baseline; not new GENIE-4 acceptance"
-  },
-  "ci": {
-    "candidate": "1e74e5e",
-    "tests": 118,
-    "passed": 112,
-    "failed": 0,
-    "skipped": 6,
-    "all_skips_qualified_separately": true,
-    "audit_vulnerabilities": 0,
-    "full_log": "/private/tmp/genie-4-1e74e5e-identity-ci.json"
   }
 }
