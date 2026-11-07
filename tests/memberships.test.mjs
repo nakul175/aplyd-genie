@@ -20,7 +20,7 @@ before(async()=>{
     const {PGlite}=await import('@electric-sql/pglite');
     db=new PGlite();
   }
-  for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql']) {
+  for(const name of ['001_identity_sessions.sql','002_shared_rate_limits.sql','003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','010_portal_membership_bridge.sql']) {
     await db.exec(await readFile(new URL('../migrations/'+name,import.meta.url),'utf8'));
     if(realPostgres && name==='003_workspace_memberships.sql') {
       await db.exec("DO $$ BEGIN IF NOT EXISTS(SELECT 1 FROM pg_roles WHERE rolname='genie_qualification_reader') THEN CREATE ROLE genie_qualification_reader NOLOGIN; END IF; END $$; GRANT EXECUTE ON FUNCTION genie_membership_page(text,text,text,text) TO genie_qualification_reader;");

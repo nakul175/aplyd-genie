@@ -10,7 +10,7 @@ try {
   await connection.query('BEGIN');
   await connection.query("SELECT pg_advisory_xact_lock(hashtext('aplyd-genie-migrations'))");
   await connection.query('CREATE TABLE IF NOT EXISTS genie_migrations (name text PRIMARY KEY, checksum char(64) NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())');
-  for (const name of ['001_identity_sessions.sql', '002_shared_rate_limits.sql', '003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql','008_workspace_sessions.sql','009_workspace_conversations_search.sql']) {
+  for (const name of ['001_identity_sessions.sql', '002_shared_rate_limits.sql', '003_workspace_memberships.sql','004_audit_page_cursor.sql','005_resource_permissions.sql','006_permission_aware_memberships.sql','007_authorized_exports.sql','008_workspace_sessions.sql','009_workspace_conversations_search.sql','010_portal_membership_bridge.sql']) {
   const sql = await readFile(new URL(`../migrations/${name}`, import.meta.url), 'utf8');
   const checksum = createHash('sha256').update(sql).digest('hex');
   const existing = await connection.query('SELECT checksum FROM genie_migrations WHERE name=$1', [name]);

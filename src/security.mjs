@@ -44,7 +44,7 @@ export function secureHeaders(_request, response, next) {
   response.set({
     'Cache-Control': 'no-store', Pragma: 'no-cache', Vary: 'Cookie',
     'Referrer-Policy': 'no-referrer', 'X-Content-Type-Options': 'nosniff',
-    'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
+    'Content-Security-Policy': "default-src 'none'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
   });
   next();
 }
