@@ -4,6 +4,7 @@ import {roleView} from './role-views.mjs';
 import {createMemberTools} from './member-tools.mjs';
 import {createSessionAuthenticator} from './authentication.mjs';
 import express from 'express';
+import {readFileSync} from 'node:fs';
 import { rateLimit } from 'express-rate-limit';
 import { digest, randomToken, seal, open, readCookie, setCookie,
   sessionCookie, loginCookie, workspaceChoiceCookie, secureHeaders, HttpError } from './security.mjs';
@@ -13,6 +14,8 @@ const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const tenantIdOf = value => { if(typeof value!=='string'||!uuid.test(value)) throw new HttpError(400,'invalid_workspace'); return value.toLowerCase(); };
 const unauthorized = () => new HttpError(401, 'authentication_required');
 const document = body => `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Aplyd Genie</title><main>${body}</main></html>`;
+const workspaceDocument=body=>document(body).replace('</html>','<script defer src="/assets/session-watch.js"></script></html>');
+const sessionWatch=readFileSync(new URL('./session-watch.js',import.meta.url),'utf8');
 
 /** Dependencies are injected for contract tests; production supplies the real adapters. */
 export function createApp({ config, store, oidc, accounts, rateStore, memberships, permissions, memberExports, workspaceContent }) {
@@ -22,6 +25,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.disable('etag');
   if (config.trustProxy) app.set('trust proxy', 'loopback');
   app.use(secureHeaders);
+  app.get('/assets/session-watch.js',(_request,response)=>response.type('application/javascript').send(sessionWatch));
   app.use('/auth', rateLimit({ windowMs: 60_000, limit: 30,
     ...(rateStore ? { store: rateStore } : {}),
     standardHeaders: 'draft-8', legacyHeaders: false,
@@ -178,7 +182,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.get('/workspace/switch',async(request,response)=>{
     const actor=await authenticate(request);
     const page=await store.listWorkspaces(actor.userId,pageCursor(request));
-    response.set('Referrer-Policy','same-origin').type('html').send(document(workspaceBanner(actor.workspaceName)+workspaceChoices(page,{active:actor.tenantId})));
+    response.set('Referrer-Policy','same-origin').type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+workspaceChoices(page,{active:actor.tenantId})));
   });
   async function switchWorkspace(request,response){
     sameOrigin(request);const actor=await authenticate(request),target=tenantIdOf(request.body?.tenantId);
@@ -219,7 +223,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     if(allows(caps,'workspace.roles','assign')&&allows(caps,'workspace.members','read'))links+='<p><a href="/workspace/roles?view=assignments">Role assignments</a></p>';
     if(allows(caps,'workspace.audit','read'))links+='<p><a href="/workspace/roles?view=audit">Role activity</a></p>';
     response.set('Referrer-Policy', 'same-origin');
-    response.type('html').send(document(workspaceBanner(actor.workspaceName)+'<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +links+
+    response.type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+'<h1>Aplyd Genie workspace</h1><p>You are signed in.</p>' +links+
       '<form method="post" action="/auth/sign-out"><button type="submit">Sign out of Genie</button></form>'));
   });
 
@@ -233,7 +237,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.get('/api/workspace/members', async (request,response) => {const {kind,page}=await memberPage(request);response.json({kind,page});});
   app.get('/workspace/members', async (request,response) => {
     const {kind,page,builtinRole,workspaceName,capabilities}=await memberPage(request);
-    response.set('Referrer-Policy','same-origin').type('html').send(document(workspaceBanner(workspaceName)+memberView(kind,page,{search:request.query.search??'',builtinRole,capabilities})));
+    response.set('Referrer-Policy','same-origin').type('html').send(workspaceDocument(workspaceBanner(workspaceName)+memberView(kind,page,{search:request.query.search??'',builtinRole,capabilities})));
   });
   async function membershipAction(request,action) {
     sameOrigin(request);
@@ -251,7 +255,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     });
     app.post(`/workspace/members/${action}`,parseForm,async(request,response) => {
       const result=await membershipAction(request,action);
-      if(action==='invite')return response.type('html').send(document(invitationCreated(config.origin,result)));
+      if(action==='invite')return response.type('html').send(workspaceDocument(invitationCreated(config.origin,result)));
       response.redirect(303,action==='revoke'?'/workspace/members?view=invitations':'/workspace/members');
     });
   }
@@ -266,7 +270,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.get('/api/workspace/roles',async(request,response)=>{const {kind,page}=await rolePage(request);response.json({kind,page});});
   app.get('/workspace/roles',async(request,response)=>{
     const {kind,page,capabilities,workspaceName}=await rolePage(request);
-    response.set('Referrer-Policy','same-origin').type('html').send(document(workspaceBanner(workspaceName)+roleView(kind,page,{capabilities,search:request.query.search??''})));
+    response.set('Referrer-Policy','same-origin').type('html').send(workspaceDocument(workspaceBanner(workspaceName)+roleView(kind,page,{capabilities,search:request.query.search??''})));
   });
   const roleForm=express.urlencoded({extended:false,limit:'16kb',parameterLimit:64});
   async function roleAction(request,action,fromForm=false){
@@ -307,7 +311,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     const job=request.query.id?await memberExports.get(actor.sessionHash,request.query.id):null;
     const labels={queued:'Waiting to prepare your export.',running:'Preparing your export.',completed:'Your export is ready.',denied:'Access changed. This export was stopped.',failed:'This export could not be completed. You can try again.'};
     const status=job?`<p>${labels[job.status]}</p>${job.status==='completed'?`<p><a href="/api/workspace/member-exports/${escapeHtml(job.id)}">View export JSON</a></p>`:''}<p><a href="/workspace/member-exports?id=${escapeHtml(job.id)}">Refresh status</a></p>`:'';
-    response.type('html').send(document(workspaceBanner(actor.workspaceName)+`<h1>Export workspace members</h1><p>Exports contain up to 1,000 member names, roles and membership statuses. Your access is checked again when the export runs and when you open it.</p>${status}<form method="post" action="/workspace/member-exports"><button>Prepare export</button></form><p><a href="/workspace/members">Back to members</a></p>`));
+    response.type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+`<h1>Export workspace members</h1><p>Exports contain up to 1,000 member names, roles and membership statuses. Your access is checked again when the export runs and when you open it.</p>${status}<form method="post" action="/workspace/member-exports"><button>Prepare export</button></form><p><a href="/workspace/members">Back to members</a></p>`));
   });
   app.post('/workspace/member-exports',parseForm,async(request,response)=>{
     sameOrigin(request);const actor=await authenticate(request);
@@ -344,12 +348,12 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.get('/workspace/conversations',async(request,response)=>{
     const actor=await contentActor(request);
     const page=await workspaceContent.list(actor.sessionHash,request.query.after);
-    response.set('Referrer-Policy','same-origin').type('html').send(document(workspaceBanner(actor.workspaceName)+conversationList(page)));
+    response.set('Referrer-Policy','same-origin').type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+conversationList(page)));
   });
   app.get('/workspace/conversations/:id',async(request,response)=>{
     const actor=await contentActor(request);
     const thread=await workspaceContent.get(actor.sessionHash,request.params.id,request.query.after);
-    response.set('Referrer-Policy','same-origin').type('html').send(document(workspaceBanner(actor.workspaceName)+conversationDetail(thread)));
+    response.set('Referrer-Policy','same-origin').type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+conversationDetail(thread)));
   });
   async function conversationWrite(request,append=false){
     sameOrigin(request);const actor=await contentActor(request),body=request.body??{};
@@ -370,7 +374,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   app.get('/workspace/search',async(request,response)=>{
     const actor=await contentActor(request),q=request.query.q;
     const page=q===undefined?null:await workspaceContent.search(actor.sessionHash,q);
-    response.type('html').send(document(workspaceBanner(actor.workspaceName)+workspaceSearch(q??'',page)));
+    response.type('html').send(workspaceDocument(workspaceBanner(actor.workspaceName)+workspaceSearch(q??'',page)));
   });
 
   app.post('/auth/sign-out', async (request, response) => {
