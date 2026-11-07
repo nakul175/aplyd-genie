@@ -16,8 +16,8 @@
     "full_log": "/private/tmp/genie-4-integrated-regression.log",
     "limitations": "Overlapping focused suites; CI gives final candidate totals. No live acceptance."
   },
-  "acceptance": "GENIE-4 cases2560\u20132562 Draft / Not run; GENIE-3 completed run46 retained.",
-  "next_work": "Review exact staging activation packet and credential/grant script, obtain action-time confirmation for Genie-only runtime/worker and synthetic QA role grants. Deploy, execute actual cases2560\u20132562 with normal QA password/OIDC and real --once worker, clean up, update Bug Off/BTF, final exact-head merge approval. No GENIE-5 until GENIE-4 Done.",
+  "acceptance": "GENIE-4 live35 checks passed; Bug Off run47 recording in progress. No GENIE-4 closure or merge yet.",
+  "next_work": "Finish recording three passed cases and nine manual steps in Bug Off run47; publish sanitized live evidence and final CI. Obtain exact-head merge approval, then mark GENIE-4 Done before starting GENIE-5.",
   "constraints": [
     "one story at a time",
     "no scheduled/recurring work",
@@ -28,15 +28,15 @@
   ],
   "implementation_pr": "https://github.com/nakul175/aplyd-genie/pull/3",
   "postgres_tests": {
-    "candidate": "1887270",
-    "passed": 48,
+    "candidate": "1e74e5e",
+    "passed": 49,
     "failed": 0,
     "skipped": 0,
-    "workflow_run": 42299906644,
-    "full_log": "/private/tmp/genie-4-1887270-postgres-ci.json"
+    "workflow_run": 42300248003,
+    "full_log": "/private/tmp/genie-4-1e74e5e-postgres-ci.json"
   },
   "staging": {
-    "deployed_runtime": "7d87fe739e456a28e78e6cae5edceb607cf7ba5c",
+    "deployed_runtime": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
     "migration_003": "applied and replayed successfully",
     "fixture_grants": "explicitly approved and applied",
     "owner_role": "admin",
@@ -44,13 +44,14 @@
     "private_fixture_receipt": "/opt/aplyd-genie-staging/private/genie3-qa-login.json",
     "migration_004": "applied and replayed successfully; runtime grants preserved",
     "runtime_privilege_probe": "passed; no direct identity/membership/audit writes or DDL, no internal helper execute",
-    "final_cleanup": "live SQL disabled/member/zero Genie sessions; no temporary route; container file hashes match release; server receipt updated"
+    "final_cleanup": "QA disabled/member;0 sessions, assignments, temporary role grants and pending exports;15 policy audit events; isolated worker grants verified; no persistent worker activated",
+    "migrations_005_007": "applied and replayed successfully"
   },
   "external_dependency": null,
-  "qualified_candidate": "1887270b8abb6a6ebe4ab5db2f452887ccab9b8f",
+  "qualified_candidate": "1e74e5e0fa5138d812c71f0bf06257c67fd2a9ba",
   "goal_status": "active",
-  "goal_work_status": "GENIE-4 implemented; draft PR3 CI green, real PostgreSQL48 passed. Staging activation not yet approved or run.",
-  "bugoff_run": null,
+  "goal_work_status": "GENIE-4 staging acceptance35 checks passed; SQL cleanup/audit verified. Bug Off run47 results being recorded; merge pending.",
+  "bugoff_run": "https://bugoff.aplyd.org/en-US/projects/runs/7/47",
   "final_evidence_commit": null,
   "final_ci": null,
   "last_completed_story": {
@@ -69,13 +70,13 @@
     "note": "GENIE-3 accepted baseline; not new GENIE-4 acceptance"
   },
   "ci": {
-    "candidate": "1887270",
-    "tests": 117,
+    "candidate": "1e74e5e",
+    "tests": 118,
     "passed": 112,
     "failed": 0,
-    "skipped": 5,
+    "skipped": 6,
     "all_skips_qualified_separately": true,
     "audit_vulnerabilities": 0,
-    "full_log": "/private/tmp/genie-4-1887270-identity-ci.json"
+    "full_log": "/private/tmp/genie-4-1e74e5e-identity-ci.json"
   }
 }
