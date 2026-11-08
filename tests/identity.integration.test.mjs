@@ -97,7 +97,7 @@ test('GENIE-2 AC1: identity and tenant come from reviewed records, not browser c
   const result = await f.request(`/api/auth/session?userId=attacker&tenantId=${otherTenant}`, {
     headers: { Cookie: session, 'X-User-Id': 'attacker', 'X-Tenant-Id': otherTenant } });
   assert.equal(result.status, 200);
-  assert.deepEqual(await result.json(), { authenticated: true, userId: user, tenantId: tenant });
+  assert.deepEqual(await result.json(), { authenticated: true, userId: user, tenantId: tenant, authorityRevision:digest(JSON.stringify([])) });
   assert.match(result.headers.get('cache-control'), /no-store/);
   assert.equal(result.headers.get('etag'), null);
   assert.match(response.headers.getSetCookie().find(c => c.startsWith(sessionCookie)), /Path=\/; HttpOnly; Secure; SameSite=Lax/);
@@ -191,7 +191,7 @@ test('GENIE-5 AC1: multi-workspace OIDC requires an explicit single-use browser-
   const chosen=await f.request('/auth/workspace',selectWorkspace(choice,otherTenant));
   assert.equal(chosen.status,303);assert.equal(chosen.headers.get('location'),'/workspace');
   const selected=cookie(chosen,sessionCookie);const active=await f.request('/api/auth/session',{headers:{Cookie:selected}});
-  assert.deepEqual(await active.json(),{authenticated:true,userId:user,tenantId:otherTenant});
+  assert.deepEqual(await active.json(),{authenticated:true,userId:user,tenantId:otherTenant,authorityRevision:digest(JSON.stringify([]))});
   assert.equal((await f.request('/auth/workspace',selectWorkspace(choice,tenant))).status,401);
 });
 test('explicit sign-out revokes a pending workspace choice before it can mint a session',async t=>{
@@ -476,7 +476,7 @@ test('GENIE-4 AC2 HTTP/tool: unassignment updates an existing session without ca
  workspace=await f.member.request('/workspace',{headers:{Cookie:f.memberSession}});assert.equal(workspace.status,200);assert.doesNotMatch(await workspace.text(),/href="\/workspace\/members"/);
  assert.equal((await f.member.request('/api/workspace/members',{headers:{Cookie:f.memberSession}})).status,403);
  assert.equal((await f.post(f.member,f.memberSession,'/api/tools/members.list',{})).status,403);
- const identity=await f.member.request('/api/auth/session',{headers:{Cookie:f.memberSession}});assert.equal(identity.status,200);assert.deepEqual(await identity.json(),{authenticated:true,userId:policyMember,tenantId:tenant});
+ const identity=await f.member.request('/api/auth/session',{headers:{Cookie:f.memberSession}});assert.equal(identity.status,200);assert.deepEqual(await identity.json(),{authenticated:true,userId:policyMember,tenantId:tenant,authorityRevision:digest(JSON.stringify([]))});
 });
 test('GENIE-4 AC3 HTTP: scoped managers cannot grant or assign a stronger role using browser claims',async t=>{
  const f=await policyFixture(t);const limited=await f.role('Scoped manager',[{resource:'workspace.roles',action:'read'},{resource:'workspace.roles',action:'manage'},{resource:'workspace.roles',action:'assign'},{resource:'workspace.members',action:'read'}]);await f.assign(limited.id);
