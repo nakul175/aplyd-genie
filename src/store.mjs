@@ -2,6 +2,12 @@
 export class IdentityStore {
   constructor(database) { this.database = database; }
 
+  async provisioning(userId) {
+    const row=(await this.database.query("SELECT to_jsonb(u)->>'portal_provision_request' request, to_jsonb(u)->>'portal_provision_tenant' tenant FROM genie_users u WHERE id=$1",[userId])).rows[0];
+    if(!row)throw Error('Identity unavailable');
+    return row.request ? {requestId:row.request,tenantId:row.tenant}:null;
+  }
+
   async putLogin({ stateHash, browserHash, sealed, expires }) {
     await this.database.query(
       'INSERT INTO genie_login_transactions (state_hash,browser_hash,sealed_transaction,expires_at) VALUES ($1,$2,$3,$4)',
