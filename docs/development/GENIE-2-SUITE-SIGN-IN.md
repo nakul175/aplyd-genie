@@ -5,7 +5,7 @@ Staging accepted on 6 November 2026. Only this story has been implemented.
 - [BTF story](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2)
 - [Staging](https://staging.genie.aplyd.org)
 - [Implementation PR](https://github.com/nakul175/aplyd-genie/pull/1)
-- [Bug Off acceptance run 45](https://bugoff.aplyd.org/en-US/projects/runs/7/45)
+- [Debug acceptance run 45](https://debug.aplyd.org/en-US/projects/runs/7/45)
 - [Detailed deployment and acceptance evidence](../../evidence/genie-2/staging/ACCEPTANCE.md)
 
 ## Implemented boundary
@@ -20,11 +20,11 @@ The deployed workspace is a minimal acceptance surface. Conversation UI, context
 
 ## Accepted cases
 
-| Criterion | Bug Off case | Result |
+| Criterion | Debug case | Result |
 |---|---|---|
-| Server establishes user and tenant; browser cannot override either | [2554](https://bugoff.aplyd.org/en-US/projects/repository/7/2554) | Passed |
-| Disabled membership rejected immediately | [2555](https://bugoff.aplyd.org/en-US/projects/repository/7/2555) | Passed |
-| Sign-out removes protected access | [2556](https://bugoff.aplyd.org/en-US/projects/repository/7/2556) | Passed after browser fix; earlier failure retained |
+| Server establishes user and tenant; browser cannot override either | [2554](https://debug.aplyd.org/en-US/projects/repository/7/2554) | Passed |
+| Disabled membership rejected immediately | [2555](https://debug.aplyd.org/en-US/projects/repository/7/2555) | Passed |
+| Sign-out removes protected access | [2556](https://debug.aplyd.org/en-US/projects/repository/7/2556) | Passed after browser fix; earlier failure retained |
 
 All three definitions are Active. The acceptance report distinguishes real browser execution from the 47 local regression tests and hosted CI. Actual PostgreSQL migration rollback, replay and checksum guards were qualified in a separate synthetic database. Session persistence, database least privilege, public TLS, secure cookie attributes and ingress header isolation were checked on staging.
 

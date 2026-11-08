@@ -1,6 +1,6 @@
 # Aplyd Genie Acceptance Coverage
 
-All 270 acceptance criteria have corresponding Bug Off cases, organized into 21 epic folders. Each of the 90 BTF stories links to its three cases; each case links back to the story.
+All 270 acceptance criteria have corresponding Debug cases, organized into 21 epic folders. Each of the 90 BTF stories links to its three cases; each case links back to the story.
 
 See [live traceability](TRACEABILITY.md) for every actual tracker link and [detailed specifications](EPICS-AND-USER-STORIES.md) for the criteria.
 
