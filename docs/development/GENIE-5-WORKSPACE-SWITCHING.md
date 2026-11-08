@@ -31,4 +31,4 @@ The owner browser session expired, so the temporary membership and reader roles 
 
 The acceptance and cleanup harnesses are preserved under `ops/staging/genie-5`. For the recorded run, the operator fixture script was executed with `ACCEPTANCE_SOURCE` bound to the text of `verify-qa-api.py`, followed by `verify-cleanup.py` after the fixture transaction completed. These scripts target the named staging revision and fixture.
 
-BTF and Bug Off require fresh sign-ins before the tracker records can be updated. GENIE-5 is still In Progress and PR #4 is a draft.
+BTF and Debug require fresh sign-ins before the tracker records can be updated. GENIE-5 is still In Progress and PR #4 is a draft.

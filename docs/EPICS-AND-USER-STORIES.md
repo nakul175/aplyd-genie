@@ -2,7 +2,7 @@
 
 Version 1.2 | 6 November 2026
 
-P0 = initial workflow; P1 = next integrations; P2 = later expansion. All stories are imported into BTF in Backlog and have linked Draft / Not run Bug Off cases. Stable specification IDs remain distinct from actual BTF keys; see [live traceability](TRACEABILITY.md). No implementation or product test execution is claimed. Application prerequisite stories belong to their owning products when implemented and should be linked rather than duplicated.
+P0 = initial workflow; P1 = next integrations; P2 = later expansion. All stories are imported into BTF in Backlog and have linked Draft / Not run Debug cases. Stable specification IDs remain distinct from actual BTF keys; see [live traceability](TRACEABILITY.md). No implementation or product test execution is claimed. Application prerequisite stories belong to their owning products when implemented and should be linked rather than duplicated.
 
 ## Common definition of done
 
@@ -36,7 +36,7 @@ Every released operation requires authorization, validation, observable result/e
 
 ## PLAT-01 Identity membership and permissions
 
-**Live epic:** [GENIE-1](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-1) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=178)
+**Live epic:** [GENIE-1](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-1) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=178)
 
 Enforce one verified identity and tenant boundary across applications.
 
@@ -46,7 +46,7 @@ Enforce one verified identity and tenant boundary across applications.
 
 ### PLAT-101 — P0
 
-**BTF:** [GENIE-2](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2554) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2555) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2556)
+**BTF:** [GENIE-2](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-2) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2554) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2555) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2556)
 
 As a user, I can sign in once and access applications available to my membership.
 
@@ -60,7 +60,7 @@ As a user, I can sign in once and access applications available to my membership
 
 ### PLAT-102 — P0
 
-**BTF:** [GENIE-3](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-3) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2557) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2558) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2559)
+**BTF:** [GENIE-3](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-3) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2557) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2558) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2559)
 
 As an administrator, I can invite, deactivate and manage workspace members.
 
@@ -74,7 +74,7 @@ As an administrator, I can invite, deactivate and manage workspace members.
 
 ### PLAT-103 — P0
 
-**BTF:** [GENIE-4](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-4) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2560) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2561) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2562)
+**BTF:** [GENIE-4](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-4) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2560) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2561) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2562)
 
 As an administrator, I can grant roles with explicit resource and action permissions.
 
@@ -88,7 +88,7 @@ As an administrator, I can grant roles with explicit resource and action permiss
 
 ### PLAT-104 — P0
 
-**BTF:** [GENIE-5](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-5) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2563) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2564) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2565)
+**BTF:** [GENIE-5](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-5) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2563) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2564) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2565)
 
 As a multi-workspace user, I can explicitly switch my active workspace.
 
@@ -102,7 +102,7 @@ As a multi-workspace user, I can explicitly switch my active workspace.
 
 ### PLAT-105 — P0
 
-**BTF:** [GENIE-6](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-6) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2566) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2567) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2568)
+**BTF:** [GENIE-6](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-6) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2566) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2567) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2568)
 
 As an administrator, I can revoke access before pending actions execute.
 
@@ -116,7 +116,7 @@ As an administrator, I can revoke access before pending actions execute.
 
 ## PLAT-02 Shared references activity and notifications
 
-**Live epic:** [GENIE-7](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-7) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=179)
+**Live epic:** [GENIE-7](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-7) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=179)
 
 Keep connected work traceable.
 
@@ -126,7 +126,7 @@ Keep connected work traceable.
 
 ### PLAT-201 — P0
 
-**BTF:** [GENIE-8](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-8) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2569) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2570) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2571)
+**BTF:** [GENIE-8](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-8) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2569) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2570) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2571)
 
 As a user, I can follow a generated task to its source document.
 
@@ -140,7 +140,7 @@ As a user, I can follow a generated task to its source document.
 
 ### PLAT-202 — P0
 
-**BTF:** [GENIE-9](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-9) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2572) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2573) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2574)
+**BTF:** [GENIE-9](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-9) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2572) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2573) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2574)
 
 As a user, I can distinguish manual changes from Genie actions.
 
@@ -154,7 +154,7 @@ As a user, I can distinguish manual changes from Genie actions.
 
 ### PLAT-203 — P1
 
-**BTF:** [GENIE-10](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-10) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2575) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2576) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2577)
+**BTF:** [GENIE-10](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-10) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2575) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2576) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2577)
 
 As a user, I can inspect linked tasks, events and documents.
 
@@ -168,7 +168,7 @@ As a user, I can inspect linked tasks, events and documents.
 
 ### PLAT-204 — P1
 
-**BTF:** [GENIE-11](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-11) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2578) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2579) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2580)
+**BTF:** [GENIE-11](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-11) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2578) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2579) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2580)
 
 As a user, I receive useful workflow completion notifications.
 
@@ -182,7 +182,7 @@ As a user, I receive useful workflow completion notifications.
 
 ## PROJ-01 Project and task fundamentals
 
-**Live epic:** [GENIE-12](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-12) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=180)
+**Live epic:** [GENIE-12](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-12) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=180)
 
 Manage work through dependable application services.
 
@@ -192,7 +192,7 @@ Manage work through dependable application services.
 
 ### PROJ-101 — P0
 
-**BTF:** [GENIE-13](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-13) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2581) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2582) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2583)
+**BTF:** [GENIE-13](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-13) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2581) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2582) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2583)
 
 As a member, I can create a project with a name, description and access settings.
 
@@ -206,7 +206,7 @@ As a member, I can create a project with a name, description and access settings
 
 ### PROJ-102 — P0
 
-**BTF:** [GENIE-14](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-14) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2584) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2585) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2586)
+**BTF:** [GENIE-14](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-14) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2584) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2585) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2586)
 
 As a member, I can create a task with title, description, status, owner and due date.
 
@@ -220,7 +220,7 @@ As a member, I can create a task with title, description, status, owner and due 
 
 ### PROJ-103 — P0
 
-**BTF:** [GENIE-15](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-15) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2587) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2588) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2589)
+**BTF:** [GENIE-15](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-15) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2587) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2588) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2589)
 
 As a member, I can view tasks in list or board views and filter them.
 
@@ -234,7 +234,7 @@ As a member, I can view tasks in list or board views and filter them.
 
 ### PROJ-104 — P0
 
-**BTF:** [GENIE-16](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-16) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2590) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2591) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2592)
+**BTF:** [GENIE-16](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-16) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2590) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2591) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2592)
 
 As an owner, I can update and complete a task.
 
@@ -248,7 +248,7 @@ As an owner, I can update and complete a task.
 
 ### PROJ-105 — P1
 
-**BTF:** [GENIE-17](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-17) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2593) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2594) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2595)
+**BTF:** [GENIE-17](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-17) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2593) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2594) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2595)
 
 As a collaborator, I can comment on tasks and review activity.
 
@@ -262,7 +262,7 @@ As a collaborator, I can comment on tasks and review activity.
 
 ### PROJ-106 — P2
 
-**BTF:** [GENIE-18](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-18) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2596) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2597) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2598)
+**BTF:** [GENIE-18](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-18) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2596) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2597) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2598)
 
 As a manager, I can define task dependencies and identify blocked work.
 
@@ -276,7 +276,7 @@ As a manager, I can define task dependencies and identify blocked work.
 
 ## PROJ-02 Genie project capabilities
 
-**Live epic:** [GENIE-19](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-19) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=181)
+**Live epic:** [GENIE-19](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-19) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=181)
 
 Delegate bounded project operations.
 
@@ -286,7 +286,7 @@ Delegate bounded project operations.
 
 ### PROJ-201 — P0
 
-**BTF:** [GENIE-20](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-20) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2599) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2600) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2601)
+**BTF:** [GENIE-20](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-20) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2599) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2600) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2601)
 
 As a user, I can ask Genie for overdue or upcoming tasks.
 
@@ -300,7 +300,7 @@ As a user, I can ask Genie for overdue or upcoming tasks.
 
 ### PROJ-202 — P0
 
-**BTF:** [GENIE-21](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-21) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2602) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2603) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2604)
+**BTF:** [GENIE-21](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-21) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2602) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2603) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2604)
 
 As a user, I can review tasks extracted from notes before creation.
 
@@ -314,7 +314,7 @@ As a user, I can review tasks extracted from notes before creation.
 
 ### PROJ-203 — P1
 
-**BTF:** [GENIE-22](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-22) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2605) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2606) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2607)
+**BTF:** [GENIE-22](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-22) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2605) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2606) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2607)
 
 As a user, I can request a change to a specific task through Genie.
 
@@ -328,7 +328,7 @@ As a user, I can request a change to a specific task through Genie.
 
 ### PROJ-204 — P1
 
-**BTF:** [GENIE-23](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2608) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2609) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2610)
+**BTF:** [GENIE-23](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-23) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2608) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2609) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2610)
 
 As a manager, I can obtain a project summary grounded in accessible tasks.
 
@@ -342,7 +342,7 @@ As a manager, I can obtain a project summary grounded in accessible tasks.
 
 ### PROJ-205 — P2
 
-**BTF:** [GENIE-24](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2611) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2612) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2613)
+**BTF:** [GENIE-24](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-24) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2611) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2612) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2613)
 
 As a manager, I can review updates to several tasks before applying them.
 
@@ -356,7 +356,7 @@ As a manager, I can review updates to several tasks before applying them.
 
 ## DOC-01 Document fundamentals
 
-**Live epic:** [GENIE-25](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-25) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=182)
+**Live epic:** [GENIE-25](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-25) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=182)
 
 Create and edit trustworthy source material.
 
@@ -366,7 +366,7 @@ Create and edit trustworthy source material.
 
 ### DOC-101 — P0
 
-**BTF:** [GENIE-26](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-26) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2614) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2615) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2616)
+**BTF:** [GENIE-26](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-26) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2614) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2615) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2616)
 
 As a user, I can create, edit and save a document.
 
@@ -380,7 +380,7 @@ As a user, I can create, edit and save a document.
 
 ### DOC-102 — P0
 
-**BTF:** [GENIE-27](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-27) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2617) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2618) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2619)
+**BTF:** [GENIE-27](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-27) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2617) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2618) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2619)
 
 As a user, I can share a document at supported access levels.
 
@@ -394,7 +394,7 @@ As a user, I can share a document at supported access levels.
 
 ### DOC-103 — P0
 
-**BTF:** [GENIE-28](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2620) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2621) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2622)
+**BTF:** [GENIE-28](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-28) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2620) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2621) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2622)
 
 As a user, I can select text for Genie context.
 
@@ -408,7 +408,7 @@ As a user, I can select text for Genie context.
 
 ### DOC-104 — P1
 
-**BTF:** [GENIE-29](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-29) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2623) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2624) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2625)
+**BTF:** [GENIE-29](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-29) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2623) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2624) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2625)
 
 As a user, I can inspect and recover earlier document content.
 
@@ -422,7 +422,7 @@ As a user, I can inspect and recover earlier document content.
 
 ### DOC-105 — P1
 
-**BTF:** [GENIE-30](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2626) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2627) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2628)
+**BTF:** [GENIE-30](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-30) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2626) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2627) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2628)
 
 As a collaborator, I can comment on document content.
 
@@ -436,7 +436,7 @@ As a collaborator, I can comment on document content.
 
 ### DOC-106 — P1
 
-**BTF:** [GENIE-31](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-31) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2629) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2630) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2631)
+**BTF:** [GENIE-31](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-31) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2629) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2630) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2631)
 
 As a collaborator, I can edit alongside others without losing changes.
 
@@ -450,7 +450,7 @@ As a collaborator, I can edit alongside others without losing changes.
 
 ## DOC-02 Genie document capabilities
 
-**Live epic:** [GENIE-32](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-32) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=183)
+**Live epic:** [GENIE-32](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-32) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=183)
 
 Extract and transform information with explicit source scope.
 
@@ -460,7 +460,7 @@ Extract and transform information with explicit source scope.
 
 ### DOC-201 — P0
 
-**BTF:** [GENIE-33](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2632) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2633) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2634)
+**BTF:** [GENIE-33](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-33) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2632) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2633) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2634)
 
 As a user, I can summarize selected text or a specified document.
 
@@ -474,7 +474,7 @@ As a user, I can summarize selected text or a specified document.
 
 ### DOC-202 — P0
 
-**BTF:** [GENIE-34](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-34) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2635) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2636) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2637)
+**BTF:** [GENIE-34](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-34) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2635) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2636) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2637)
 
 As a user, I can extract decisions and action items from notes.
 
@@ -488,7 +488,7 @@ As a user, I can extract decisions and action items from notes.
 
 ### DOC-203 — P1
 
-**BTF:** [GENIE-35](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-35) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2638) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2639) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2640)
+**BTF:** [GENIE-35](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-35) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2638) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2639) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2640)
 
 As a user, I can review a rewrite before applying it.
 
@@ -502,7 +502,7 @@ As a user, I can review a rewrite before applying it.
 
 ### DOC-204 — P1
 
-**BTF:** [GENIE-36](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-36) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2641) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2642) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2643)
+**BTF:** [GENIE-36](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-36) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2641) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2642) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2643)
 
 As a user, I can ask document questions and inspect supporting passages.
 
@@ -516,7 +516,7 @@ As a user, I can ask document questions and inspect supporting passages.
 
 ### DOC-205 — P1
 
-**BTF:** [GENIE-37](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-37) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2644) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2645) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2646)
+**BTF:** [GENIE-37](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-37) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2644) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2645) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2646)
 
 As a user, I can create a draft from authorized project information.
 
@@ -530,7 +530,7 @@ As a user, I can create a draft from authorized project information.
 
 ## CAL-01 Calendar fundamentals
 
-**Live epic:** [GENIE-38](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-38) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=184)
+**Live epic:** [GENIE-38](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-38) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=184)
 
 Represent schedules and invitations accurately.
 
@@ -540,7 +540,7 @@ Represent schedules and invitations accurately.
 
 ### CAL-101 — P1
 
-**BTF:** [GENIE-39](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-39) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2647) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2648) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2649)
+**BTF:** [GENIE-39](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-39) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2647) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2648) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2649)
 
 As a user, I can view events in my configured timezone.
 
@@ -554,7 +554,7 @@ As a user, I can view events in my configured timezone.
 
 ### CAL-102 — P1
 
-**BTF:** [GENIE-40](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-40) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2650) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2651) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2652)
+**BTF:** [GENIE-40](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-40) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2650) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2651) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2652)
 
 As a user, I can create, edit and cancel personal events.
 
@@ -568,7 +568,7 @@ As a user, I can create, edit and cancel personal events.
 
 ### CAL-103 — P1
 
-**BTF:** [GENIE-41](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-41) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2653) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2654) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2655)
+**BTF:** [GENIE-41](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-41) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2653) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2654) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2655)
 
 As a user, I can specify working hours and scheduling preferences.
 
@@ -582,7 +582,7 @@ As a user, I can specify working hours and scheduling preferences.
 
 ### CAL-104 — P1
 
-**BTF:** [GENIE-42](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-42) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2656) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2657) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2658)
+**BTF:** [GENIE-42](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-42) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2656) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2657) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2658)
 
 As an organizer, I can invite participants and inspect responses.
 
@@ -596,7 +596,7 @@ As an organizer, I can invite participants and inspect responses.
 
 ### CAL-105 — P2
 
-**BTF:** [GENIE-43](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-43) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2659) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2660) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2661)
+**BTF:** [GENIE-43](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-43) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2659) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2660) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2661)
 
 As a user, I can manage recurring events.
 
@@ -610,7 +610,7 @@ As a user, I can manage recurring events.
 
 ## CAL-02 Genie scheduling
 
-**Live epic:** [GENIE-44](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-44) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=185)
+**Live epic:** [GENIE-44](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-44) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=185)
 
 Coordinate approved schedules.
 
@@ -620,7 +620,7 @@ Coordinate approved schedules.
 
 ### CAL-201 — P1
 
-**BTF:** [GENIE-45](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-45) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2662) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2663) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2664)
+**BTF:** [GENIE-45](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-45) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2662) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2663) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2664)
 
 As a user, I can ask for available slots in a date range.
 
@@ -634,7 +634,7 @@ As a user, I can ask for available slots in a date range.
 
 ### CAL-202 — P1
 
-**BTF:** [GENIE-46](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-46) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2665) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2666) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2667)
+**BTF:** [GENIE-46](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-46) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2665) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2666) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2667)
 
 As a user, I can approve a focus block linked to a task.
 
@@ -648,7 +648,7 @@ As a user, I can approve a focus block linked to a task.
 
 ### CAL-203 — P1
 
-**BTF:** [GENIE-47](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-47) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2668) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2669) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2670)
+**BTF:** [GENIE-47](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-47) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2668) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2669) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2670)
 
 As an organizer, I can approve an event and attendee list before invitations.
 
@@ -662,7 +662,7 @@ As an organizer, I can approve an event and attendee list before invitations.
 
 ### CAL-204 — P2
 
-**BTF:** [GENIE-48](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-48) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2671) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2672) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2673)
+**BTF:** [GENIE-48](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-48) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2671) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2672) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2673)
 
 As a user, I can request a rescheduling proposal.
 
@@ -676,7 +676,7 @@ As a user, I can request a rescheduling proposal.
 
 ## MAIL-01 Connected mailbox fundamentals
 
-**Live epic:** [GENIE-49](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-49) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=186)
+**Live epic:** [GENIE-49](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-49) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=186)
 
 Operate connected mailboxes with explicit boundaries.
 
@@ -686,7 +686,7 @@ Operate connected mailboxes with explicit boundaries.
 
 ### MAIL-101 — P1
 
-**BTF:** [GENIE-50](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-50) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2674) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2675) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2676)
+**BTF:** [GENIE-50](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-50) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2674) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2675) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2676)
 
 As a user, I can connect and disconnect a supported mailbox.
 
@@ -700,7 +700,7 @@ As a user, I can connect and disconnect a supported mailbox.
 
 ### MAIL-102 — P1
 
-**BTF:** [GENIE-51](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-51) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2677) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2678) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2679)
+**BTF:** [GENIE-51](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-51) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2677) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2678) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2679)
 
 As a user, I can view synchronized messages and threads.
 
@@ -714,7 +714,7 @@ As a user, I can view synchronized messages and threads.
 
 ### MAIL-103 — P1
 
-**BTF:** [GENIE-52](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-52) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2680) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2681) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2682)
+**BTF:** [GENIE-52](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-52) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2680) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2681) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2682)
 
 As a user, I can compose and save drafts.
 
@@ -728,7 +728,7 @@ As a user, I can compose and save drafts.
 
 ### MAIL-104 — P1
 
-**BTF:** [GENIE-53](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-53) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2683) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2684) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2685)
+**BTF:** [GENIE-53](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-53) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2683) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2684) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2685)
 
 As a user, I can review and manually send email.
 
@@ -742,7 +742,7 @@ As a user, I can review and manually send email.
 
 ### MAIL-105 — P1
 
-**BTF:** [GENIE-54](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-54) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2686) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2687) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2688)
+**BTF:** [GENIE-54](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-54) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2686) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2687) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2688)
 
 As a user, I can recover synchronization failures.
 
@@ -756,7 +756,7 @@ As a user, I can recover synchronization failures.
 
 ## MAIL-02 Genie email assistance
 
-**Live epic:** [GENIE-55](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-55) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=187)
+**Live epic:** [GENIE-55](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-55) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=187)
 
 Connect correspondence to drafts and tracked work.
 
@@ -766,7 +766,7 @@ Connect correspondence to drafts and tracked work.
 
 ### MAIL-201 — P1
 
-**BTF:** [GENIE-56](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-56) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2689) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2690) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2691)
+**BTF:** [GENIE-56](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-56) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2689) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2690) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2691)
 
 As a user, I can summarize a selected thread.
 
@@ -780,7 +780,7 @@ As a user, I can summarize a selected thread.
 
 ### MAIL-202 — P1
 
-**BTF:** [GENIE-57](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-57) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2692) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2693) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2694)
+**BTF:** [GENIE-57](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-57) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2692) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2693) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2694)
 
 As a user, I can draft a reply using authorized project context.
 
@@ -794,7 +794,7 @@ As a user, I can draft a reply using authorized project context.
 
 ### MAIL-203 — P1
 
-**BTF:** [GENIE-58](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-58) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2695) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2696) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2697)
+**BTF:** [GENIE-58](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-58) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2695) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2696) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2697)
 
 As a user, I can propose tasks from an email commitment.
 
@@ -808,7 +808,7 @@ As a user, I can propose tasks from an email commitment.
 
 ### MAIL-204 — P1
 
-**BTF:** [GENIE-59](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-59) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2698) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2699) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2700)
+**BTF:** [GENIE-59](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-59) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2698) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2699) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2700)
 
 As a user, I can review a project update draft before manually sending.
 
@@ -822,7 +822,7 @@ As a user, I can review a project update draft before manually sending.
 
 ## AGENT-01 Persistent Genie conversation
 
-**Live epic:** [GENIE-60](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-60) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=188)
+**Live epic:** [GENIE-60](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-60) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=188)
 
 Maintain useful continuity across apps.
 
@@ -832,7 +832,7 @@ Maintain useful continuity across apps.
 
 ### AGENT-101 — P0
 
-**BTF:** [GENIE-61](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-61) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2701) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2702) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2703)
+**BTF:** [GENIE-61](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-61) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2701) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2702) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2703)
 
 As a user, I can open Genie from any supported application.
 
@@ -846,7 +846,7 @@ As a user, I can open Genie from any supported application.
 
 ### AGENT-102 — P0
 
-**BTF:** [GENIE-62](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-62) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2704) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2705) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2706)
+**BTF:** [GENIE-62](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-62) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2704) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2705) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2706)
 
 As a user, I can see the resource Genie will use.
 
@@ -860,7 +860,7 @@ As a user, I can see the resource Genie will use.
 
 ### AGENT-103 — P0
 
-**BTF:** [GENIE-63](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-63) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2707) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2708) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2709)
+**BTF:** [GENIE-63](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-63) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2707) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2708) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2709)
 
 As a user, I can continue a conversation after changing apps.
 
@@ -874,7 +874,7 @@ As a user, I can continue a conversation after changing apps.
 
 ### AGENT-104 — P1
 
-**BTF:** [GENIE-64](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-64) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2710) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2711) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2712)
+**BTF:** [GENIE-64](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-64) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2710) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2711) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2712)
 
 As a user, I can inspect, change and delete saved preferences.
 
@@ -888,7 +888,7 @@ As a user, I can inspect, change and delete saved preferences.
 
 ## AGENT-02 Bounded workflow routing
 
-**Live epic:** [GENIE-65](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-65) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=189)
+**Live epic:** [GENIE-65](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-65) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=189)
 
 Map natural language to registered capabilities.
 
@@ -898,7 +898,7 @@ Map natural language to registered capabilities.
 
 ### AGENT-201 — P0
 
-**BTF:** [GENIE-66](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-66) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2713) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2714) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2715)
+**BTF:** [GENIE-66](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-66) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2713) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2714) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2715)
 
 As a user, I can express a supported outcome naturally.
 
@@ -912,7 +912,7 @@ As a user, I can express a supported outcome naturally.
 
 ### AGENT-202 — P0
 
-**BTF:** [GENIE-67](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-67) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2716) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2717) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2718)
+**BTF:** [GENIE-67](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-67) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2716) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2717) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2718)
 
 As a user, I receive focused clarification for missing inputs.
 
@@ -926,7 +926,7 @@ As a user, I receive focused clarification for missing inputs.
 
 ### AGENT-203 — P0
 
-**BTF:** [GENIE-68](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-68) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2719) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2720) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2721)
+**BTF:** [GENIE-68](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-68) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2719) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2720) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2721)
 
 As an operator, I can restrict each workflow's tools and limits.
 
@@ -940,7 +940,7 @@ As an operator, I can restrict each workflow's tools and limits.
 
 ### AGENT-204 — P0
 
-**BTF:** [GENIE-69](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-69) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2722) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2723) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2724)
+**BTF:** [GENIE-69](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-69) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2722) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2723) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2724)
 
 As a user, I receive a clear unsupported-action response.
 
@@ -954,7 +954,7 @@ As a user, I receive a clear unsupported-action response.
 
 ## AGENT-03 Approval and execution
 
-**Live epic:** [GENIE-70](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-70) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=190)
+**Live epic:** [GENIE-70](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-70) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=190)
 
 Make consequential changes explicit and recoverable.
 
@@ -964,7 +964,7 @@ Make consequential changes explicit and recoverable.
 
 ### AGENT-301 — P0
 
-**BTF:** [GENIE-71](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-71) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2725) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2726) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2727)
+**BTF:** [GENIE-71](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-71) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2725) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2726) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2727)
 
 As a user, I can review exact proposed changes.
 
@@ -978,7 +978,7 @@ As a user, I can review exact proposed changes.
 
 ### AGENT-302 — P0
 
-**BTF:** [GENIE-72](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-72) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2728) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2729) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2730)
+**BTF:** [GENIE-72](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-72) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2728) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2729) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2730)
 
 As a user, I can edit or reject a proposal.
 
@@ -992,7 +992,7 @@ As a user, I can edit or reject a proposal.
 
 ### AGENT-303 — P0
 
-**BTF:** [GENIE-73](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-73) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2731) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2732) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2733)
+**BTF:** [GENIE-73](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-73) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2731) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2732) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2733)
 
 As a user, I can see individual action results.
 
@@ -1006,7 +1006,7 @@ As a user, I can see individual action results.
 
 ### AGENT-304 — P0
 
-**BTF:** [GENIE-74](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-74) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2734) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2735) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2736)
+**BTF:** [GENIE-74](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-74) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2734) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2735) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2736)
 
 As a user, I can retry failed steps safely.
 
@@ -1020,7 +1020,7 @@ As a user, I can retry failed steps safely.
 
 ### AGENT-305 — P1
 
-**BTF:** [GENIE-75](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-75) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2737) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2738) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2739)
+**BTF:** [GENIE-75](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-75) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2737) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2738) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2739)
 
 As a user, I can cancel pending actions.
 
@@ -1034,7 +1034,7 @@ As a user, I can cancel pending actions.
 
 ## CTX-01 Context selection
 
-**Live epic:** [GENIE-76](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-76) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=191)
+**Live epic:** [GENIE-76](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-76) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=191)
 
 Supply authoritative and bounded request context.
 
@@ -1044,7 +1044,7 @@ Supply authoritative and bounded request context.
 
 ### CTX-101 — P0
 
-**BTF:** [GENIE-77](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-77) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2740) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2741) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2742)
+**BTF:** [GENIE-77](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-77) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2740) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2741) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2742)
 
 As a user, I want relevant selected content used directly.
 
@@ -1058,7 +1058,7 @@ As a user, I want relevant selected content used directly.
 
 ### CTX-102 — P0
 
-**BTF:** [GENIE-78](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-78) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2743) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2744) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2745)
+**BTF:** [GENIE-78](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-78) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2743) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2744) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2745)
 
 As an operator, I want structured facts fetched from application services.
 
@@ -1072,7 +1072,7 @@ As an operator, I want structured facts fetched from application services.
 
 ### CTX-103 — P0
 
-**BTF:** [GENIE-79](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-79) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2746) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2747) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2748)
+**BTF:** [GENIE-79](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-79) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2746) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2747) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2748)
 
 As an operator, I can bound prompt context.
 
@@ -1086,7 +1086,7 @@ As an operator, I can bound prompt context.
 
 ### CTX-104 — P0
 
-**BTF:** [GENIE-80](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-80) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2749) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2750) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2751)
+**BTF:** [GENIE-80](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-80) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2749) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2750) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2751)
 
 As a user, I want stale plans detected before execution.
 
@@ -1100,7 +1100,7 @@ As a user, I want stale plans detected before execution.
 
 ## CTX-02 Search retrieval and memory
 
-**Live epic:** [GENIE-81](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-81) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=192)
+**Live epic:** [GENIE-81](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-81) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=192)
 
 Find authorized knowledge without expanding every prompt.
 
@@ -1110,7 +1110,7 @@ Find authorized knowledge without expanding every prompt.
 
 ### CTX-201 — P1
 
-**BTF:** [GENIE-82](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-82) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2752) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2753) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2754)
+**BTF:** [GENIE-82](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-82) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2752) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2753) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2754)
 
 As a user, I can find resources by names and keywords.
 
@@ -1124,7 +1124,7 @@ As a user, I can find resources by names and keywords.
 
 ### CTX-202 — P1
 
-**BTF:** [GENIE-83](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-83) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2755) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2756) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2757)
+**BTF:** [GENIE-83](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-83) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2755) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2756) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2757)
 
 As a user, I can find relevant passages with different wording.
 
@@ -1138,7 +1138,7 @@ As a user, I can find relevant passages with different wording.
 
 ### CTX-203 — P1
 
-**BTF:** [GENIE-84](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-84) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2758) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2759) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2760)
+**BTF:** [GENIE-84](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-84) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2758) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2759) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2760)
 
 As a user, I can inspect sources supporting an answer.
 
@@ -1152,7 +1152,7 @@ As a user, I can inspect sources supporting an answer.
 
 ### CTX-204 — P1
 
-**BTF:** [GENIE-85](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-85) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2761) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2762) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2763)
+**BTF:** [GENIE-85](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-85) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2761) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2762) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2763)
 
 As an administrator, I can remove deleted or restricted content from retrieval.
 
@@ -1166,7 +1166,7 @@ As an administrator, I can remove deleted or restricted content from retrieval.
 
 ## OPS-01 Durable workflow jobs
 
-**Live epic:** [GENIE-86](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-86) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=193)
+**Live epic:** [GENIE-86](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-86) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=193)
 
 Keep accepted work safe across failures.
 
@@ -1176,7 +1176,7 @@ Keep accepted work safe across failures.
 
 ### OPS-101 — P0
 
-**BTF:** [GENIE-87](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-87) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2764) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2765) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2766)
+**BTF:** [GENIE-87](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-87) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2764) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2765) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2766)
 
 As a user, my accepted request survives disconnect.
 
@@ -1190,7 +1190,7 @@ As a user, my accepted request survives disconnect.
 
 ### OPS-102 — P0
 
-**BTF:** [GENIE-88](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-88) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2767) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2768) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2769)
+**BTF:** [GENIE-88](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-88) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2767) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2768) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2769)
 
 As an operator, workers reconcile interrupted jobs.
 
@@ -1204,7 +1204,7 @@ As an operator, workers reconcile interrupted jobs.
 
 ### OPS-103 — P0
 
-**BTF:** [GENIE-89](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-89) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2770) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2771) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2772)
+**BTF:** [GENIE-89](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-89) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2770) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2771) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2772)
 
 As a user, I can distinguish progress and terminal outcomes.
 
@@ -1218,7 +1218,7 @@ As a user, I can distinguish progress and terminal outcomes.
 
 ### OPS-104 — P0
 
-**BTF:** [GENIE-90](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-90) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2773) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2774) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2775)
+**BTF:** [GENIE-90](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-90) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2773) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2774) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2775)
 
 As an operator, I can bound retries and expiry.
 
@@ -1232,7 +1232,7 @@ As an operator, I can bound retries and expiry.
 
 ## OPS-02 Budget capacity and reporting
 
-**Live epic:** [GENIE-91](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-91) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=194)
+**Live epic:** [GENIE-91](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-91) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=194)
 
 Control workload and operating exposure.
 
@@ -1242,7 +1242,7 @@ Control workload and operating exposure.
 
 ### OPS-201 — P0
 
-**BTF:** [GENIE-92](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-92) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2776) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2777) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2778)
+**BTF:** [GENIE-92](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-92) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2776) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2777) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2778)
 
 As an operator, I can enforce tenant and global quotas.
 
@@ -1256,7 +1256,7 @@ As an operator, I can enforce tenant and global quotas.
 
 ### OPS-202 — P0
 
-**BTF:** [GENIE-93](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-93) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2779) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2780) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2781)
+**BTF:** [GENIE-93](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-93) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2779) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2780) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2781)
 
 As an operator, I reserve estimated cost before inference.
 
@@ -1270,7 +1270,7 @@ As an operator, I reserve estimated cost before inference.
 
 ### OPS-203 — P1
 
-**BTF:** [GENIE-94](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-94) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2782) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2783) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2784)
+**BTF:** [GENIE-94](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-94) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2782) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2783) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2784)
 
 As an administrator, I can inspect workflow usage and cost.
 
@@ -1284,7 +1284,7 @@ As an administrator, I can inspect workflow usage and cost.
 
 ### OPS-204 — P0
 
-**BTF:** [GENIE-95](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-95) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2785) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2786) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2787)
+**BTF:** [GENIE-95](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-95) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2785) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2786) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2787)
 
 As a user, I receive a clear capacity response.
 
@@ -1298,7 +1298,7 @@ As a user, I receive a clear capacity response.
 
 ### OPS-205 — P0
 
-**BTF:** [GENIE-96](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-96) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2788) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2789) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2790)
+**BTF:** [GENIE-96](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-96) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2788) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2789) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2790)
 
 As a user, I can keep using apps during AI downtime.
 
@@ -1312,7 +1312,7 @@ As a user, I can keep using apps during AI downtime.
 
 ## OPS-03 Quality security and release evaluation
 
-**Live epic:** [GENIE-97](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-97) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=195)
+**Live epic:** [GENIE-97](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-97) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=195)
 
 Release evidence-backed changes.
 
@@ -1322,7 +1322,7 @@ Release evidence-backed changes.
 
 ### OPS-301 — P0
 
-**BTF:** [GENIE-98](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-98) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2791) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2792) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2793)
+**BTF:** [GENIE-98](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-98) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2791) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2792) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2793)
 
 As an engineer, I evaluate representative workflows before release.
 
@@ -1336,7 +1336,7 @@ As an engineer, I evaluate representative workflows before release.
 
 ### OPS-302 — P0
 
-**BTF:** [GENIE-99](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-99) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2794) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2795) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2796)
+**BTF:** [GENIE-99](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-99) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2794) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2795) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2796)
 
 As an engineer, I test malicious document and email instructions.
 
@@ -1350,7 +1350,7 @@ As an engineer, I test malicious document and email instructions.
 
 ### OPS-303 — P0
 
-**BTF:** [GENIE-100](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-100) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2797) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2798) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2799)
+**BTF:** [GENIE-100](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-100) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2797) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2798) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2799)
 
 As an operator, I investigate failures through redacted traces.
 
@@ -1364,7 +1364,7 @@ As an operator, I investigate failures through redacted traces.
 
 ### OPS-304 — P1
 
-**BTF:** [GENIE-101](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-101) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2800) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2801) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2802)
+**BTF:** [GENIE-101](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-101) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2800) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2801) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2802)
 
 As an engineer, I compare model choices by useful outcomes.
 
@@ -1378,7 +1378,7 @@ As an engineer, I compare model choices by useful outcomes.
 
 ## SEC-01 Security audit and retention
 
-**Live epic:** [GENIE-102](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-102) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=196)
+**Live epic:** [GENIE-102](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-102) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=196)
 
 Preserve trust across all connectors.
 
@@ -1388,7 +1388,7 @@ Preserve trust across all connectors.
 
 ### SEC-101 — P0
 
-**BTF:** [GENIE-103](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-103) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2803) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2804) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2805)
+**BTF:** [GENIE-103](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-103) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2803) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2804) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2805)
 
 As an administrator, I can audit automated mutations.
 
@@ -1402,7 +1402,7 @@ As an administrator, I can audit automated mutations.
 
 ### SEC-102 — P0
 
-**BTF:** [GENIE-104](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-104) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2806) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2807) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2808)
+**BTF:** [GENIE-104](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-104) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2806) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2807) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2808)
 
 As an operator, I can rotate webhook secrets without exposing them.
 
@@ -1416,7 +1416,7 @@ As an operator, I can rotate webhook secrets without exposing them.
 
 ### SEC-103 — P1
 
-**BTF:** [GENIE-105](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-105) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2809) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2810) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2811)
+**BTF:** [GENIE-105](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-105) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2809) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2810) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2811)
 
 As an administrator, I can apply retention and deletion policies.
 
@@ -1430,7 +1430,7 @@ As an administrator, I can apply retention and deletion policies.
 
 ## DELEG-01 Bounded delegation
 
-**Live epic:** [GENIE-106](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-106) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=197)
+**Live epic:** [GENIE-106](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-106) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=197)
 
 Reduce approvals only under explicit policies.
 
@@ -1440,7 +1440,7 @@ Reduce approvals only under explicit policies.
 
 ### DELEG-101 — P2
 
-**BTF:** [GENIE-107](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-107) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2812) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2813) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2814)
+**BTF:** [GENIE-107](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-107) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2812) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2813) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2814)
 
 As an administrator, I can define permitted delegated actions.
 
@@ -1454,7 +1454,7 @@ As an administrator, I can define permitted delegated actions.
 
 ### DELEG-102 — P2
 
-**BTF:** [GENIE-108](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-108) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2815) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2816) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2817)
+**BTF:** [GENIE-108](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-108) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2815) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2816) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2817)
 
 As a user, I can inspect and revoke my delegation policies.
 
@@ -1468,7 +1468,7 @@ As a user, I can inspect and revoke my delegation policies.
 
 ## EXT-01 Additional application onboarding
 
-**Live epic:** [GENIE-109](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-109) · [Test folder](https://bugoff.aplyd.org/en-US/projects/repository/7?node=198)
+**Live epic:** [GENIE-109](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-109) · [Test folder](https://debug.aplyd.org/en-US/projects/repository/7?node=198)
 
 Extend Genie through verified contracts.
 
@@ -1478,7 +1478,7 @@ Extend Genie through verified contracts.
 
 ### EXT-101 — P2
 
-**BTF:** [GENIE-110](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-110) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2818) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2819) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2820)
+**BTF:** [GENIE-110](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-110) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2818) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2819) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2820)
 
 As a product owner, I can register each remaining application's scope.
 
@@ -1492,7 +1492,7 @@ As a product owner, I can register each remaining application's scope.
 
 ### EXT-102 — P2
 
-**BTF:** [GENIE-111](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-111) · **Draft tests:** [AC1](https://bugoff.aplyd.org/en-US/projects/repository/7/2821) · [AC2](https://bugoff.aplyd.org/en-US/projects/repository/7/2822) · [AC3](https://bugoff.aplyd.org/en-US/projects/repository/7/2823)
+**BTF:** [GENIE-111](https://backlogtothefuture.aplyd.org/aplyd/issue/GENIE-111) · **Draft tests:** [AC1](https://debug.aplyd.org/en-US/projects/repository/7/2821) · [AC2](https://debug.aplyd.org/en-US/projects/repository/7/2822) · [AC3](https://debug.aplyd.org/en-US/projects/repository/7/2823)
 
 As an engineer, I can implement a connector against its approved contract.
 
