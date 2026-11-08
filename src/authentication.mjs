@@ -18,6 +18,11 @@ export function createSessionAuthenticator({config,store,accounts,background=fal
       if (error instanceof HttpError && error.status === 401) await store.deleteSession(hash);
       throw error;
     }
+    const provision=await store.provisioning?.(before.user_id);
+    if(provision){
+      try{await accounts.requireProvision(before.subject,upstream.uid,before.user_id,provision,before.tenant_id)}
+      catch(error){if(error instanceof HttpError&&error.status===401)await store.deleteSession(hash);throw error}
+    }
     // Never retain a positive authority result across requests or across membership changes.
     const after = await store.getSession(hash);
     if (!after || after.user_id !== before.user_id || after.subject !== before.subject ||
