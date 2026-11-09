@@ -18,7 +18,7 @@ export function createSessionAuthenticator({config,store,accounts,background=fal
       if (error instanceof HttpError && error.status === 401) await store.deleteSession(hash);
       throw error;
     }
-    const provision=await store.provisioning?.(before.user_id);
+    const provision=await store.provisioning?.(before.user_id,before.tenant_id);
     if(provision){
       try{await accounts.requireProvision(before.subject,upstream.uid,before.user_id,provision,before.tenant_id)}
       catch(error){if(error instanceof HttpError&&error.status===401)await store.deleteSession(hash);throw error}

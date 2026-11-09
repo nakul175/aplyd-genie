@@ -23,3 +23,10 @@ test('legacy identity keeps existing session path while authority outage does no
  const accounts={requireSession:async()=>{},requireProvision:async()=>{calls++;throw new HttpError(503,'identity_unavailable')}};
  const auth=createSessionAuthenticator({config,store,accounts});assert.equal((await auth('a'.repeat(64))).userId,id);assert.equal(calls,0);p=proof;await assert.rejects(auth('a'.repeat(64)),{status:503});assert.equal(calls,1);
 });
+
+test('additional-workspace proof uses separate endpoint and checks request, subject and exact target workspace',async()=>{
+ const extra={requestId:'10000000-0000-4000-8000-000000000003',tenantId:tenant,kind:'workspace-enrollment'};
+ let calls=0;const authority=createAccounts(config,{fetch:async(url,options)=>{calls++;assert.equal(url.pathname,'/internal/genie/enrollment-access');const i=JSON.parse(options.body);assert.equal(i.request_id,extra.requestId);return new Response(JSON.stringify({active:true,sub:i.sub,native_user_id:i.native_user_id,tenant_id:i.tenant_id,request_id:i.request_id}))}});
+ await authority.requireProvision('known','uid',id,extra,tenant);assert.equal(calls,1);
+ await assert.rejects(authority.requireProvision('known','uid',id,extra,id),{status:401});assert.equal(calls,1);
+});

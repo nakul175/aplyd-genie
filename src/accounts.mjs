@@ -4,9 +4,9 @@ import { HttpError } from './security.mjs';
 export function createAccounts(config, { fetch: request = globalThis.fetch } = {}) {
   return {
     async requireProvision(subject,uid,localId,provision,tenantId=provision.tenantId) {
-      if(!provision||provision.requestId!==localId||provision.tenantId!==tenantId)throw new HttpError(401,'authentication_required');
+      if(!provision||provision.tenantId!==tenantId||(provision.kind!=='workspace-enrollment'&&provision.requestId!==localId))throw new HttpError(401,'authentication_required');
       try {
-        const response=await request(new URL('/internal/genie/access',config.issuer),{
+        const response=await request(new URL(provision.kind==='workspace-enrollment'?'/internal/genie/enrollment-access':'/internal/genie/access',config.issuer),{
           method:'POST',redirect:'error',cache:'no-store',signal:AbortSignal.timeout(3000),
           headers:{'Content-Type':'application/json',Accept:'application/json'},
           body:JSON.stringify({client_id:config.clientId,client_secret:config.clientSecret,sub:subject,uid,native_user_id:localId,tenant_id:tenantId,request_id:provision.requestId})});

@@ -136,7 +136,7 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
     return remaining;
   }
   async function issueSession(request,response,identity,member){
-    const provision=await store.provisioning?.(member.user_id);
+    const provision=await store.provisioning?.(member.user_id,member.tenant_id);
     if(provision)await accounts.requireProvision(identity.subject,identity.uid,member.user_id,provision,member.tenant_id);
     const previous=readCookie(request,sessionCookie),token=randomToken();
     const remaining=sessionLifetime(identity.expires);
@@ -188,6 +188,8 @@ export function createApp({ config, store, oidc, accounts, rateStore, membership
   });
   async function switchWorkspace(request,response){
     sameOrigin(request);const actor=await authenticate(request),target=tenantIdOf(request.body?.tenantId);
+    const proof=await store.provisioning?.(actor.userId,target);
+    if(proof)await accounts.requireProvision(actor.subject,actor.sourceUid,actor.userId,proof,target);
     const token=randomToken();let result;
     try{result=await store.switchWorkspace(actor.sessionHash,digest(token),target,
       seal(config.key,`session:${actor.userId}:${target}`,{uid:actor.sourceUid}));}
