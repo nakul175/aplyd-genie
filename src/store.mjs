@@ -2,9 +2,13 @@
 export class IdentityStore {
   constructor(database) { this.database = database; }
 
-  async provisioning(userId) {
+  async provisioning(userId, tenantId) {
     const row=(await this.database.query("SELECT to_jsonb(u)->>'portal_provision_request' request, to_jsonb(u)->>'portal_provision_tenant' tenant FROM genie_users u WHERE id=$1",[userId])).rows[0];
     if(!row)throw Error('Identity unavailable');
+    if(tenantId) {
+      const membership=(await this.database.query("SELECT to_jsonb(m)->>'portal_enrollment_request' request FROM genie_memberships m WHERE user_id=$1 AND tenant_id=$2",[userId,tenantId])).rows[0];
+      if(membership?.request)return {requestId:membership.request,tenantId,kind:'workspace-enrollment'};
+    }
     return row.request ? {requestId:row.request,tenantId:row.tenant}:null;
   }
 
